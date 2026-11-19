@@ -1,0 +1,6 @@
+# Robots.txt for Peace Buddy Tamil
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://peacebuddytamil.com/sitemap.xml

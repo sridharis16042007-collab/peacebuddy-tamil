@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #0B3D6B;
+  --color-ring-blue: #1583C7;
+  --color-ice: #F4F9FD;
+  --color-mist: #DCEEFA;
+  --color-ink: #12263A;
+  --color-soft-accent: #8FC5E8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 18px; /* 18px minimum body requirement */
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-ice);
+    color: var(--color-ink);
+    font-family: 'Noto Sans Tamil', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.8; /* 1.8 line-height for Tamil readability */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* Accessible focus indicators across all interactive elements */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-ring-blue) !important;
+    outline-offset: 3px !important;
+  }
+}
+
+/* Reduced Motion Support (Accessibility Hard Target) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Utilities */
+.font-tamil {
+  font-family: 'Noto Sans Tamil', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.85;
+}
+
+.font-english {
+  font-family: 'Inter', 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
