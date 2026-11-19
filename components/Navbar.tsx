@@ -42,13 +42,13 @@ export default function Navbar() {
           {/* Logo & Brand Name */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-full p-1"
+            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1583C7] rounded-full p-1"
             aria-label="Peace Buddy Tamil Home"
           >
             <div className="relative w-10 h-10 flex-shrink-0">
               <Image
-                src="/Peace_Buddy_Teal_Circular_Emblem.svg"
-                alt="Peace Buddy Emblem"
+                src="/Peace_Buddy_Teal_Circular_Emblem.webp"
+                alt="Peace Buddy Official Emblem"
                 width={40}
                 height={40}
                 className="w-10 h-10 object-contain rounded-full group-hover:scale-105 transition-transform duration-300"
@@ -56,10 +56,10 @@ export default function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-semibold text-lg tracking-tight text-navy group-hover:text-ringBlue transition-colors leading-tight">
+              <span className="font-semibold text-lg tracking-tight text-[#12263A] group-hover:text-[#0B3D6B] transition-colors leading-tight">
                 Peace Buddy
               </span>
-              <span className="text-[11px] font-medium text-ink-muted -mt-0.5">
+              <span className="text-[11px] font-medium text-[#5A758E] -mt-0.5">
                 {lang === 'ta' ? 'தமிழ்' : 'Tamil'}
               </span>
             </div>

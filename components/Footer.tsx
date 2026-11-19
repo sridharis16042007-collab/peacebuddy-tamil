@@ -26,7 +26,7 @@ export default function Footer() {
             >
               <div className="relative w-12 h-12 flex-shrink-0">
                 <Image
-                  src="/Peace_Buddy_Teal_Circular_Emblem.svg"
+                  src="/Peace_Buddy_Teal_Circular_Emblem.webp"
                   alt="Peace Buddy Circular Emblem"
                   width={48}
                   height={48}

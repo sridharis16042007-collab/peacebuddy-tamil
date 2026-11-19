@@ -4,148 +4,171 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
-import { ArrowRight, Leaf, Flower2, HeartHandshake, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Heart, UserCheck, ShieldCheck } from 'lucide-react';
 
 export default function Hero() {
   const { lang, t } = useLanguage();
 
   return (
     <section
-      aria-label="Welcome to Peace Buddy"
-      className="relative min-h-[92vh] sm:min-h-screen pt-28 sm:pt-36 pb-16 sm:pb-24 flex flex-col justify-between overflow-hidden bg-gradient-to-b from-mist/50 via-ice to-white"
+      aria-label="Peace Buddy Sanctuary"
+      className="relative min-h-[95vh] sm:min-h-screen pt-28 sm:pt-36 pb-16 sm:pb-20 flex flex-col justify-between overflow-hidden bg-[#F0F1EB]"
     >
-      {/* Background Atmosphere Image with Serene Gradient Fade */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-multiply overflow-hidden">
+      {/* Background Atmosphere - Serenica Morning Light Aesthetic */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <Image
-          src="/assets/ref-aurora.webp"
-          alt="Peaceful serene mountain lake landscape"
+          src="/assets/ref-serenica.jpg"
+          alt="Serene morning window with soft sunlight"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center filter blur-[1px]"
+          className="object-cover object-center filter brightness-[0.92] contrast-[0.98]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ice/90 via-ice/60 to-white/95" />
+        {/* Soft Warm Mist Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F0F1EB]/95 via-[#F0F1EB]/75 to-transparent sm:block hidden" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F0F1EB]/90 via-[#F0F1EB]/70 to-[#F0F1EB]/95 sm:hidden" />
       </div>
 
-      {/* Main Hero Content (Centered) */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center my-auto">
-        {/* Emblem with Breathing Animation (180px desktop / 120px mobile, 6s ease-in-out) */}
-        <div
-          className="mb-8 relative flex items-center justify-center"
-          aria-hidden="true"
-        >
-          <div className="w-[120px] h-[120px] sm:w-[180px] sm:h-[180px] rounded-full p-1.5 bg-white/70 backdrop-blur-md border border-ringBlue/30 shadow-xl shadow-ringBlue/10 animate-breathe-glow motion-reduce:animate-none flex items-center justify-center">
-            <Image
-              src="/Peace_Buddy_Teal_Circular_Emblem.svg"
-              alt="Peace Buddy Circular Emblem"
-              width={180}
-              height={180}
-              priority
-              className="w-full h-full object-contain rounded-full"
-            />
+      {/* Main Hero Container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Left Column: Headline & Content */}
+          <div className="lg:col-span-8 flex flex-col items-start text-left">
+            {/* Soft Category Tag */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#263120]/10 text-[#263120] text-xs sm:text-sm font-medium mb-6 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#1583C7] animate-pulse" />
+              <span>{t.hero.tagline}</span>
+            </div>
+
+            {/* Serenica-Style Editorial Headline (with Italic Accent) */}
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light text-[#12263A] tracking-tight leading-[1.15] mb-6 font-english">
+              {lang === 'ta' ? (
+                <span className="font-tamil font-normal">
+                  உங்கள் பயணம் <span className="italic font-serif text-[#0B3D6B]">அமைதியை நோக்கி</span>
+                  <br />
+                  பீஸ் படியுடன் தொடங்குகிறது.
+                </span>
+              ) : (
+                <>
+                  Your journey <span className="italic font-serif text-[#0B3D6B]">to calm</span>
+                  <br />
+                  starts with Peace Buddy.
+                </>
+              )}
+            </h1>
+
+            {/* Subline */}
+            <p className="text-lg sm:text-xl text-[#36526D] max-w-xl leading-relaxed mb-8 font-tamil">
+              {lang === 'ta'
+                ? 'அளவுக்கு அதிகமான சிந்தனைகள் மற்றும் அவசர ஓட்டத்திலிருந்து விடுபட்டு, உங்கள் சொந்த தாய்மொழியில் மன அமைதியைக் கண்டடையுங்கள்.'
+                : 'A gentle, Tamil-first space designed to help you release overthinking, embrace daily serenity, and live with mindful intention.'}
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="#newsletter"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#263120] hover:bg-[#0B3D6B] text-white text-base font-medium transition-all shadow-md hover:shadow-lg min-h-[50px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1583C7]"
+              >
+                <span>{t.hero.primaryCta}</span>
+                <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
+
+              <Link
+                href="#breathe-strip"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/80 hover:bg-white text-[#263120] border border-[#263120]/15 text-base font-medium transition-all min-h-[50px] shadow-xs backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1583C7]"
+              >
+                <span>{t.hero.secondaryLink}</span>
+              </Link>
+            </div>
           </div>
-        </div>
 
-        {/* Calm Badge / Tagline */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-white/80 backdrop-blur-sm border border-ringBlue/20 text-navy font-medium text-xs sm:text-sm mb-5 shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-ringBlue animate-pulse" />
-          <span>{t.hero.tagline}</span>
-        </div>
+          {/* Right Column: User's Official Emblem (Neat, Superb Presentation) */}
+          <div className="lg:col-span-4 flex flex-col items-center justify-center pt-4 lg:pt-0">
+            <div className="relative group">
+              {/* Soft Ambient Halo Glow */}
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-[#1583C7]/20 to-[#8FC5E8]/30 blur-2xl opacity-70 group-hover:opacity-100 transition-opacity" />
 
-        {/* Single H1 Promise */}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-navy tracking-tight leading-[1.25] sm:leading-[1.2] mb-4 font-tamil max-w-3xl">
-          {t.hero.h1}
-        </h1>
+              {/* Logo Presentation Frame */}
+              <div className="relative w-52 h-52 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full p-2 bg-white/85 backdrop-blur-xl border border-white shadow-2xl shadow-[#0B3D6B]/15 animate-breathe-glow motion-reduce:animate-none flex items-center justify-center">
+                <Image
+                  src="/Peace_Buddy_Teal_Circular_Emblem.webp"
+                  alt="Peace Buddy Official Teal Circular Emblem"
+                  width={280}
+                  height={280}
+                  priority
+                  className="w-full h-full object-contain rounded-full transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
 
-        {/* English Subline & Calm Description */}
-        <p className="text-lg sm:text-xl font-normal text-ink-secondary mb-3 max-w-2xl font-english">
-          {t.hero.englishSubline}
-        </p>
-        <p className="text-base sm:text-lg text-ink-muted mb-8 sm:mb-10 max-w-2xl leading-relaxed font-tamil">
-          {t.hero.tamilDescription}
-        </p>
+              {/* Gentle Floating Badge Below Logo */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-white/95 backdrop-blur-md border border-[#263120]/10 shadow-sm text-center whitespace-nowrap">
+                <span className="text-xs font-semibold text-[#0B3D6B] tracking-wide">
+                  PEACE BUDDY TAMIL
+                </span>
+              </div>
+            </div>
+          </div>
 
-        {/* Dual CTA Actions: Primary Pill + Subtle Secondary Link */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-          <Link
-            href="#newsletter"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-pill bg-navy hover:bg-ringBlue text-white text-base sm:text-lg font-medium shadow-md hover:shadow-lg transition-all min-h-[52px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue focus-visible:ring-offset-2"
-          >
-            <span>{t.hero.primaryCta}</span>
-            <ArrowRight className="w-5 h-5" aria-hidden="true" />
-          </Link>
-
-          <Link
-            href="#breathe-strip"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-pill text-ink hover:text-navy hover:bg-mist/40 transition-colors text-base font-medium min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue"
-          >
-            <span>{t.hero.secondaryLink}</span>
-          </Link>
         </div>
       </div>
 
-      {/* Aurora Reference Model: Bottom 4 Frosted Glass Feature Cards */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 w-full mt-12 sm:mt-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Card 1 */}
-          <div className="bg-white/70 backdrop-blur-md border border-white/80 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex items-start gap-4">
-            <div className="w-10 h-10 rounded-full bg-mist/70 flex items-center justify-center text-navy flex-shrink-0">
-              <Leaf className="w-5 h-5 text-ringBlue" aria-hidden="true" />
+      {/* Bottom Features Strip (Exact Serenica Model Layout) */}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full mt-12 sm:mt-16 pt-6 border-t border-[#263120]/10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-[#263120]">
+          
+          {/* Micro Point 1 */}
+          <div className="flex items-start gap-3.5 bg-white/60 sm:bg-transparent backdrop-blur-xs p-3 sm:p-0 rounded-2xl">
+            <div className="w-9 h-9 rounded-full bg-white/80 border border-[#263120]/10 flex items-center justify-center flex-shrink-0 text-[#0B3D6B] shadow-xs">
+              <Heart className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
-              <h3 className="font-semibold text-navy text-base">
-                {t.hero.pills.nature.title}
+              <h3 className="font-semibold text-sm sm:text-base text-[#12263A] font-tamil">
+                {lang === 'ta' ? 'கனிவான வழிகாட்டல்' : 'Gentle Guidance'}
               </h3>
-              <p className="text-xs sm:text-sm text-ink-muted mt-0.5 leading-relaxed">
-                {t.hero.pills.nature.desc}
+              <p className="text-xs sm:text-sm text-[#5A758E] leading-relaxed">
+                {lang === 'ta'
+                  ? 'எந்தவித தீர்ப்புமின்றி உங்கள் உணர்வுகளை மதிக்கும் கரிசனை.'
+                  : 'Calm mindfulness delivered with heartfelt empathy.'}
               </p>
             </div>
           </div>
 
-          {/* Card 2 */}
-          <div className="bg-white/70 backdrop-blur-md border border-white/80 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex items-start gap-4">
-            <div className="w-10 h-10 rounded-full bg-mist/70 flex items-center justify-center text-navy flex-shrink-0">
-              <Flower2 className="w-5 h-5 text-ringBlue" aria-hidden="true" />
+          {/* Micro Point 2 */}
+          <div className="flex items-start gap-3.5 bg-white/60 sm:bg-transparent backdrop-blur-xs p-3 sm:p-0 rounded-2xl">
+            <div className="w-9 h-9 rounded-full bg-white/80 border border-[#263120]/10 flex items-center justify-center flex-shrink-0 text-[#0B3D6B] shadow-xs">
+              <UserCheck className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
-              <h3 className="font-semibold text-navy text-base">
-                {t.hero.pills.mindful.title}
+              <h3 className="font-semibold text-sm sm:text-base text-[#12263A] font-tamil">
+                {lang === 'ta' ? 'தனிப்பயனாக்கப்பட்ட அணுகுமுறை' : 'Personalized Approach'}
               </h3>
-              <p className="text-xs sm:text-sm text-ink-muted mt-0.5 leading-relaxed">
-                {t.hero.pills.mindful.desc}
+              <p className="text-xs sm:text-sm text-[#5A758E] leading-relaxed">
+                {lang === 'ta'
+                  ? 'உங்கள் வாழ்க்கை முறைக்கு ஏற்ற எளிய அமைதி பழக்கங்கள்.'
+                  : 'Practices shaped quietly around your own rhythm and pace.'}
               </p>
             </div>
           </div>
 
-          {/* Card 3 */}
-          <div className="bg-white/70 backdrop-blur-md border border-white/80 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex items-start gap-4">
-            <div className="w-10 h-10 rounded-full bg-mist/70 flex items-center justify-center text-navy flex-shrink-0">
-              <HeartHandshake className="w-5 h-5 text-ringBlue" aria-hidden="true" />
+          {/* Micro Point 3 */}
+          <div className="flex items-start gap-3.5 bg-white/60 sm:bg-transparent backdrop-blur-xs p-3 sm:p-0 rounded-2xl">
+            <div className="w-9 h-9 rounded-full bg-white/80 border border-[#263120]/10 flex items-center justify-center flex-shrink-0 text-[#0B3D6B] shadow-xs">
+              <ShieldCheck className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
-              <h3 className="font-semibold text-navy text-base">
-                {t.hero.pills.community.title}
+              <h3 className="font-semibold text-sm sm:text-base text-[#12263A] font-tamil">
+                {lang === 'ta' ? 'பாதுகாப்பான அமைதிச் சூழல்' : 'Safe, Calming Space'}
               </h3>
-              <p className="text-xs sm:text-sm text-ink-muted mt-0.5 leading-relaxed">
-                {t.hero.pills.community.desc}
+              <p className="text-xs sm:text-sm text-[#5A758E] leading-relaxed">
+                {lang === 'ta'
+                  ? 'மன அழுத்தம் நீங்கி இளைப்பாற ஒரு தூய தமிழ் புகலிடம்.'
+                  : 'A quiet, private environment created purely for your peace.'}
               </p>
             </div>
           </div>
 
-          {/* Card 4 */}
-          <div className="bg-white/70 backdrop-blur-md border border-white/80 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex items-start gap-4">
-            <div className="w-10 h-10 rounded-full bg-mist/70 flex items-center justify-center text-navy flex-shrink-0">
-              <Sparkles className="w-5 h-5 text-ringBlue" aria-hidden="true" />
-            </div>
-            <div>
-              <h3 className="font-semibold text-navy text-base">
-                {t.hero.pills.lasting.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-ink-muted mt-0.5 leading-relaxed">
-                {t.hero.pills.lasting.desc}
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
