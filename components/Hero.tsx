@@ -131,7 +131,7 @@ export default function Hero() {
                   </div>
                 </Link>
 
-                {/* 2. 4-4-6 Breathing Card */}
+                {/* 2. Guided Meditation Card */}
                 <Link
                   href="/resources"
                   className="group flex items-start gap-3 p-3 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 transition-all shadow-sm"
@@ -141,10 +141,10 @@ export default function Hero() {
                   </div>
                   <div>
                     <h2 className="text-sm font-semibold text-white group-hover:text-[#FFD68A] transition-colors">
-                      {lang === 'ta' ? '4-4-6 மூச்சுப் பயிற்சி' : '4-4-6 Breathwork'}
+                      {lang === 'ta' ? 'வழிகாட்டப்பட்ட தியானம்' : 'Guided Meditation'}
                     </h2>
                     <p className="text-xs text-white/80 leading-snug">
-                      {lang === 'ta' ? 'பதற்றம் குறைக்கும் உடனடி அறிவியல் முறை' : 'Instant calming technique for anxiety & stress'}
+                      {lang === 'ta' ? 'அமைதியான தமிழ் தியானம் & மன அமைதி பயிற்சிகள்' : 'Calm Tamil meditations & mindfulness practices'}
                     </p>
                   </div>
                 </Link>

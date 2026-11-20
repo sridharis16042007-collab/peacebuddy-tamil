@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: '%s | Peace Buddy Tamil',
   },
   description:
-    'A gentle Tamil-first space for peace of mind, mindful living, and emotional wellbeing. Calm overthinking, practice 4-4-6 breathing, and cultivate lasting tranquility.',
+    'A gentle Tamil-first space for peace of mind, mindful living, and emotional wellbeing. Calm overthinking, practice guided meditation, and cultivate lasting tranquility.',
   keywords: [
     'மன அமைதி',
     'தியானம்',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     'peace of mind tamil',
     'mindfulness tamil',
     'overthinking relief tamil',
-    '4-4-6 breathing exercise',
+    'guided meditation tamil',
     'emotional wellbeing tamil',
   ],
   authors: [{ name: 'Peace Buddy Tamil' }],
