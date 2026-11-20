@@ -66,28 +66,40 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          <div className="hidden md:flex items-center gap-5 lg:gap-7">
             <Link
               href="/"
-              className="text-[15px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1.5 py-1"
+              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
             >
               {t.nav.home}
             </Link>
             <Link
+              href="/programs"
+              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
+            >
+              {t.nav.programs}
+            </Link>
+            <Link
               href="/about"
-              className="text-[15px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1.5 py-1"
+              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
             >
               {t.nav.about}
             </Link>
             <Link
               href="/resources"
-              className="text-[15px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1.5 py-1"
+              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
             >
               {t.nav.resources}
             </Link>
             <Link
+              href="/faq"
+              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
+            >
+              {t.nav.faq}
+            </Link>
+            <Link
               href="/contact"
-              className="text-[15px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1.5 py-1"
+              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
             >
               {t.nav.contact}
             </Link>
@@ -148,6 +160,13 @@ export default function Navbar() {
               {t.nav.home}
             </Link>
             <Link
+              href="/programs"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 text-base font-medium text-ink hover:text-ringBlue rounded-lg min-h-[48px] flex items-center"
+            >
+              {t.nav.programs}
+            </Link>
+            <Link
               href="/about"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 text-base font-medium text-ink hover:text-ringBlue rounded-lg min-h-[48px] flex items-center"
@@ -160,6 +179,13 @@ export default function Navbar() {
               className="px-3 py-2 text-base font-medium text-ink hover:text-ringBlue rounded-lg min-h-[48px] flex items-center"
             >
               {t.nav.resources}
+            </Link>
+            <Link
+              href="/faq"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 text-base font-medium text-ink hover:text-ringBlue rounded-lg min-h-[48px] flex items-center"
+            >
+              {t.nav.faq}
             </Link>
             <Link
               href="/contact"

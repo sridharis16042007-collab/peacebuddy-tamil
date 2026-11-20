@@ -60,19 +60,27 @@ export default function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-softAccent mb-4">
               {t.footer.quickLinks}
             </h4>
-            <ul className="space-y-3 text-sm text-white/80">
+            <ul className="space-y-2.5 text-sm text-white/80">
               <li>
                 <Link
                   href="/"
-                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-1 inline-block min-h-[44px] flex items-center"
+                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
                 >
                   {t.nav.home}
                 </Link>
               </li>
               <li>
                 <Link
+                  href="/programs"
+                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
+                >
+                  {t.nav.programs}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/about"
-                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-1 inline-block min-h-[44px] flex items-center"
+                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
                 >
                   {t.nav.about}
                 </Link>
@@ -80,15 +88,23 @@ export default function Footer() {
               <li>
                 <Link
                   href="/resources"
-                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-1 inline-block min-h-[44px] flex items-center"
+                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
                 >
                   {t.nav.resources}
                 </Link>
               </li>
               <li>
                 <Link
+                  href="/faq"
+                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
+                >
+                  {t.nav.faq}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/contact"
-                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-1 inline-block min-h-[44px] flex items-center"
+                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
                 >
                   {t.nav.contact}
                 </Link>
@@ -110,12 +126,19 @@ export default function Footer() {
                 <MessageCircle className="w-4 h-4 text-softAccent flex-shrink-0" aria-hidden="true" />
                 <span className="font-mono text-xs text-white/90">[CLIENT WHATSAPP]</span>
               </li>
-              <li className="pt-2">
+              <li className="pt-2 flex items-center gap-4">
                 <Link
                   href="/privacy"
-                  className="text-xs text-white/60 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-1 inline-block min-h-[44px] flex items-center"
+                  className="text-xs text-white/60 hover:text-white transition-colors py-1 inline-block"
                 >
                   {t.nav.privacy}
+                </Link>
+                <span className="text-white/20">•</span>
+                <Link
+                  href="/admin"
+                  className="text-xs text-softAccent/70 hover:text-softAccent transition-colors py-1 inline-block"
+                >
+                  Admin Portal
                 </Link>
               </li>
             </ul>

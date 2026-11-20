@@ -10,6 +10,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://peacebuddytamil.com/?lang=en" />
   </url>
   <url>
+    <loc>https://peacebuddytamil.com/programs</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ta" href="https://peacebuddytamil.com/programs" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://peacebuddytamil.com/programs?lang=en" />
+  </url>
+  <url>
     <loc>https://peacebuddytamil.com/about</loc>
     <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -24,6 +32,14 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ta" href="https://peacebuddytamil.com/resources" />
     <xhtml:link rel="alternate" hreflang="en" href="https://peacebuddytamil.com/resources?lang=en" />
+  </url>
+  <url>
+    <loc>https://peacebuddytamil.com/faq</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ta" href="https://peacebuddytamil.com/faq" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://peacebuddytamil.com/faq?lang=en" />
   </url>
   <url>
     <loc>https://peacebuddytamil.com/contact</loc>

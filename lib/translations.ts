@@ -3,8 +3,10 @@ export type Language = 'ta' | 'en';
 export interface TranslationContent {
   nav: {
     home: string;
+    programs: string;
     about: string;
     resources: string;
+    faq: string;
     contact: string;
     privacy: string;
     startCta: string;
@@ -123,8 +125,10 @@ export const translations: Record<Language, TranslationContent> = {
   ta: {
     nav: {
       home: "முகப்பு",
+      programs: "பயிற்சிகள்",
       about: "எங்களைப் பற்றி",
       resources: "வளங்கள் & கட்டுரைகள்",
+      faq: "FAQ",
       contact: "தொடர்புக்கு",
       privacy: "தனியுரிமைக் கொள்கை",
       startCta: "அமைதிப் பயணம்",
@@ -280,8 +284,10 @@ export const translations: Record<Language, TranslationContent> = {
   en: {
     nav: {
       home: "Home",
+      programs: "Programs",
       about: "About",
       resources: "Resources",
+      faq: "FAQ",
       contact: "Contact",
       privacy: "Privacy Policy",
       startCta: "Start Journey",
