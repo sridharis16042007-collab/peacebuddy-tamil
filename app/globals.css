@@ -15,7 +15,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-size: 18px; /* 18px minimum body requirement */
+    font-size: 18px;
+    /* 18px minimum body requirement */
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -44,6 +45,7 @@
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

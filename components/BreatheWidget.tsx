@@ -25,7 +25,7 @@ export default function BreatheWidget() {
 
     let currentPhase: Phase = phase === 'ready' ? 'inhale' : phase;
     let secondsLeft = currentPhase === 'exhale' ? 6 : 4;
-    
+
     setPhase(currentPhase);
     setCountdown(secondsLeft);
 
@@ -126,9 +126,8 @@ export default function BreatheWidget() {
         <div className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto flex items-center justify-center my-6">
           {/* Subtle outer pulsing ring */}
           <div
-            className={`absolute inset-0 rounded-full border-2 border-dashed border-[#7E6C9E]/30 transition-transform ease-in-out ${getTransitionDuration()} ${
-              isActive && phase === 'inhale' ? 'scale-110' : 'scale-100'
-            }`}
+            className={`absolute inset-0 rounded-full border-2 border-dashed border-[#7E6C9E]/30 transition-transform ease-in-out ${getTransitionDuration()} ${isActive && phase === 'inhale' ? 'scale-110' : 'scale-100'
+              }`}
           />
 
           {/* Interactive animated orb */}
