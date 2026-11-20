@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer
       aria-label="Site Footer"
-      className="bg-navy-deep text-white/90 pt-16 sm:pt-20 pb-12 border-t border-navy"
+      className="bg-[#1C1628] text-white/90 pt-16 sm:pt-20 pb-12 border-t border-[#2D2342]"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Main Footer Columns */}
@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <Link
               href="/"
-              className="inline-flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-lg p-1"
+              className="inline-flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E] rounded-lg p-1"
               aria-label="Peace Buddy Tamil Home"
             >
               <div className="relative w-12 h-12 flex-shrink-0">
@@ -30,14 +30,14 @@ export default function Footer() {
                   alt="Peace Buddy Circular Emblem"
                   width={48}
                   height={48}
-                  className="w-12 h-12 object-contain rounded-full"
+                  className="w-12 h-12 object-contain rounded-full shadow-md"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-xl tracking-tight text-white group-hover:text-softAccent transition-colors">
-                  Peace Buddy Tamil
+                <span className="font-serif font-bold text-xl tracking-tight text-white group-hover:text-[#C5B3E6] transition-colors">
+                  ✦ Peace Buddy Tamil
                 </span>
-                <span className="text-xs text-softAccent font-medium">
+                <span className="text-xs text-[#9B8BB8] font-medium">
                   அமைதியான மனம் • தெளிவான வாழ்வு
                 </span>
               </div>
@@ -47,9 +47,9 @@ export default function Footer() {
               {t.footer.tagline}
             </p>
 
-            <div className="mt-6 flex items-center gap-4 text-sm text-softAccent">
+            <div className="mt-6 flex items-center gap-4 text-sm text-[#C5B3E6]">
               <span className="inline-flex items-center gap-1.5">
-                <Heart className="w-4 h-4 text-ringBlue" aria-hidden="true" />
+                <Heart className="w-4 h-4 text-[#9B8BB8]" aria-hidden="true" />
                 <span>Made with peace for Tamil speakers worldwide</span>
               </span>
             </div>

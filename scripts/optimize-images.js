@@ -8,35 +8,22 @@ async function processImages() {
 
   console.log('Optimizing images with Sharp...');
 
-  const logoPng = path.join(publicDir, 'Peace_Buddy_Teal_Circular_Emblem.png');
-  if (fs.existsSync(logoPng)) {
-    // Generate WebP
-    await sharp(logoPng)
-      .resize(1024, 1024, { fit: 'inside' })
-      .webp({ quality: 92 })
-      .toFile(path.join(publicDir, 'Peace_Buddy_Teal_Circular_Emblem.webp'));
+  const cloudJpg = path.join(assetsDir, 'cloud-serenity.jpg');
+  if (fs.existsSync(cloudJpg)) {
+    await sharp(cloudJpg)
+      .resize(1920, 1080, { fit: 'cover' })
+      .webp({ quality: 85 })
+      .toFile(path.join(assetsDir, 'cloud-serenity.webp'));
 
-    // Generate AVIF
-    await sharp(logoPng)
-      .resize(1024, 1024, { fit: 'inside' })
-      .avif({ quality: 88 })
-      .toFile(path.join(publicDir, 'Peace_Buddy_Teal_Circular_Emblem.avif'));
+    await sharp(cloudJpg)
+      .resize(1920, 1080, { fit: 'cover' })
+      .avif({ quality: 80 })
+      .toFile(path.join(assetsDir, 'cloud-serenity.avif'));
 
-    // Copy to assets folder
-    await sharp(logoPng)
-      .resize(1024, 1024, { fit: 'inside' })
-      .webp({ quality: 92 })
-      .toFile(path.join(assetsDir, 'Peace_Buddy_Teal_Circular_Emblem.webp'));
-
-    await sharp(logoPng)
-      .resize(1024, 1024, { fit: 'inside' })
-      .avif({ quality: 88 })
-      .toFile(path.join(assetsDir, 'Peace_Buddy_Teal_Circular_Emblem.avif'));
-
-    console.log('✓ Successfully converted official logo to WebP & AVIF');
+    console.log('✓ Successfully converted cloud-serenity.jpg to WebP & AVIF');
   }
 
-  console.log('All image optimizations completed successfully.');
+  console.log('All image optimizations completed.');
 }
 
 processImages().catch(err => {

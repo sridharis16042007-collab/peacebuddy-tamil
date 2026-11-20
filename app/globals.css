@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --color-navy: #0B3D6B;
-  --color-ring-blue: #1583C7;
-  --color-ice: #F4F9FD;
-  --color-mist: #DCEEFA;
-  --color-ink: #12263A;
-  --color-soft-accent: #8FC5E8;
+  --color-bg: #FDFBFE;
+  --color-mist: #F5EFF7;
+  --color-lilac: #7E6C9E;
+  --color-lilac-deep: #624F85;
+  --color-cosmic: #2D2342;
+  --color-text: #453959;
+  --color-border: #E8DFEF;
 }
 
 @layer base {
@@ -21,27 +22,27 @@
   }
 
   body {
-    background-color: var(--color-ice);
-    color: var(--color-ink);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     font-family: 'Noto Sans Tamil', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.8; /* 1.8 line-height for Tamil readability */
+    line-height: 1.8;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
   }
 
-  /* Accessible focus indicators across all interactive elements */
+  /* Accessible focus rings */
   a:focus-visible,
   button:focus-visible,
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible {
-    outline: 2px solid var(--color-ring-blue) !important;
+    outline: 2px solid var(--color-lilac) !important;
     outline-offset: 3px !important;
   }
 }
 
-/* Reduced Motion Support (Accessibility Hard Target) */
+/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -53,7 +54,6 @@
   }
 }
 
-/* Custom Utilities */
 .font-tamil {
   font-family: 'Noto Sans Tamil', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.85;
@@ -62,4 +62,8 @@
 .font-english {
   font-family: 'Inter', 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
+}
+
+.font-serif-dream {
+  font-family: 'Fraunces', Georgia, serif;
 }

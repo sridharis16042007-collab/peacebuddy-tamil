@@ -32,7 +32,7 @@ export default function WhatsAppButton() {
         onMouseLeave={() => setShowTooltip(false)}
         onFocus={() => setShowTooltip(true)}
         onBlur={() => setShowTooltip(false)}
-        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy hover:bg-ringBlue text-white flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ringBlue/40"
+        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#725E96] hover:bg-[#5E4C80] text-white flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#7E6C9E]/40"
         aria-label={t.whatsapp.ariaLabel}
       >
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" />

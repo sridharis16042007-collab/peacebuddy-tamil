@@ -50,27 +50,27 @@ export default function NewsletterSection() {
       className="py-16 sm:py-24 bg-white relative"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="bg-gradient-to-br from-mist/60 via-ice to-white rounded-calm-lg p-8 sm:p-12 border border-mist shadow-sm text-center">
+        <div className="bg-gradient-to-br from-[#FAF4FA] via-[#FDFBFE] to-white rounded-calm-lg p-8 sm:p-12 border border-[#E8DFEF] shadow-sm text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-pill bg-white border border-mist text-navy font-medium text-xs sm:text-sm mb-4 shadow-xs">
-            <Mail className="w-3.5 h-3.5 text-ringBlue" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-pill bg-white border border-[#E8DFEF] text-[#7E6C9E] font-medium text-xs sm:text-sm mb-4 shadow-xs">
+            <Mail className="w-3.5 h-3.5 text-[#7E6C9E]" aria-hidden="true" />
             <span>{t.newsletter.badge}</span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl font-bold text-navy mb-3 tracking-tight font-tamil">
+          <h2 className="text-2xl sm:text-4xl font-serif text-[#2D2342] mb-3 tracking-tight font-tamil">
             {t.newsletter.title}
           </h2>
-          <p className="text-base sm:text-lg text-ink-secondary mb-8 max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#5A4D6E] mb-8 max-w-xl mx-auto leading-relaxed">
             {t.newsletter.desc}
           </p>
 
           {status === 'success' ? (
             <div
-              className="bg-white border border-ringBlue/30 rounded-2xl p-6 max-w-md mx-auto shadow-xs flex items-center gap-3 text-left animate-fade-in"
+              className="bg-white border border-[#7E6C9E]/30 rounded-2xl p-6 max-w-md mx-auto shadow-xs flex items-center gap-3 text-left animate-fade-in"
               role="alert"
             >
-              <CheckCircle className="w-6 h-6 text-ringBlue flex-shrink-0" aria-hidden="true" />
-              <p className="text-sm sm:text-base text-navy font-medium">
+              <CheckCircle className="w-6 h-6 text-[#7E6C9E] flex-shrink-0" aria-hidden="true" />
+              <p className="text-sm sm:text-base text-[#2D2342] font-medium">
                 {t.newsletter.successMessage}
               </p>
             </div>
@@ -91,7 +91,7 @@ export default function NewsletterSection() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={t.newsletter.namePlaceholder}
-                  className="w-full px-4 py-3.5 rounded-pill bg-white border border-mist text-ink text-sm sm:text-base placeholder:text-ink-muted focus:border-ringBlue focus:ring-2 focus:ring-ringBlue/20 focus:outline-none min-h-[48px] shadow-xs"
+                  className="w-full px-4 py-3.5 rounded-pill bg-white border border-[#E8DFEF] text-[#2D2342] text-sm sm:text-base placeholder:text-[#7A6E91] focus:border-[#7E6C9E] focus:ring-2 focus:ring-[#7E6C9E]/20 focus:outline-none min-h-[48px] shadow-xs"
                 />
               </div>
 
@@ -107,7 +107,7 @@ export default function NewsletterSection() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t.newsletter.emailPlaceholder}
-                  className="w-full px-4 py-3.5 rounded-pill bg-white border border-mist text-ink text-sm sm:text-base placeholder:text-ink-muted focus:border-ringBlue focus:ring-2 focus:ring-ringBlue/20 focus:outline-none min-h-[48px] shadow-xs"
+                  className="w-full px-4 py-3.5 rounded-pill bg-white border border-[#E8DFEF] text-[#2D2342] text-sm sm:text-base placeholder:text-[#7A6E91] focus:border-[#7E6C9E] focus:ring-2 focus:ring-[#7E6C9E]/20 focus:outline-none min-h-[48px] shadow-xs"
                 />
               </div>
 
@@ -116,7 +116,7 @@ export default function NewsletterSection() {
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-pill bg-navy hover:bg-ringBlue text-white font-medium text-sm sm:text-base shadow-sm transition-all min-h-[48px] whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue focus-visible:ring-offset-2"
+                  className="w-full sm:w-auto px-7 py-3.5 rounded-pill bg-[#725E96] hover:bg-[#5E4C80] text-white font-medium text-sm sm:text-base shadow-sm transition-all min-h-[48px] whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E]"
                 >
                   {status === 'submitting' ? t.newsletter.buttonSubmitting : t.newsletter.button}
                 </button>
@@ -131,8 +131,8 @@ export default function NewsletterSection() {
           )}
 
           {/* Privacy Note */}
-          <div className="flex items-center justify-center gap-1.5 mt-5 text-xs text-ink-muted">
-            <ShieldCheck className="w-4 h-4 text-ringBlue" aria-hidden="true" />
+          <div className="flex items-center justify-center gap-1.5 mt-5 text-xs text-[#7A6E91]">
+            <ShieldCheck className="w-4 h-4 text-[#7E6C9E]" aria-hidden="true" />
             <span>{t.newsletter.privacyNote}</span>
           </div>
         </div>

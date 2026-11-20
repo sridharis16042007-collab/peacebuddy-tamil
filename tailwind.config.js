@@ -8,38 +8,54 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Ethereal Cloud & Lilac Theme (Soul Serenity Model)
+        ethereal: {
+          bg: '#FDFBFE',
+          mist: '#F5EFF7',
+          card: '#FFFFFF',
+          border: '#E8DFEF',
+          hover: '#EFE7F6',
+        },
+        lilac: {
+          DEFAULT: '#7E6C9E',
+          deep: '#624F85',
+          light: '#9B8BB8',
+          soft: 'rgba(126, 108, 158, 0.12)',
+          glow: 'rgba(126, 108, 158, 0.25)',
+        },
+        cosmic: {
+          heading: '#2D2342',
+          text: '#453959',
+          muted: '#7A6E91',
+          light: '#A398B8',
+        },
+        // Kept for backward compatibility
         navy: {
-          DEFAULT: '#0B3D6B',
-          deep: '#072644',
-          light: '#13538F',
-          soft: 'rgba(11, 61, 107, 0.08)'
+          DEFAULT: '#2D2342',
+          deep: '#1F1730',
+          light: '#423560',
         },
         ringBlue: {
-          DEFAULT: '#1583C7',
-          hover: '#106DA7',
-          soft: 'rgba(21, 131, 199, 0.12)'
+          DEFAULT: '#7E6C9E',
+          hover: '#624F85',
         },
         ice: {
-          DEFAULT: '#F4F9FD',
+          DEFAULT: '#FDFBFE',
           surface: '#FFFFFF',
         },
         mist: {
-          DEFAULT: '#DCEEFA',
-          subtle: '#EBF4FB',
+          DEFAULT: '#F5EFF7',
+          subtle: '#FAF6FB',
         },
         ink: {
-          DEFAULT: '#12263A',
-          secondary: '#36526D',
-          muted: '#5A758E',
-          light: '#8FA6BC'
+          DEFAULT: '#2D2342',
+          secondary: '#453959',
+          muted: '#7A6E91',
+          light: '#A398B8',
         },
-        softAccent: {
-          DEFAULT: '#8FC5E8',
-          light: '#BEE0F6',
-          glow: 'rgba(143, 197, 232, 0.35)'
-        }
       },
       fontFamily: {
+        serif: ['Fraunces', 'Playfair Display', 'Georgia', 'serif'],
         tamil: ['Noto Sans Tamil', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         english: ['Inter', 'Nunito', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
@@ -56,8 +72,8 @@ module.exports = {
       },
       keyframes: {
         breatheGlow: {
-          '0%, 100%': { transform: 'scale(1)', boxShadow: '0 0 20px rgba(21, 131, 199, 0.15)' },
-          '50%': { transform: 'scale(1.03)', boxShadow: '0 0 35px rgba(21, 131, 199, 0.32)' },
+          '0%, 100%': { transform: 'scale(1)', boxShadow: '0 0 25px rgba(126, 108, 158, 0.2)' },
+          '50%': { transform: 'scale(1.03)', boxShadow: '0 0 45px rgba(126, 108, 158, 0.4)' },
         },
         fadeIn: {
           '0%': { opacity: '0' },

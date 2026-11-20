@@ -88,10 +88,10 @@ export default function BreatheWidget() {
   };
 
   const getCircleScale = () => {
-    if (phase === 'inhale') return 'scale-125 border-ringBlue bg-mist/60 shadow-2xl shadow-ringBlue/20';
-    if (phase === 'hold') return 'scale-125 border-softAccent bg-softAccent/20 shadow-xl shadow-softAccent/20';
-    if (phase === 'exhale') return 'scale-90 border-navy/40 bg-ice shadow-sm';
-    return 'scale-100 border-mist bg-white shadow-md';
+    if (phase === 'inhale') return 'scale-125 border-[#7E6C9E] bg-[#EFE7F6]/90 shadow-2xl shadow-[#7E6C9E]/25';
+    if (phase === 'hold') return 'scale-125 border-[#9B8BB8] bg-[#F5EFF7] shadow-xl shadow-[#7E6C9E]/15';
+    if (phase === 'exhale') return 'scale-90 border-[#D8CFE6] bg-white shadow-sm';
+    return 'scale-100 border-[#E8DFEF] bg-white shadow-md';
   };
 
   const getTransitionDuration = () => {
@@ -105,20 +105,20 @@ export default function BreatheWidget() {
     <section
       id="breathe-strip"
       aria-label="Interactive 4-4-6 Breathing Tool"
-      className="py-16 sm:py-24 bg-gradient-to-b from-white via-ice to-mist/30 relative overflow-hidden"
+      className="py-16 sm:py-24 bg-gradient-to-b from-[#FBF7F9] via-[#FAF4FA] to-white relative overflow-hidden"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         {/* Calm Section Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-pill bg-mist text-navy font-medium text-xs sm:text-sm mb-4">
-          <Wind className="w-4 h-4 text-ringBlue" aria-hidden="true" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-pill bg-[#F5EFF7] border border-[#E8DFEF] text-[#7E6C9E] font-medium text-xs sm:text-sm mb-4">
+          <Wind className="w-4 h-4 text-[#7E6C9E]" aria-hidden="true" />
           <span>{t.breathe.badge}</span>
         </div>
 
         {/* Section Heading */}
-        <h2 className="text-2xl sm:text-4xl font-bold text-navy mb-3 tracking-tight font-tamil">
+        <h2 className="text-2xl sm:text-4xl font-serif text-[#2D2342] mb-3 tracking-tight font-tamil">
           {t.breathe.title}
         </h2>
-        <p className="text-base sm:text-lg text-ink-secondary mb-10 max-w-xl mx-auto">
+        <p className="text-base sm:text-lg text-[#5A4D6E] mb-10 max-w-xl mx-auto">
           {t.breathe.subtitle}
         </p>
 
@@ -126,7 +126,7 @@ export default function BreatheWidget() {
         <div className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto flex items-center justify-center my-6">
           {/* Subtle outer pulsing ring */}
           <div
-            className={`absolute inset-0 rounded-full border-2 border-dashed border-ringBlue/30 transition-transform ease-in-out ${getTransitionDuration()} ${
+            className={`absolute inset-0 rounded-full border-2 border-dashed border-[#7E6C9E]/30 transition-transform ease-in-out ${getTransitionDuration()} ${
               isActive && phase === 'inhale' ? 'scale-110' : 'scale-100'
             }`}
           />
@@ -140,14 +140,14 @@ export default function BreatheWidget() {
               {phase !== 'ready' ? `${getPhaseText()} ${countdown} ${t.breathe.secondsUnit}` : 'Breathing ready to start'}
             </div>
 
-            <span className="text-sm sm:text-base font-medium text-ink-secondary tracking-wide mb-1 font-tamil">
+            <span className="text-sm sm:text-base font-medium text-[#5A4D6E] tracking-wide mb-1 font-tamil">
               {getPhaseText()}
             </span>
 
             {phase !== 'ready' && (
-              <span className="text-3xl sm:text-5xl font-bold text-navy tracking-tight font-english">
+              <span className="text-3xl sm:text-5xl font-serif font-bold text-[#2D2342] tracking-tight">
                 {countdown}
-                <span className="text-xs sm:text-sm font-normal text-ink-muted ml-1">
+                <span className="text-xs sm:text-sm font-normal text-[#7A6E91] ml-1">
                   {t.breathe.secondsUnit}
                 </span>
               </span>
@@ -160,7 +160,7 @@ export default function BreatheWidget() {
           <button
             type="button"
             onClick={handleToggle}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-pill bg-navy hover:bg-ringBlue text-white text-base font-medium shadow-sm transition-all min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-pill bg-[#725E96] hover:bg-[#5E4C80] text-white text-base font-medium shadow-sm transition-all min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E]"
           >
             {isActive ? (
               <>
@@ -178,9 +178,9 @@ export default function BreatheWidget() {
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-pill bg-white hover:bg-mist text-ink border border-mist text-base font-medium transition-all min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-pill bg-white hover:bg-[#FAF4FA] text-[#2D2342] border border-[#E8DFEF] text-base font-medium transition-all min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E]"
           >
-            <RotateCcw className="w-4 h-4 text-ink-muted" aria-hidden="true" />
+            <RotateCcw className="w-4 h-4 text-[#7A6E91]" aria-hidden="true" />
             <span>{t.breathe.resetBtn}</span>
           </button>
         </div>

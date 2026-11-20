@@ -33,33 +33,33 @@ export default function Navbar() {
       <header className="fixed top-4 sm:top-6 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
         <nav
           aria-label="Main Navigation"
-          className={`pointer-events-auto w-full max-w-5xl transition-all duration-300 rounded-pill px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border ${
+          className={`pointer-events-auto w-full max-w-5xl transition-all duration-300 rounded-pill px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between border ${
             scrolled
-              ? 'bg-white/85 backdrop-blur-xl shadow-lg shadow-navy/5 border-mist'
-              : 'bg-white/75 backdrop-blur-md shadow-sm border-white/60'
+              ? 'bg-white/90 backdrop-blur-xl shadow-lg shadow-[#7E6C9E]/5 border-[#E8DFEF]'
+              : 'bg-white/70 backdrop-blur-md shadow-xs border-white/80'
           }`}
         >
           {/* Logo & Brand Name */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1583C7] rounded-full p-1"
+            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E] rounded-full p-1"
             aria-label="Peace Buddy Tamil Home"
           >
-            <div className="relative w-10 h-10 flex-shrink-0">
+            <div className="relative w-9 h-9 flex-shrink-0">
               <Image
                 src="/Peace_Buddy_Teal_Circular_Emblem.webp"
                 alt="Peace Buddy Official Emblem"
-                width={40}
-                height={40}
-                className="w-10 h-10 object-contain rounded-full group-hover:scale-105 transition-transform duration-300"
+                width={36}
+                height={36}
+                className="w-9 h-9 object-contain rounded-full group-hover:scale-105 transition-transform duration-300"
                 priority
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-semibold text-lg tracking-tight text-[#12263A] group-hover:text-[#0B3D6B] transition-colors leading-tight">
-                Peace Buddy
+              <span className="font-serif text-base sm:text-lg tracking-tight text-[#2D2342] group-hover:text-[#7E6C9E] transition-colors leading-tight">
+                ✦ Peace Buddy
               </span>
-              <span className="text-[11px] font-medium text-[#5A758E] -mt-0.5">
+              <span className="text-[10px] font-medium text-[#7E6C9E] -mt-0.5">
                 {lang === 'ta' ? 'தமிழ்' : 'Tamil'}
               </span>
             </div>
@@ -111,20 +111,20 @@ export default function Navbar() {
             <button
               onClick={toggleLang}
               type="button"
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs sm:text-sm font-medium text-navy hover:text-ringBlue bg-mist/60 hover:bg-mist rounded-pill border border-mist transition-all min-h-[44px] min-w-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium text-[#2D2342] hover:text-[#7E6C9E] bg-white/80 hover:bg-white rounded-pill border border-[#E8DFEF] transition-all min-h-[40px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E]"
               aria-label={`Switch language to ${lang === 'ta' ? 'English' : 'Tamil'}`}
             >
-              <Globe className="w-4 h-4 text-ringBlue" aria-hidden="true" />
+              <Globe className="w-3.5 h-3.5 text-[#7E6C9E]" aria-hidden="true" />
               <span>{t.nav.langToggle}</span>
             </button>
 
-            {/* Pill CTA Button (Aurora Model Reference) */}
+            {/* Pill CTA Button (Soul Serenity Lilac) */}
             <Link
               href="/#newsletter"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-pill bg-navy hover:bg-ringBlue text-white text-sm font-medium shadow-sm hover:shadow transition-all min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue focus-visible:ring-offset-2"
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-pill bg-[#725E96] hover:bg-[#5E4C80] text-white text-xs sm:text-sm font-medium shadow-xs hover:shadow transition-all min-h-[42px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E]"
             >
               <span>{t.nav.startCta}</span>
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
             </Link>
 
             {/* Mobile Menu Toggle */}
