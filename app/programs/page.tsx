@@ -18,6 +18,7 @@ import {
 export default function ProgramsPage() {
   const { lang, t } = useLanguage();
   const [morningImage, setMorningImage] = useState<'sunrise' | 'garden'>('sunrise');
+  const [eveningImage, setEveningImage] = useState<'moonlight' | 'bedtime'>('moonlight');
 
   return (
     <div className="pt-28 sm:pt-36 pb-24 bg-[#F8F5F1] min-h-screen relative overflow-hidden">
@@ -26,7 +27,7 @@ export default function ProgramsPage() {
       <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-[#F4D9DF] opacity-25 blur-[120px] pointer-events-none -z-10" />
 
       <div className="max-w-[1200px] mx-auto px-6 sm:px-12">
-        
+
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-8">
           <ol className="flex items-center gap-2 text-xs text-[#4A5A6A]">
@@ -80,7 +81,7 @@ export default function ProgramsPage() {
 
         {/* Single Flagship Transformation Container: Frosted Glass */}
         <div className="bg-white/70 backdrop-blur-md rounded-[28px] p-6 sm:p-10 lg:p-12 border border-white/85 shadow-[0_20px_60px_rgba(15,39,66,0.08)] mb-14">
-          
+
           {/* Program Header Banner */}
           <div className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-[#0F2742]/10">
             <div>
@@ -104,7 +105,7 @@ export default function ProgramsPage() {
 
           {/* SESSIONS GRID: Morning Session & Evening Session in Ordered Way */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 my-10">
-            
+
             {/* 1. MORNING SESSION */}
             <div className="rounded-[24px] p-6 sm:p-8 bg-[#F6EBEE]/70 border border-white/90 shadow-sm flex flex-col justify-between relative overflow-hidden">
               <div>
@@ -134,7 +135,7 @@ export default function ProgramsPage() {
                     priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/65 via-transparent to-transparent pointer-events-none" />
-                  
+
                   {/* Photo Title & Interactive Switcher */}
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
                     <span className="font-serif font-medium text-[13px]">
@@ -144,11 +145,10 @@ export default function ProgramsPage() {
                       <button
                         type="button"
                         onClick={() => setMorningImage('sunrise')}
-                        className={`px-2 py-0.5 rounded-full transition-colors ${
-                          morningImage === 'sunrise'
+                        className={`px-2 py-0.5 rounded-full transition-colors ${morningImage === 'sunrise'
                             ? 'bg-white/30 text-white font-bold'
                             : 'text-white/70 hover:text-white'
-                        }`}
+                          }`}
                         title="Sunrise Gratitude View"
                       >
                         {lang === 'ta' ? 'சூரியோதயம்' : 'Sunrise'}
@@ -157,11 +157,10 @@ export default function ProgramsPage() {
                       <button
                         type="button"
                         onClick={() => setMorningImage('garden')}
-                        className={`px-2 py-0.5 rounded-full transition-colors ${
-                          morningImage === 'garden'
+                        className={`px-2 py-0.5 rounded-full transition-colors ${morningImage === 'garden'
                             ? 'bg-white/30 text-white font-bold'
                             : 'text-white/70 hover:text-white'
-                        }`}
+                          }`}
                         title="Garden Meditation View"
                       >
                         {lang === 'ta' ? 'தோட்டம்' : 'Garden'}
@@ -261,23 +260,48 @@ export default function ProgramsPage() {
                   </div>
                 </div>
 
-                {/* Evening Session Visual Hero Image */}
+                {/* Evening Session Visual Hero Image (Moonlight Journaling & Night Meditation) */}
                 <div className="relative w-full h-52 sm:h-60 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
-                    src="/assets/sunset-serenity.webp"
-                    alt="Evening Journaling and Night Guided Meditation"
+                    src={eveningImage === 'moonlight' ? '/assets/evening-moonlight-journal.jpg' : '/assets/evening-bedtime-meditation.jpg'}
+                    alt="Moonlight Journal Writing and Night Guided Sleep Meditation"
                     fill
                     sizes="(max-width: 768px) 100vw, 550px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/65 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/70 via-transparent to-transparent pointer-events-none" />
+
+                  {/* Photo Title & Interactive Switcher */}
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
                     <span className="font-serif font-medium text-[13px]">
-                      ✦ {lang === 'ta' ? 'சுயபரிசீலனை & இரவு தியானம்' : 'Reflection & Night Meditation'}
+                      ✦ {lang === 'ta' ? 'நிலவொளி ஜர்னல் & இரவு தியானம்' : 'Moonlight Journal & Sleep Meditation'}
                     </span>
-                    <span className="text-[11px] text-[#E8D7F1] font-sans">
-                      {lang === 'ta' ? 'இரவு அமைதி' : 'Tranquil Dusk'}
-                    </span>
+                    <div className="flex items-center gap-1.5 text-[10px]">
+                      <button
+                        type="button"
+                        onClick={() => setEveningImage('moonlight')}
+                        className={`px-2 py-0.5 rounded-full transition-colors ${eveningImage === 'moonlight'
+                            ? 'bg-white/30 text-white font-bold'
+                            : 'text-white/70 hover:text-white'
+                          }`}
+                        title="Moonlight Journaling View"
+                      >
+                        {lang === 'ta' ? 'நிலா & ஜர்னல்' : 'Moonlight'}
+                      </button>
+                      <span className="opacity-40">|</span>
+                      <button
+                        type="button"
+                        onClick={() => setEveningImage('bedtime')}
+                        className={`px-2 py-0.5 rounded-full transition-colors ${eveningImage === 'bedtime'
+                            ? 'bg-white/30 text-white font-bold'
+                            : 'text-white/70 hover:text-white'
+                          }`}
+                        title="Bedtime Meditation View"
+                      >
+                        {lang === 'ta' ? 'உறக்கத் தியானம்' : 'Bedtime'}
+                      </button>
+                    </div>
                   </div>
                 </div>
 
