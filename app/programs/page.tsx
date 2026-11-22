@@ -105,8 +105,8 @@ export default function ProgramsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 my-10">
 
             {/* 1. MORNING SESSION */}
-            <div className="rounded-[24px] p-6 sm:p-7 bg-gradient-to-b from-[#FFFDF8] via-[#FFF9EE] to-[#FFF5E6]/80 border border-[#FDE68A]/70 shadow-[0_20px_60px_rgba(217,119,6,0.06)] flex flex-col justify-between relative overflow-hidden">
-              <div>
+            <div className="rounded-[24px] p-6 sm:p-7 bg-gradient-to-b from-[#FFFDF8] via-[#FFF9EE] to-[#FFF5E6]/80 border border-[#FDE68A]/70 shadow-[0_20px_60px_rgba(217,119,6,0.06)] flex flex-col h-full relative overflow-hidden">
+              <div className="flex-1 flex flex-col">
                 {/* Session Header */}
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 rounded-full bg-[#FEF3C7] text-[#B45309] flex-shrink-0">
@@ -142,14 +142,14 @@ export default function ProgramsPage() {
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-6 leading-relaxed">
+                <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-5 leading-relaxed">
                   {lang === 'ta'
                     ? 'விடியற்காலை புத்துணர்ச்சியுடன் எழுந்து, அமைதியான மனநிலையுடன் அன்றைய நாளைத் தொடங்குவதற்கான 3 எளிய படிநிலைகள்:'
                     : 'Start your day calm, focused, and energized with these 3 daily morning steps:'}
                 </p>
 
                 {/* Ordered Steps List */}
-                <div className="space-y-4">
+                <div className="flex-1 flex flex-col justify-between gap-3.5">
                   {/* Step 1: Brahma Muhurtham Meditation */}
                   <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#0F2742] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
@@ -209,12 +209,12 @@ export default function ProgramsPage() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold">
-                <div className="flex items-center gap-2 text-[#2A5235]">
-                  <CheckCircle2 className="w-4 h-4 text-[#2A5235]" />
-                  <span>{lang === 'ta' ? 'புத்துணர்ச்சியான தொடக்கம்' : 'Energizing, mindful start'}</span>
+              <div className="mt-5 pt-4 border-t border-[#0F2742]/10 flex items-center justify-between gap-2 text-xs font-semibold">
+                <div className="flex items-center gap-1.5 text-[#2A5235] min-w-0">
+                  <CheckCircle2 className="w-4 h-4 text-[#2A5235] flex-shrink-0" />
+                  <span className="truncate">{lang === 'ta' ? 'புத்துணர்ச்சியான தொடக்கம்' : 'Energizing start'}</span>
                 </div>
-                <span className="px-2.5 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] text-[11px] font-semibold border border-[#FDE68A]/80 shadow-2xs">
+                <span className="px-2.5 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] text-[11px] font-bold border border-[#FDE68A]/80 shadow-2xs flex-shrink-0 whitespace-nowrap">
                   {lang === 'ta' ? 'காலை + மாலை: ₹999' : 'Morning + Evening: ₹999'}
                 </span>
               </div>
@@ -222,12 +222,12 @@ export default function ProgramsPage() {
 
             {/* 2. EVENING SESSION (Matching user's soft purple gradient & bold text) */}
             <div
-              className="rounded-[24px] p-6 sm:p-7 border border-[#BFA7FF]/85 shadow-[0_20px_60px_rgba(180,150,250,0.20)] flex flex-col justify-between relative overflow-hidden"
+              className="rounded-[24px] p-6 sm:p-7 border border-[#BFA7FF]/85 shadow-[0_20px_60px_rgba(180,150,250,0.20)] flex flex-col h-full relative overflow-hidden"
               style={{
                 background: 'radial-gradient(125% 105% at 50% 50%, #FFFFFF 28%, #F2EBFE 65%, #CBB3FE 100%)',
               }}
             >
-              <div>
+              <div className="flex-1 flex flex-col">
                 {/* Session Header */}
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 rounded-full bg-[#E8D7F1] text-[#8B5E83] flex-shrink-0 shadow-xs">
@@ -263,14 +263,14 @@ export default function ProgramsPage() {
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-6 leading-relaxed">
+                <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-5 leading-relaxed">
                   {lang === 'ta'
                     ? 'அன்றாட சோர்வு மற்றும் சிந்தனைகளை இறக்கி வைத்து, நிம்மதியான உறக்கத்திற்குத் தயாராகும் 3 எளிய படிநிலைகள்:'
                     : 'Let go of daily stress, clear your mind, and prepare for a deep, peaceful sleep with these 3 steps:'}
                 </p>
 
                 {/* Ordered Steps List */}
-                <div className="space-y-4">
+                <div className="flex-1 flex flex-col justify-between gap-3.5">
                   {/* Step 1: Journal Writing */}
                   <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#8B5E83] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
@@ -330,20 +330,20 @@ export default function ProgramsPage() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#8B5E83]/20 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold">
-                <div className="flex items-center gap-2 text-[#6B3E63]">
-                  <CheckCircle2 className="w-4 h-4 text-[#8B5E83]" />
-                  <span>{lang === 'ta' ? 'ஆழ்ந்த அமைதியான உறக்கம்' : 'Restorative, peaceful sleep'}</span>
+              <div className="mt-5 pt-4 border-t border-[#8B5E83]/20 flex items-center justify-between gap-2 text-xs font-semibold">
+                <div className="flex items-center gap-1.5 text-[#6B3E63] min-w-0">
+                  <CheckCircle2 className="w-4 h-4 text-[#8B5E83] flex-shrink-0" />
+                  <span className="truncate">{lang === 'ta' ? 'ஆழ்ந்த அமைதியான உறக்கம்' : 'Restful sleep'}</span>
                 </div>
-                <span className="px-2.5 py-1 rounded-full bg-[#E8D7F1] text-[#6B3E63] text-[11px] font-semibold border border-[#CBB3FE]/80 shadow-2xs">
+                <span className="px-2.5 py-1 rounded-full bg-[#E8D7F1] text-[#6B3E63] text-[11px] font-bold border border-[#CBB3FE]/80 shadow-2xs flex-shrink-0 whitespace-nowrap">
                   {lang === 'ta' ? 'காலை + மாலை: ₹999' : 'Morning + Evening: ₹999'}
                 </span>
               </div>
             </div>
 
             {/* 3. WEEKEND WORKSHOPS (Money, Inner Self-Value, Open to Everyone in Simple English) */}
-            <div className="rounded-[24px] p-6 sm:p-7 bg-gradient-to-b from-[#F3F8F5] via-[#EBF4EF] to-[#E3EFE8]/80 border border-[#C5DDD0]/80 shadow-[0_20px_60px_rgba(42,82,53,0.06)] flex flex-col justify-between relative overflow-hidden md:col-span-2 lg:col-span-1">
-              <div>
+            <div className="rounded-[24px] p-6 sm:p-7 bg-gradient-to-b from-[#F3F8F5] via-[#EBF4EF] to-[#E3EFE8]/80 border border-[#C5DDD0]/80 shadow-[0_20px_60px_rgba(42,82,53,0.06)] flex flex-col h-full relative overflow-hidden md:col-span-2 lg:col-span-1">
+              <div className="flex-1 flex flex-col">
                 {/* Session Header */}
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 rounded-full bg-[#DDE6DC] text-[#2A5235] flex-shrink-0">
@@ -378,14 +378,14 @@ export default function ProgramsPage() {
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-6 leading-relaxed">
+                <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-5 leading-relaxed">
                   {lang === 'ta'
-                    ? 'பணம், சுயமதிப்பு மற்றும் வாழ்க்கை வழிகாட்டல் குறித்த வாராந்திர/மாதாந்திர நேரலை பயிலரங்குகள். யார் வேண்டுமானாலும் கலந்து கொள்ளலாம்:'
-                    : 'Weekly and monthly live online workshops on practical life topics. Open for everyone to join:'}
+                    ? 'பணம் மற்றும் சுயமதிப்பு குறித்த நேரலை பயிலரங்குகள் (யார் வேண்டுமானாலும் சேரலாம்):'
+                    : 'Live online workshops on money and self-value. Open for everyone to join:'}
                 </p>
 
                 {/* Ordered Steps List */}
-                <div className="space-y-4">
+                <div className="flex-1 flex flex-col justify-between gap-3.5">
                   {/* Step 1: Money & Financial Mindset */}
                   <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#2A5235] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
@@ -394,13 +394,13 @@ export default function ProgramsPage() {
                     <div>
                       <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
-                          ? 'பணம் & மன அமைதி வழிகாட்டல்'
-                          : 'Money Mindset & Financial Peace'}
+                          ? 'பணம் & மன அமைதி'
+                          : 'Money Mindset & Peace'}
                       </h4>
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
-                          ? 'பணம் குறித்த பயம் மற்றும் அழுத்தங்களை நீக்கி, பணத்தை நேர்மறையாகக் கையாளவும் அமைதியோடு செல்வத்தை ஈர்க்கவும் எளிய வழிகாட்டல்.'
-                          : 'Learn how to remove money stress, build a healthy relationship with wealth, and attract abundance with peace of mind.'}
+                          ? 'பணம் சார்ந்த பயங்களை நீக்கி, நேர்மறையாகக் கையாளவும் செல்வத்தை அமைதியோடு ஈர்க்கவும் வழிகாட்டல்.'
+                          : 'Remove money stress, build healthy wealth habits, and attract abundance with peace of mind.'}
                       </p>
                     </div>
                   </div>
@@ -414,12 +414,12 @@ export default function ProgramsPage() {
                       <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'சுயமதிப்பு & தன்னம்பிக்கை'
-                          : 'Inner Self-Value & Confidence'}
+                          : 'Inner Self-Value'}
                       </h4>
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'சுயமதிப்பை உணர்ந்து, சுய சந்தேகங்களை விலக்கி, பிறருடன் ஒப்பிடாமல் உண்மையான தன்னம்பிக்கையை வளர்த்தல்.'
-                          : 'Understand your true inner worth, overcome self-doubt, stop comparing yourself to others, and build lasting self-love.'}
+                          : 'Discover your true worth, overcome self-doubt, and stop comparing yourself to others.'}
                       </p>
                     </div>
                   </div>
@@ -432,25 +432,25 @@ export default function ProgramsPage() {
                     <div>
                       <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
-                          ? 'அனைவருக்குமான நேரலை அரங்கம்'
-                          : 'Open for Everyone (Live Sessions)'}
+                          ? 'அனைவருக்குமான நேரலை'
+                          : 'Open for Everyone (Live)'}
                       </h4>
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
-                          ? 'இதில் யார் வேண்டுமானாலும் கலந்து கொள்ளலாம். உங்கள் வாழ்க்கை சந்தேகங்களை நேரடியாகக் கேட்டு எளிய வாழ்வியல் தீர்வுகளைப் பெறலாம்.'
-                          : 'Anyone can join these interactive live sessions. Ask your life questions directly, learn practical tools, and grow together.'}
+                          ? 'யார் வேண்டுமானாலும் கலந்து கொள்ளலாம்; வாழ்க்கை சந்தேகங்களை நேரடியாகக் கேட்டு எளிய தீர்வுகள் பெறலாம்.'
+                          : 'Anyone can join these live sessions, ask life questions directly, and learn practical tools.'}
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex flex-wrap items-center justify-between gap-2 text-xs text-[#2A5235] font-semibold">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#2A5235] animate-pulse" />
-                  <span>{lang === 'ta' ? 'விரைவில் தொடக்கம் (Upcoming)' : 'Upcoming'}</span>
+              <div className="mt-5 pt-4 border-t border-[#0F2742]/10 flex items-center justify-between gap-2 text-xs text-[#2A5235] font-semibold">
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <span className="w-2 h-2 rounded-full bg-[#2A5235] animate-pulse flex-shrink-0" />
+                  <span className="truncate">{lang === 'ta' ? 'விரைவில் தொடக்கம் (Upcoming)' : 'Upcoming'}</span>
                 </div>
-                <span className="px-2.5 py-1 rounded-full bg-[#DDE6DC]/70 text-[#2A5235] text-[11px] font-semibold border border-[#C5DDD0]">
+                <span className="px-2.5 py-1 rounded-full bg-[#DDE6DC]/70 text-[#2A5235] text-[11px] font-bold border border-[#C5DDD0] flex-shrink-0 whitespace-nowrap">
                   {lang === 'ta' ? 'விரைவில் அறிவிப்பு' : 'Coming Soon'}
                 </span>
               </div>
