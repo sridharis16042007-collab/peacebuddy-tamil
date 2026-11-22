@@ -73,7 +73,7 @@ export default function AboutPage() {
             <div className="md:col-span-5 flex justify-center">
               <div className="relative w-full max-w-[320px] h-[380px] sm:h-[440px] rounded-[32px] overflow-hidden shadow-[0_20px_50px_rgba(15,39,66,0.10)] border border-white/90 bg-[#F6EBEE] group">
                 <Image
-                  src="/assets/chakra-meditation.webp"
+                  src="/assets/founder-meditation-tree.jpg"
                   alt="Founder peaceful meditation sanctuary"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

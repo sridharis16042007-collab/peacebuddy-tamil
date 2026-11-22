@@ -28,7 +28,7 @@ export default function FounderSection() {
               {/* Tall Rounded Image Container (32px Radius) */}
               <div className="w-full h-[460px] sm:h-[520px] rounded-[32px] overflow-hidden shadow-[0_24px_60px_rgba(15,39,66,0.12)] border border-white/80 relative bg-white/70 group">
                 <Image
-                  src="/assets/chakra-meditation.webp"
+                  src="/assets/founder-meditation-tree.jpg"
                   alt="Founder peaceful meditation sanctuary"
                   fill
                   sizes="(max-width: 640px) 360px, 400px"
