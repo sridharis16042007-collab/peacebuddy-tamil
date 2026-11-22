@@ -29,15 +29,15 @@ export default function Hero() {
       <div className="absolute bottom-1/4 right-5 sm:right-1/4 w-[400px] sm:w-[550px] h-[400px] rounded-full bg-[#FDE2D2] opacity-30 blur-[120px] pointer-events-none -z-10" />
 
       {/* Rotating Circular Text Badge Top Right ("A CALMER MIND • EVERY DAY •") */}
-      <div className="absolute top-24 right-4 sm:top-28 sm:right-10 lg:right-16 z-20 hidden sm:block">
-        <div className="relative w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center">
+      <div className="absolute top-16 right-4 sm:top-20 sm:right-6 lg:top-20 lg:right-12 xl:right-20 z-20 hidden sm:block pointer-events-none">
+        <div className="relative w-28 h-28 sm:w-[120px] sm:h-[120px] flex items-center justify-center">
           <svg
             viewBox="0 0 140 140"
             className="w-full h-full animate-spin-slow select-none pointer-events-none"
           >
             <path
               id="circlePath"
-              d="M 70, 70 m -53, 0 a 53,53 0 1,1 106,0 a 53,53 0 1,1 -106,0"
+              d="M 70, 70 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"
               fill="none"
             />
             <text className="text-[10px] uppercase tracking-[0.22em] fill-[#0F2742] font-semibold">
@@ -46,16 +46,14 @@ export default function Hero() {
               </textPath>
             </text>
           </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="p-1 sm:p-1.5 rounded-full bg-white/90 backdrop-blur-md border border-white/90 shadow-[0_4px_20px_rgba(15,39,66,0.12)] flex items-center justify-center">
-              <Image
-                src="/Peace_Buddy_Teal_Circular_Emblem.png"
-                alt="Peace Buddy Logo"
-                width={76}
-                height={76}
-                className="w-16 h-16 sm:w-18 sm:h-18 rounded-full object-contain"
-              />
-            </div>
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <Image
+              src="/Peace_Buddy_Teal_Circular_Emblem.png"
+              alt="Peace Buddy Logo"
+              width={58}
+              height={58}
+              className="w-14 h-14 sm:w-[58px] sm:h-[58px] rounded-full object-contain select-none drop-shadow-xs"
+            />
           </div>
         </div>
       </div>
@@ -73,7 +71,7 @@ export default function Hero() {
         </div>
 
         {/* H1 Headline on Two Lines: Line 1 Normal Serif, Line 2 Italic Serif */}
-        <h1 className="text-[44px] sm:text-[68px] lg:text-[96px] font-serif font-medium text-[#0F2742] tracking-[-0.02em] leading-[1.02] mb-6 max-w-4xl">
+        <h1 className="text-[44px] sm:text-[68px] lg:text-[96px] font-serif font-medium text-[#0F2742] tracking-[-0.02em] leading-[1.02] mb-6 max-w-3xl lg:max-w-[840px] xl:max-w-4xl px-2">
           {lang === 'ta' ? (
             <span className="font-tamil-serif block leading-[1.3]">
               ஆழ்ந்த மன அமைதி
