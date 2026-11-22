@@ -117,7 +117,7 @@ export default function ArticlesSection() {
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/40 via-transparent to-transparent pointer-events-none" />
-                  
+
                   {/* Tag Pill inside image */}
                   <div className="absolute top-3.5 left-3.5">
                     <span className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.14em] bg-white/85 backdrop-blur-md text-[#0F2742] shadow-xs">

@@ -33,11 +33,10 @@ export default function Navbar() {
       <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
         <nav
           aria-label="Main Navigation"
-          className={`pointer-events-auto w-full max-w-[1200px] h-16 transition-all duration-300 rounded-full px-5 sm:px-7 flex items-center justify-between border ${
-            scrolled
+          className={`pointer-events-auto w-full max-w-[1200px] h-16 transition-all duration-300 rounded-full px-5 sm:px-7 flex items-center justify-between border ${scrolled
               ? 'bg-white/85 backdrop-blur-xl border-white/90 shadow-[0_20px_50px_rgba(15,39,66,0.10)]'
               : 'bg-white/70 backdrop-blur-lg border-white/80 shadow-[0_20px_60px_rgba(15,39,66,0.06)]'
-          }`}
+            }`}
         >
           {/* Logo on Left: Peace Buddy serif 22px with Circular Emblem */}
           <Link

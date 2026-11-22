@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="max-w-[1200px] mx-auto px-6 sm:px-12">
         {/* Top Section: Brand Story & 3 Columns of Links */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-16 border-b border-[#0F2742]/10">
-          
+
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
             <Link

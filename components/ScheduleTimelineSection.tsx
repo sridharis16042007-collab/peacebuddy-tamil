@@ -269,12 +269,15 @@ export default function ScheduleTimelineSection() {
                         <span>{lang === 'ta' ? 'உள்நுழையவும்' : 'Sign in to join'}</span>
                       </Link>
                     ) : !isPaid ? (
-                      <Link
-                        href="/classes"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FDE2D2] text-[#9A4A1C] text-[14px] font-medium shadow-xs transition-all"
+                      <a
+                        href="https://wa.me/919944445555?text=வணக்கம்%20Peace%20Buddy,%20நான்%20காலை%20மற்றும்%20மாலை%20நேரலை%20Google%20Meet%20வகுப்புகளில்%20இணைய%20₹999%20கட்டணம்%20செலுத்தி%20Unlock%20செய்ய%20விரும்புகிறேன்."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0F2742] hover:bg-[#1E3B5C] text-white text-[13px] font-semibold shadow-xs transition-all active:scale-95"
                       >
-                        <span>{lang === 'ta' ? 'செயல்படுத்தவும்' : 'Activate Access'}</span>
-                      </Link>
+                        <Sparkles className="w-3.5 h-3.5 text-[#FEF3C7]" />
+                        <span>{lang === 'ta' ? '₹999 Unlock' : 'Unlock with ₹999'}</span>
+                      </a>
                     ) : isLiveWindow ? (
                       <a
                         href={cls.meet_link}

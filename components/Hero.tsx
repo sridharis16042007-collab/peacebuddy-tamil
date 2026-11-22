@@ -236,36 +236,35 @@ export default function Hero() {
             {/* Subtle Gradient Veil */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/50 via-transparent to-transparent pointer-events-none" />
 
-            {/* Overlay Pill at bottom of arch: Choose your dreamed life */}
+            {/* Overlay Pill at bottom of arch: Choose your dreamed life (no icon) */}
             <div
-              className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full border border-white/90 shadow-md backdrop-blur-md whitespace-nowrap"
+              className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center justify-center px-5 py-2 rounded-full border border-white/90 shadow-md backdrop-blur-md whitespace-nowrap"
               style={{
                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 237, 253, 0.92) 50%, rgba(229, 200, 251, 0.90) 100%)',
               }}
             >
-              <Image
-                src="/Peace_Buddy_Teal_Circular_Emblem.png"
-                alt="Peace Buddy Emblem"
-                width={24}
-                height={24}
-                className="w-6 h-6 rounded-full"
-              />
-              <span className="text-xs font-serif font-semibold text-[#0F2742] tracking-wide">
+              <span className="text-xs sm:text-[13px] font-serif font-semibold text-[#0F2742] tracking-wide">
                 {lang === 'ta' ? 'உங்கள் கனவு வாழ்வை தேர்ந்தெடுங்கள்' : 'Choose your dreamed life'}
               </span>
             </div>
           </div>
 
-          {/* Below picture: Peace Buddy Welcomes You */}
+          {/* Below picture: Peace Buddy Welcomes You with Logo */}
           <div className="mt-4 sm:mt-5 text-center flex items-center justify-center">
             <span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#CFA5F7]/70 shadow-xs text-xs sm:text-[13px] font-serif font-semibold text-[#0F2742] tracking-wide"
+              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#CFA5F7]/70 shadow-xs text-xs sm:text-[13px] font-serif font-semibold text-[#0F2742] tracking-wide"
               style={{
                 background: 'linear-gradient(135deg, #FFFFFF 0%, #F6EDFD 35%, #E5C8FB 70%, #CEA0F6 100%)',
               }}
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#8B5E83]" aria-hidden="true" />
-              {lang === 'ta' ? 'பீஸ் படி உங்களை அன்புடன் வரவேற்கிறது' : 'Peace Buddy welcomes you'}
+              <Image
+                src="/Peace_Buddy_Teal_Circular_Emblem.png"
+                alt="Peace Buddy Logo"
+                width={20}
+                height={20}
+                className="w-5 h-5 rounded-full object-contain flex-shrink-0"
+              />
+              <span>{lang === 'ta' ? 'பீஸ் படி உங்களை அன்புடன் வரவேற்கிறது' : 'Peace Buddy welcomes you'}</span>
             </span>
           </div>
 

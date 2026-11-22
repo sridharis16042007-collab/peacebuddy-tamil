@@ -232,23 +232,45 @@ export default function ClassesPage() {
                   </span>
                 </div>
               ) : (
-                <div className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FDE2D2] text-[#9A4A1C] font-medium shadow-xs">
-                  <AlertCircle className="w-3.5 h-3.5" />
-                  <span>
-                    {lang === 'ta'
-                      ? 'கட்டணம் நிலுவை (சந்தா செயல்படுத்தவும்)'
-                      : 'Payment Pending (Activation Required)'}
-                  </span>
+                <div className="inline-flex flex-wrap items-center gap-2">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FDE2D2] text-[#9A4A1C] font-medium shadow-xs text-xs">
+                    <Lock className="w-3.5 h-3.5" />
+                    <span>
+                      {lang === 'ta'
+                        ? 'Google Meet பூட்டப்பட்டுள்ளது'
+                        : 'Google Meet Locked'}
+                    </span>
+                  </div>
+                  <a
+                    href="https://wa.me/919944445555?text=வணக்கம்%20Peace%20Buddy,%20நான்%20காலை%20மற்றும்%20மாலை%20நேரலை%20Google%20Meet%20வகுப்புகளில்%20இணைய%20₹999%20கட்டணம்%20செலுத்தி%20Unlock%20செய்ய%20விரும்புகிறேன்."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#0F2742] hover:bg-[#1E3B5C] text-white font-semibold text-xs shadow-md transition-all active:scale-95"
+                  >
+                    <Sparkles className="w-3 h-3 text-[#FEF3C7]" />
+                    <span>{lang === 'ta' ? '₹999 செலுத்தி திறக்கவும் (Unlock with ₹999)' : 'Unlock with ₹999'}</span>
+                  </a>
                 </div>
               )
             ) : (
-              <Link
-                href="/login?redirect=/classes"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/80 hover:bg-white text-[#0F2742] font-medium border border-white/90 shadow-xs transition-colors"
-              >
-                <LogIn className="w-3.5 h-3.5 text-[#8B5E83]" />
-                <span>{lang === 'ta' ? 'இணைய உள்நுழைக' : 'Log in to Join Classes'}</span>
-              </Link>
+              <div className="inline-flex flex-wrap items-center gap-2">
+                <Link
+                  href="/login?redirect=/classes"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/80 hover:bg-white text-[#0F2742] font-medium border border-white/90 shadow-xs transition-colors"
+                >
+                  <LogIn className="w-3.5 h-3.5 text-[#8B5E83]" />
+                  <span>{lang === 'ta' ? 'இணைய உள்நுழைக' : 'Log in to Join Classes'}</span>
+                </Link>
+                <a
+                  href="https://wa.me/919944445555?text=வணக்கம்%20Peace%20Buddy,%20நான்%20காலை%20மற்றும்%20மாலை%20நேரலை%20Google%20Meet%20வகுப்புகளில்%20இணைய%20₹999%20கட்டணம்%20செலுத்தி%20Unlock%20செய்ய%20விரும்புகிறேன்."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#0F2742] hover:bg-[#1E3B5C] text-white font-semibold text-xs shadow-md transition-all active:scale-95"
+                >
+                  <Sparkles className="w-3 h-3 text-[#FEF3C7]" />
+                  <span>{lang === 'ta' ? 'Unlock with ₹999' : 'Unlock with ₹999'}</span>
+                </a>
+              </div>
             )}
           </div>
         </div>
@@ -457,34 +479,45 @@ export default function ClassesPage() {
                       </div>
                     ) : !isLoggedIn ? (
                       <div className="space-y-2">
-                        <Link
-                          href={`/login?redirect=/classes`}
-                          className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#0F2742] hover:bg-[#1E3B5C] text-white text-[14px] font-medium transition-all shadow-md active:scale-95"
-                        >
-                          <Lock className="w-4 h-4" />
-                          <span>{lang === 'ta' ? 'இணைய உள்நுழைக' : 'Log in to Join Class'}</span>
-                        </Link>
+                        <div className="flex flex-col sm:flex-row gap-2">
+                          <Link
+                            href={`/login?redirect=/classes`}
+                            className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-white/80 hover:bg-white text-[#0F2742] border border-white/90 text-[13px] font-medium transition-all shadow-xs active:scale-95"
+                          >
+                            <LogIn className="w-4 h-4 text-[#8B5E83]" />
+                            <span>{lang === 'ta' ? 'உள்நுழைக' : 'Log In'}</span>
+                          </Link>
+                          <a
+                            href="https://wa.me/919944445555?text=வணக்கம்%20Peace%20Buddy,%20நான்%20காலை%20மற்றும்%20மாலை%20நேரலை%20Google%20Meet%20வகுப்புகளில்%20இணைய%20₹999%20கட்டணம்%20செலுத்தி%20Unlock%20செய்ய%20விரும்புகிறேன்."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-[#0F2742] hover:bg-[#1E3B5C] text-white text-[13px] font-semibold transition-all shadow-md active:scale-95"
+                          >
+                            <Sparkles className="w-3.5 h-3.5 text-[#FEF3C7]" />
+                            <span>{lang === 'ta' ? '₹999 Unlock' : 'Unlock with ₹999'}</span>
+                          </a>
+                        </div>
                         <p className="text-[11px] text-[#4A5A6A] text-center">
                           {lang === 'ta'
-                            ? 'Google Meet இணைப்பு உள்நுழைந்த பயனர்களுக்கு மட்டுமே தெரியும்.'
-                            : 'Google Meet link is only visible to logged-in members.'}
+                            ? 'Google Meet இணைப்பு ₹999 செலுத்தி சந்தா பெற்றவர்களுக்கு மட்டுமே திறக்கப்படும்.'
+                            : 'Google Meet link unlocks exclusively with ₹999 subscription.'}
                         </p>
                       </div>
                     ) : !isPaid && userRole !== 'admin' ? (
                       <div className="space-y-2">
                         <a
-                          href="https://wa.me/919944445555?text=வணக்கம்%20Peace%20Buddy,%20நான்%20வகுப்பில்%20இணைய%20சந்தாவை%20செயல்படுத்த%20விரும்புகிறேன்"
+                          href="https://wa.me/919944445555?text=வணக்கம்%20Peace%20Buddy,%20நான்%20காலை%20மற்றும்%20மாலை%20நேரலை%20Google%20Meet%20வகுப்புகளில்%20இணைய%20₹999%20கட்டணம்%20செலுத்தி%20Unlock%20செய்ய%20விரும்புகிறேன்."
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#8B5E83] hover:bg-[#6F4768] text-white text-[14px] font-medium shadow-md transition-all active:scale-95"
+                          className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#0F2742] hover:bg-[#1E3B5C] text-white text-[14px] font-semibold shadow-md transition-all active:scale-95"
                         >
-                          <Lock className="w-4 h-4" />
-                          <span>{lang === 'ta' ? 'சந்தா செயல்படுத்த WhatsApp செய்க' : 'Activate Access on WhatsApp'}</span>
+                          <Sparkles className="w-4 h-4 text-[#FEF3C7]" />
+                          <span>{lang === 'ta' ? '₹999 செலுத்தி திறக்கவும் (Unlock with ₹999)' : 'Unlock with ₹999'}</span>
                         </a>
                         <p className="text-[11px] text-[#9A4A1C] text-center font-medium">
                           {lang === 'ta'
-                            ? 'இந்த வகுப்பில் இணைய கட்டணச் சந்தா தேவை.'
-                            : 'Active subscription required. Contact admin to activate access.'}
+                            ? 'Google Meet நேரலை இணைப்பு ₹999 கட்டணம் செலுத்திய பயனர்களுக்கு மட்டுமே திறக்கப்படும் (காலை + மாலை இரண்டும் அடங்கும்).'
+                            : 'Google Meet access unlocks exclusively with ₹999 subscription (includes Morning & Evening live sessions).'}
                         </p>
                       </div>
                     ) : isJoinActive && cls.meet_link ? (
