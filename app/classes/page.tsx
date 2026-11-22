@@ -16,8 +16,7 @@ import {
   CalendarClock,
   XCircle,
   LogIn,
-  User,
-  ShieldAlert,
+  ArrowRight,
 } from 'lucide-react';
 
 interface ClassItem {
@@ -43,7 +42,6 @@ export default function ClassesPage() {
   const [error, setError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
-  const [paymentStatus, setPaymentStatus] = useState<string>('unpaid');
   const [userRole, setUserRole] = useState<string | null>(null);
   const [now, setNow] = useState<number>(Date.now());
   const [activeTab, setActiveTab] = useState<'upcoming' | 'past'>('upcoming');
@@ -64,7 +62,6 @@ export default function ClassesPage() {
         setClasses(data.classes || []);
         setIsLoggedIn(!!data.isLoggedIn);
         setIsPaid(!!data.isPaid);
-        setPaymentStatus(data.paymentStatus || 'unpaid');
         setUserRole(data.userRole || null);
       } else {
         setError(data.error || 'Failed to load class schedule');
@@ -138,7 +135,7 @@ export default function ClassesPage() {
     return lang === 'ta' ? `${diffMinutes} நிமிடங்களில் தொடங்கும்` : `Starts in ${diffMinutes}m`;
   };
 
-  // Categorize classes into upcoming, past, and cancelled
+  // Categorize classes into upcoming and past
   const { upcomingClasses, pastClasses } = useMemo(() => {
     const upcoming: ClassItem[] = [];
     const past: ClassItem[] = [];
@@ -146,7 +143,6 @@ export default function ClassesPage() {
     classes.forEach((cls) => {
       const { endMs } = getClassTimestamps(cls);
       if (cls.status === 'cancelled') {
-        // Keep cancelled in upcoming view for clear visibility unless long in past
         if (now <= endMs + 24 * 60 * 60 * 1000) {
           upcoming.push(cls);
         } else {
@@ -163,77 +159,81 @@ export default function ClassesPage() {
   }, [classes, now]);
 
   return (
-    <div className="pt-28 sm:pt-36 pb-24 bg-gradient-to-b from-[#FDFBFE] via-[#F8F2FA] to-white min-h-screen">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-28 sm:pt-36 pb-24 bg-[#F8F5F1] min-h-screen relative overflow-hidden">
+      {/* Ambient Glows */}
+      <div className="absolute top-20 left-1/4 w-[500px] h-[500px] rounded-full bg-[#E8D7F1] opacity-25 blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-[#F4D9DF] opacity-25 blur-[120px] pointer-events-none -z-10" />
+
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-12">
         
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex items-center gap-2 text-xs text-[#7A6E91]">
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex items-center gap-2 text-xs text-[#4A5A6A]">
             <li>
-              <Link href="/" className="hover:text-[#7E6C9E] transition-colors">
+              <Link href="/" className="hover:text-[#0F2742] transition-colors">
                 {t.nav.home}
               </Link>
             </li>
             <li>/</li>
-            <li className="text-[#2D2342] font-medium" aria-current="page">
+            <li className="text-[#0F2742] font-medium" aria-current="page">
               {lang === 'ta' ? 'வகுப்பு அட்டவணை' : 'Class Schedule'}
             </li>
           </ol>
         </nav>
 
         {/* Page Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#E8DFEF] text-[#7E6C9E] font-medium text-xs sm:text-sm mb-4 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#7E6C9E]" />
-            <span>{lang === 'ta' ? 'நேரலை அமைதி வகுப்புகள்' : 'Live Mindful Sessions'}</span>
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/70 backdrop-blur-md border border-white/80 text-[#0F2742] font-semibold text-[12px] uppercase tracking-[0.14em] mb-4 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#8B5E83]" />
+            <span>{lang === 'ta' ? 'நேரலை அமைதி வகுப்புகள்' : 'LIVE SANCTUARY TIMELINE'}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-serif font-light text-[#2D2342] tracking-wide mb-4">
+          <h1 className="text-[36px] sm:text-[52px] lg:text-[60px] font-serif font-medium text-[#0F2742] leading-[1.08] tracking-tight mb-4">
             {lang === 'ta' ? (
-              <span className="font-tamil-serif font-light">
+              <span className="font-tamil-serif">
                 வகுப்பு அட்டவணை
                 <br />
-                <span className="italic font-serif text-[#7E6C9E] font-normal text-2xl sm:text-4xl">
-                  (Class Schedule)
+                <span className="italic font-serif text-[#8B5E83] text-[28px] sm:text-[44px]">
+                  (Google Meet நேரலை)
                 </span>
               </span>
             ) : (
               <>
                 Class Schedule & Live Sessions
                 <br />
-                <span className="italic font-serif text-[#7E6C9E] font-normal text-2xl sm:text-4xl">
+                <span className="italic font-serif text-[#8B5E83] text-[28px] sm:text-[44px]">
                   (Google Meet Sanctuary)
                 </span>
               </>
             )}
           </h1>
 
-          <p className="text-base sm:text-lg text-[#5A4D6E] leading-relaxed font-tamil font-light max-w-2xl mx-auto mb-6">
+          <p className="text-[16px] sm:text-[18px] text-[#4A5A6A] leading-[1.7] max-w-2xl mx-auto mb-8 font-normal">
             {lang === 'ta'
               ? 'பிரம்ம முகூர்த்த தியானம் மற்றும் இரவு நேர அமைதி வகுப்புகளுக்கான அதிகாரப்பூர்வ நேரலை அட்டவணை. பதிவு செய்த பயனர்கள் Google Meet வழியே நேரடியாக இணையலாம்.'
               : 'Official schedule for daily Brahma Muhurtham and evening calm sessions. Registered members can join live via Google Meet.'}
           </p>
 
-          {/* Timezone & Login Status Banner */}
+          {/* Timezone & Membership Badges */}
           <div className="flex flex-wrap items-center justify-center gap-3 text-xs">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-[#E8DFEF] text-[#2D2342] font-mono shadow-xs">
-              <Clock className="w-3.5 h-3.5 text-[#7E6C9E]" />
+            <div className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md border border-white/90 text-[#0F2742] shadow-xs">
+              <Clock className="w-3.5 h-3.5 text-[#8B5E83]" />
               <span>Timezone: <strong>IST (Asia/Kolkata)</strong></span>
             </div>
 
             {isLoggedIn ? (
               isPaid || userRole === 'admin' ? (
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#ECFDF5] border border-[#A7F3D0] text-[#065F46] font-medium">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#059669]" />
+                <div className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#DDE6DC] text-[#2A5235] font-medium shadow-xs">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>
                     {lang === 'ta'
-                      ? 'கட்டண உறுப்பினர் (Meet நேரலை இயங்கும்)'
-                      : 'Paid Member (Live Meet Enabled)'}
+                      ? 'கட்டண உறுப்பினர் (Google Meet நேரலை இயங்கும்)'
+                      : 'Paid Member (Google Meet Enabled)'}
                   </span>
                 </div>
               ) : (
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFFBEB] border border-[#FDE68A] text-[#92400E] font-medium">
-                  <AlertCircle className="w-3.5 h-3.5 text-[#D97706]" />
+                <div className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FDE2D2] text-[#9A4A1C] font-medium shadow-xs">
+                  <AlertCircle className="w-3.5 h-3.5" />
                   <span>
                     {lang === 'ta'
                       ? 'கட்டணம் நிலுவை (சந்தா செயல்படுத்தவும்)'
@@ -244,34 +244,34 @@ export default function ClassesPage() {
             ) : (
               <Link
                 href="/login?redirect=/classes"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#F5EFF7] hover:bg-[#E8DFEF] border border-[#E8DFEF] text-[#7E6C9E] font-medium transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/80 hover:bg-white text-[#0F2742] font-medium border border-white/90 shadow-xs transition-colors"
               >
-                <LogIn className="w-3.5 h-3.5" />
-                <span>{lang === 'ta' ? 'இணைய உள்நுழைக (Log in to Join)' : 'Log in to Join Classes'}</span>
+                <LogIn className="w-3.5 h-3.5 text-[#8B5E83]" />
+                <span>{lang === 'ta' ? 'இணைய உள்நுழைக' : 'Log in to Join Classes'}</span>
               </Link>
             )}
           </div>
         </div>
 
-        {/* Tab Switcher (Upcoming / Past) */}
-        <div className="flex items-center justify-center mb-8">
-          <div className="inline-flex items-center gap-2 p-1 bg-white rounded-full border border-[#E8DFEF] shadow-xs">
+        {/* Tab Switcher: Upcoming / Past */}
+        <div className="flex items-center justify-center mb-10">
+          <div className="inline-flex items-center p-1.5 rounded-full bg-white/80 backdrop-blur-md border border-white/90 shadow-xs">
             <button
               onClick={() => setActiveTab('upcoming')}
-              className={`px-6 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+              className={`px-6 py-2.5 rounded-full text-xs sm:text-[14px] font-medium transition-all ${
                 activeTab === 'upcoming'
-                  ? 'bg-[#7E6C9E] text-white shadow-sm'
-                  : 'text-[#7A6E91] hover:text-[#2D2342]'
+                  ? 'bg-[#0F2742] text-white shadow-sm'
+                  : 'text-[#4A5A6A] hover:text-[#0F2742]'
               }`}
             >
               {lang === 'ta' ? 'வரவிருக்கும் வகுப்புகள்' : 'Upcoming Classes'} ({upcomingClasses.length})
             </button>
             <button
               onClick={() => setActiveTab('past')}
-              className={`px-6 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+              className={`px-6 py-2.5 rounded-full text-xs sm:text-[14px] font-medium transition-all ${
                 activeTab === 'past'
-                  ? 'bg-[#7E6C9E] text-white shadow-sm'
-                  : 'text-[#7A6E91] hover:text-[#2D2342]'
+                  ? 'bg-[#0F2742] text-white shadow-sm'
+                  : 'text-[#4A5A6A] hover:text-[#0F2742]'
               }`}
             >
               {lang === 'ta' ? 'முடிந்த வகுப்புகள்' : 'Past Classes'} ({pastClasses.length})
@@ -279,9 +279,9 @@ export default function ClassesPage() {
           </div>
         </div>
 
-        {/* Error message if any */}
+        {/* Error message */}
         {error && (
-          <div className="max-w-md mx-auto mb-8 p-4 rounded-2xl bg-[#FFF1F2] border border-[#FECDD3] text-xs text-[#BE123C] text-center">
+          <div className="max-w-md mx-auto mb-8 p-4 rounded-[20px] bg-rose-50 border border-rose-200 text-xs text-rose-700 text-center">
             {error}
           </div>
         )}
@@ -289,8 +289,8 @@ export default function ClassesPage() {
         {/* Loading State */}
         {loading && (
           <div className="py-20 text-center">
-            <RefreshCw className="w-8 h-8 animate-spin mx-auto text-[#7E6C9E] mb-3" />
-            <p className="text-sm font-serif text-[#2D2342]">
+            <RefreshCw className="w-8 h-8 animate-spin mx-auto text-[#8B5E83] mb-3" />
+            <p className="text-base font-serif text-[#0F2742]">
               {lang === 'ta' ? 'அட்டவணை ஏற்றப்படுகிறது...' : 'Loading class schedule...'}
             </p>
           </div>
@@ -298,40 +298,40 @@ export default function ClassesPage() {
 
         {/* Empty States */}
         {!loading && activeTab === 'upcoming' && upcomingClasses.length === 0 && (
-          <div className="bg-white/80 backdrop-blur-md rounded-3xl p-12 border border-[#E8DFEF] text-center max-w-lg mx-auto shadow-sm">
-            <CalendarIcon className="w-12 h-12 text-[#A398B8] mx-auto mb-4 opacity-50" />
-            <h3 className="text-xl font-serif font-medium text-[#2D2342] mb-2">
+          <div className="p-12 text-center rounded-[28px] bg-white/70 backdrop-blur-md border border-white/85 shadow-sm max-w-lg mx-auto">
+            <CalendarIcon className="w-12 h-12 text-[#8B5E83] mx-auto mb-4 opacity-50" />
+            <h3 className="text-xl font-serif font-medium text-[#0F2742] mb-2">
               {lang === 'ta' ? 'வரவிருக்கும் வகுப்புகள் எதுவும் இல்லை' : 'No upcoming classes yet'}
             </h3>
-            <p className="text-xs sm:text-sm text-[#5A4D6E] font-tamil font-light mb-6">
+            <p className="text-xs sm:text-sm text-[#4A5A6A] mb-6">
               {lang === 'ta'
-                ? 'புதிய வகுப்புகள் திட்டமிடப்படும்போது உங்களுக்கு அறிவிக்கப்படும். எங்கள் மின்னஞ்சல் சந்தாவில் இணையுங்கள்.'
-                : 'New live sessions will be scheduled soon. Stay tuned or join our newsletter for email notifications.'}
+                ? 'புதிய வகுப்புகள் திட்டமிடப்படும்போது உங்களுக்கு அறிவிக்கப்படும்.'
+                : 'New live sessions will be scheduled soon. Stay tuned for updates.'}
             </p>
             <Link
-              href="/#newsletter"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#7E6C9E] text-white text-xs font-medium hover:bg-[#624F85] transition-all shadow-sm"
+              href="/#contact"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#0F2742] text-white text-xs font-medium hover:bg-[#1E3B5C] transition-all shadow-sm"
             >
-              <span>{lang === 'ta' ? 'அறிவிப்பில் இணைய' : 'Get Notified'}</span>
+              <span>{lang === 'ta' ? 'தொடர்பில் இருக்க' : 'Contact Us'}</span>
             </Link>
           </div>
         )}
 
         {!loading && activeTab === 'past' && pastClasses.length === 0 && (
-          <div className="bg-white/80 backdrop-blur-md rounded-3xl p-12 border border-[#E8DFEF] text-center max-w-lg mx-auto shadow-sm">
-            <Clock className="w-12 h-12 text-[#A398B8] mx-auto mb-4 opacity-50" />
-            <h3 className="text-xl font-serif font-medium text-[#2D2342] mb-2">
+          <div className="p-12 text-center rounded-[28px] bg-white/70 backdrop-blur-md border border-white/85 shadow-sm max-w-lg mx-auto">
+            <Clock className="w-12 h-12 text-[#8B5E83] mx-auto mb-4 opacity-50" />
+            <h3 className="text-xl font-serif font-medium text-[#0F2742] mb-2">
               {lang === 'ta' ? 'முடிந்த வகுப்புகள் எதுவும் இல்லை' : 'No past classes yet'}
             </h3>
-            <p className="text-xs text-[#5A4D6E]">
-              {lang === 'ta' ? 'முடிவடைந்த வகுப்புகள் இங்கு காப்பகப்படுத்தப்படும்.' : 'Past recorded archives will appear here.'}
+            <p className="text-xs text-[#4A5A6A]">
+              {lang === 'ta' ? 'முடிவடைந்த வகுப்புகள் இங்கு காப்பகப்படுத்தப்படும்.' : 'Past session records will appear here.'}
             </p>
           </div>
         )}
 
-        {/* Classes Grid */}
+        {/* Classes Grid: 28px Frosted Glass Cards */}
         {!loading && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {(activeTab === 'upcoming' ? upcomingClasses : pastClasses).map((cls) => {
               const { startMs, endMs, windowStartMs } = getClassTimestamps(cls);
               const isCancelled = cls.status === 'cancelled';
@@ -342,80 +342,74 @@ export default function ClassesPage() {
               return (
                 <div
                   key={cls.id}
-                  className={`bg-white rounded-3xl p-6 sm:p-8 border transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-xl ${
-                    isCancelled
-                      ? 'border-[#FECDD3]/80 bg-[#FFFDFE]'
-                      : isPostponed
-                      ? 'border-[#FDE68A]/80 bg-[#FFFDF8]'
-                      : 'border-[#E8DFEF] hover:border-[#7E6C9E]/50'
-                  }`}
+                  className="p-7 sm:p-8 rounded-[28px] bg-white/70 backdrop-blur-md border border-white/85 shadow-[0_20px_60px_rgba(15,39,66,0.08)] hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(15,39,66,0.12)] transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
-                    {/* Status Badge */}
+                    {/* Top Status & Duration */}
                     <div className="flex items-center justify-between gap-2 mb-4">
                       {isCancelled ? (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#FFF1F2] text-[#BE123C] border border-[#FECDD3]">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-rose-100 text-rose-700">
                           <XCircle className="w-3.5 h-3.5" />
                           <span>{lang === 'ta' ? 'ரத்து செய்யப்பட்டது' : 'Cancelled'}</span>
                         </span>
                       ) : isPostponed ? (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#FFFBEB] text-[#B45309] border border-[#FDE68A]">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-[#FDE2D2] text-[#9A4A1C]">
                           <CalendarClock className="w-3.5 h-3.5" />
                           <span>{lang === 'ta' ? 'ஒத்திவைக்கப்பட்டது' : 'Postponed'}</span>
                         </span>
                       ) : isJoinActive ? (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0] animate-pulse">
-                          <span className="w-2 h-2 rounded-full bg-[#059669]" />
-                          <span>{lang === 'ta' ? 'நேரலை இயங்குகிறது (Live Now)' : 'Live Now (Join Active)'}</span>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-[#DDE6DC] text-[#2A5235] animate-pulse">
+                          <span className="w-2 h-2 rounded-full bg-[#2A5235]" />
+                          <span>{lang === 'ta' ? 'நேரலை இயங்குகிறது' : 'Live Now (Join Active)'}</span>
                         </span>
                       ) : isPast ? (
-                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-medium bg-gray-100 text-gray-600">
                           <span>{lang === 'ta' ? 'முடிவடைந்தது' : 'Past Class'}</span>
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-[#F5EFF7] text-[#7E6C9E]">
+                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-medium bg-[#F6EBEE] text-[#8B5E83]">
                           <span>{lang === 'ta' ? 'வரவிருக்கும் வகுப்பு' : 'Upcoming'}</span>
                         </span>
                       )}
 
-                      <span className="text-xs text-[#7A6E91] font-mono">
+                      <span className="text-xs text-[#4A5A6A] font-medium">
                         {cls.duration_minutes} {lang === 'ta' ? 'நிமிடங்கள்' : 'mins'}
                       </span>
                     </div>
 
                     {/* Class Name */}
-                    <h2 className="text-xl sm:text-2xl font-serif font-medium text-[#2D2342] mb-2 leading-snug">
+                    <h2 className="text-[22px] sm:text-[24px] font-serif font-medium text-[#0F2742] mb-2 leading-snug">
                       {cls.name}
                     </h2>
 
                     {/* Description */}
                     {cls.description && (
-                      <p className="text-xs sm:text-sm text-[#5A4D6E] leading-relaxed mb-6 font-tamil font-light">
+                      <p className="text-[14px] text-[#4A5A6A] leading-[1.65] mb-5">
                         {cls.description}
                       </p>
                     )}
 
                     {/* Postpone Reason */}
                     {isPostponed && cls.postpone_reason && (
-                      <div className="mb-5 p-3 rounded-2xl bg-[#FFF9EE] border border-[#FDE68A] text-xs text-[#92400E]">
-                        <strong>{lang === 'ta' ? 'ஒத்திவைப்புக்கான காரணம்: ' : 'Reason for Postponing: '}</strong>
+                      <div className="mb-4 p-3.5 rounded-[18px] bg-[#FFF9EE] border border-[#FDE68A] text-xs text-[#92400E]">
+                        <strong>{lang === 'ta' ? 'காரணம்: ' : 'Reason: '}</strong>
                         {cls.postpone_reason}
                       </div>
                     )}
 
                     {/* Cancel Reason */}
                     {isCancelled && cls.cancel_reason && (
-                      <div className="mb-5 p-3 rounded-2xl bg-[#FFF1F2] border border-[#FECDD3] text-xs text-[#9F1239]">
-                        <strong>{lang === 'ta' ? 'ரத்துக்கான காரணம்: ' : 'Reason for Cancellation: '}</strong>
+                      <div className="mb-4 p-3.5 rounded-[18px] bg-rose-50 border border-rose-200 text-xs text-rose-800">
+                        <strong>{lang === 'ta' ? 'காரணம்: ' : 'Reason: '}</strong>
                         {cls.cancel_reason}
                       </div>
                     )}
 
-                    {/* Date and Time Details Box */}
-                    <div className="p-4 rounded-2xl bg-[#FBF8FC] border border-[#E8DFEF] space-y-2 mb-6 text-xs sm:text-sm text-[#5A4D6E]">
+                    {/* Date and Time Details Card */}
+                    <div className="p-4 rounded-[20px] bg-white/60 border border-white/80 space-y-2 mb-6 text-xs sm:text-sm text-[#4A5A6A]">
                       <div className="flex items-center justify-between">
-                        <span className="flex items-center gap-2 text-[#7A6E91]">
-                          <CalendarIcon className="w-4 h-4 text-[#7E6C9E]" />
+                        <span className="flex items-center gap-2 text-[#4A5A6A]">
+                          <CalendarIcon className="w-4 h-4 text-[#8B5E83]" />
                           <span>{lang === 'ta' ? 'தேதி:' : 'Date:'}</span>
                         </span>
                         <div className="text-right">
@@ -424,17 +418,17 @@ export default function ClassesPage() {
                               <span className="line-through text-gray-400 mr-2 text-xs">
                                 {formatDate(cls.original_date)}
                               </span>
-                              <strong className="text-[#D97706]">{formatDate(cls.date)}</strong>
+                              <strong className="text-[#9A4A1C]">{formatDate(cls.date)}</strong>
                             </div>
                           ) : (
-                            <strong className="text-[#2D2342]">{formatDate(cls.date)}</strong>
+                            <strong className="text-[#0F2742]">{formatDate(cls.date)}</strong>
                           )}
                         </div>
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <span className="flex items-center gap-2 text-[#7A6E91]">
-                          <Clock className="w-4 h-4 text-[#7E6C9E]" />
+                        <span className="flex items-center gap-2 text-[#4A5A6A]">
+                          <Clock className="w-4 h-4 text-[#8B5E83]" />
                           <span>{lang === 'ta' ? 'நேரம்:' : 'Time:'}</span>
                         </span>
                         <div className="text-right">
@@ -443,10 +437,10 @@ export default function ClassesPage() {
                               <span className="line-through text-gray-400 mr-2 text-xs">
                                 {formatTime(cls.original_time)}
                               </span>
-                              <strong className="text-[#D97706]">{formatTime(cls.start_time)}</strong>
+                              <strong className="text-[#9A4A1C]">{formatTime(cls.start_time)}</strong>
                             </div>
                           ) : (
-                            <strong className="text-[#2D2342]">{formatTime(cls.start_time)}</strong>
+                            <strong className="text-[#0F2742]">{formatTime(cls.start_time)}</strong>
                           )}
                         </div>
                       </div>
@@ -454,79 +448,73 @@ export default function ClassesPage() {
                   </div>
 
                   {/* Bottom Action Section */}
-                  <div className="pt-4 border-t border-[#E8DFEF]">
+                  <div className="pt-4 border-t border-[#0F2742]/10">
                     {isCancelled ? (
-                      /* Cancelled - No Join Button */
-                      <div className="text-center py-2 text-xs text-[#BE123C] font-medium">
+                      <div className="text-center py-2 text-xs text-rose-700 font-medium">
                         {lang === 'ta' ? 'இந்த வகுப்பு ரத்து செய்யப்பட்டுள்ளது' : 'This class has been cancelled'}
                       </div>
                     ) : isPast ? (
-                      /* Past Class - No link */
-                      <div className="text-center py-2 text-xs text-[#7A6E91] font-medium">
+                      <div className="text-center py-2 text-xs text-[#4A5A6A] font-medium">
                         {lang === 'ta' ? 'இந்த வகுப்பு முடிவடைந்துவிட்டது' : 'Class has ended'}
                       </div>
                     ) : !isLoggedIn ? (
-                      /* Not Logged In - Prompt to Sign in */
                       <div className="space-y-2">
                         <Link
                           href={`/login?redirect=/classes`}
-                          className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#7E6C9E] hover:bg-[#624F85] text-white text-xs sm:text-sm font-medium transition-all shadow-md min-h-[48px]"
+                          className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#0F2742] hover:bg-[#1E3B5C] text-white text-[14px] font-medium transition-all shadow-md active:scale-95"
                         >
                           <Lock className="w-4 h-4" />
-                          <span>{lang === 'ta' ? 'இணைய உள்நுழைக (Log in to Join)' : 'Log in to Join Class'}</span>
+                          <span>{lang === 'ta' ? 'இணைய உள்நுழைக' : 'Log in to Join Class'}</span>
                         </Link>
-                        <p className="text-[11px] text-[#7A6E91] text-center">
+                        <p className="text-[11px] text-[#4A5A6A] text-center">
                           {lang === 'ta'
                             ? 'Google Meet இணைப்பு உள்நுழைந்த பயனர்களுக்கு மட்டுமே தெரியும்.'
                             : 'Google Meet link is only visible to logged-in members.'}
                         </p>
                       </div>
                     ) : !isPaid && userRole !== 'admin' ? (
-                      /* Logged in but Unpaid - Prompt to activate subscription */
                       <div className="space-y-2">
                         <a
                           href="https://wa.me/919944445555?text=வணக்கம்%20Peace%20Buddy,%20நான்%20வகுப்பில்%20இணைய%20சந்தாவை%20செயல்படுத்த%20விரும்புகிறேன்"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-gradient-to-r from-[#D97706] to-[#F59E0B] hover:from-[#B45309] hover:to-[#D97706] text-white text-xs sm:text-sm font-semibold shadow-md transition-all min-h-[48px]"
+                          className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#8B5E83] hover:bg-[#6F4768] text-white text-[14px] font-medium shadow-md transition-all active:scale-95"
                         >
                           <Lock className="w-4 h-4" />
                           <span>{lang === 'ta' ? 'சந்தா செயல்படுத்த WhatsApp செய்க' : 'Activate Access on WhatsApp'}</span>
                         </a>
-                        <p className="text-[11px] text-[#B45309] text-center font-medium">
+                        <p className="text-[11px] text-[#9A4A1C] text-center font-medium">
                           {lang === 'ta'
-                            ? 'இந்த வகுப்பில் இணைய கட்டணச் சந்தா தேவை. நிர்வாகியைத் தொடர்புகொள்ளவும்.'
+                            ? 'இந்த வகுப்பில் இணைய கட்டணச் சந்தா தேவை.'
                             : 'Active subscription required. Contact admin to activate access.'}
                         </p>
                       </div>
                     ) : isJoinActive && cls.meet_link ? (
-                      /* Logged in & Paid & Active window - Enabled Join Button */
                       <div className="space-y-2">
                         <a
                           href={cls.meet_link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-gradient-to-r from-[#059669] to-[#10B981] hover:from-[#047857] hover:to-[#059669] text-white text-xs sm:text-sm font-semibold shadow-lg hover:shadow-xl transition-all min-h-[48px]"
+                          className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#0F2742] hover:bg-[#1E3B5C] text-white text-[14px] font-medium shadow-lg hover:shadow-xl transition-all active:scale-95"
                         >
-                          <Video className="w-4 h-4" />
-                          <span>{lang === 'ta' ? 'Google Meet-ல் இணைக (Join Class)' : 'Join Google Meet Now'}</span>
+                          <Video className="w-4 h-4 text-[#DDE6DC]" />
+                          <span>{lang === 'ta' ? 'Google Meet-ல் இணைக' : 'Join Google Meet Now'}</span>
                           <ExternalLink className="w-4 h-4 ml-1" />
                         </a>
-                        <p className="text-[11px] text-[#065F46] text-center font-medium">
+                        <p className="text-[11px] text-[#2A5235] text-center font-medium">
                           {lang === 'ta' ? '✓ நேரலை வகுப்பு இயங்குகிறது' : '✓ Live session is currently open'}
                         </p>
                       </div>
                     ) : (
-                      /* Logged in & Paid but not yet 10m before start - Disabled Countdown Button */
                       <div className="space-y-2">
                         <button
                           disabled
-                          className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#F5EFF7] text-[#7A6E91] border border-[#E8DFEF] text-xs sm:text-sm font-medium cursor-not-allowed min-h-[48px]"
+                          className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-white/60 text-[#4A5A6A] border border-white/80 text-[13px] font-medium cursor-not-allowed"
                         >
-                          <Clock className="w-4 h-4" />
+                          <Clock className="w-4 h-4 text-[#8B5E83]" />
                           <span>{getCountdownString(startMs)}</span>
                         </button>
-                        <p className="text-[11px] text-[#7A6E91] text-center">
+                        <p className="text-[11px] text-[#4A5A6A] text-center">
                           {lang === 'ta'
                             ? 'வகுப்பு தொடங்குவதற்கு 10 நிமிடங்களுக்கு முன் Join பட்டன் இயக்கப்படும்.'
                             : 'Join button activates 10 minutes before the scheduled start time.'}

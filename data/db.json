@@ -33,6 +33,23 @@
       "created_by": "admin-user-001",
       "created_at": "2026-11-22T07:38:57.942Z",
       "updated_at": "2026-11-22T07:38:57.942Z"
+    },
+    {
+      "id": "cls-1795333236519-0csmi",
+      "name": "xfvfdv",
+      "description": "vfsv",
+      "date": "2026-11-22",
+      "start_time": "13:12",
+      "duration_minutes": 45,
+      "meet_link": "https://meet.google.com/kza-rdjk-yjb",
+      "status": "scheduled",
+      "original_date": null,
+      "original_time": null,
+      "postpone_reason": null,
+      "cancel_reason": null,
+      "created_by": "admin-user-001",
+      "created_at": "2026-11-22T07:40:36.520Z",
+      "updated_at": "2026-11-22T07:40:36.520Z"
     }
   ],
   "users": [
@@ -105,6 +122,36 @@
     }
   ],
   "email_logs": [
+    {
+      "id": "log-1795333241171-9laf1",
+      "class_id": "cls-1795333236519-0csmi",
+      "class_name": "xfvfdv",
+      "recipient_email": "admin@peacebuddytamil.com",
+      "type": "created",
+      "status": "sent",
+      "error_message": null,
+      "sent_at": "2026-11-22T07:40:41.172Z"
+    },
+    {
+      "id": "log-1795333241051-oxhk1",
+      "class_id": "cls-1795333236519-0csmi",
+      "class_name": "xfvfdv",
+      "recipient_email": "kavitha.tamil@gmail.com",
+      "type": "created",
+      "status": "sent",
+      "error_message": null,
+      "sent_at": "2026-11-22T07:40:41.051Z"
+    },
+    {
+      "id": "log-1795333240245-eliah",
+      "class_id": "cls-1795333236519-0csmi",
+      "class_name": "xfvfdv",
+      "recipient_email": "sridharis16042007@gmail.com",
+      "type": "created",
+      "status": "sent",
+      "error_message": null,
+      "sent_at": "2026-11-22T07:40:40.245Z"
+    },
     {
       "id": "log-1795333141953-v6yeg",
       "class_id": "cls-1795333137942-2vkhb",

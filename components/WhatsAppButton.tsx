@@ -16,7 +16,7 @@ export default function WhatsAppButton() {
       {/* Calm Tooltip on hover/focus */}
       {showTooltip && (
         <span
-          className="hidden sm:inline-block bg-navy text-white text-xs px-3 py-1.5 rounded-full shadow-md animate-fade-in font-tamil"
+          className="hidden sm:inline-block bg-[#0F2742] text-white text-xs px-3.5 py-1.5 rounded-full shadow-lg animate-fade-in font-sans"
           role="status"
         >
           {t.whatsapp.tooltip}
@@ -32,7 +32,7 @@ export default function WhatsAppButton() {
         onMouseLeave={() => setShowTooltip(false)}
         onFocus={() => setShowTooltip(true)}
         onBlur={() => setShowTooltip(false)}
-        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#725E96] hover:bg-[#5E4C80] text-white flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#7E6C9E]/40"
+        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#8B5E83] hover:bg-[#6F4768] text-white flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-white/80 active:scale-95"
         aria-label={t.whatsapp.ariaLabel}
       >
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" />

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/lib/LanguageContext';
-import { Menu, X, Globe, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, Sparkles, Globe } from 'lucide-react';
 
 export default function Navbar() {
   const { lang, toggleLang, t } = useLanguage();
@@ -24,224 +24,236 @@ export default function Navbar() {
       {/* Skip to Content for WCAG 2.2 AA Accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-navy focus:text-white focus:rounded-lg focus:shadow-lg focus:ring-2 focus:ring-ringBlue"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-[#0F2742] focus:text-white focus:rounded-full focus:shadow-xl"
       >
         {t.nav.skipToContent}
       </a>
 
-      {/* Floating Pill Header Wrapper - Aurora Model Reference */}
-      <header className="fixed top-4 sm:top-6 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
+      {/* Floating Pill Header Wrapper - 16px Top Margin, 64px High, Centered */}
+      <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
         <nav
           aria-label="Main Navigation"
-          className={`pointer-events-auto w-full max-w-5xl transition-all duration-300 rounded-pill px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between border ${
+          className={`pointer-events-auto w-full max-w-[1200px] h-16 transition-all duration-300 rounded-full px-5 sm:px-7 flex items-center justify-between border ${
             scrolled
-              ? 'bg-white/90 backdrop-blur-xl shadow-lg shadow-[#7E6C9E]/5 border-[#E8DFEF]'
-              : 'bg-white/70 backdrop-blur-md shadow-xs border-white/80'
+              ? 'bg-white/85 backdrop-blur-xl border-white/90 shadow-[0_20px_50px_rgba(15,39,66,0.10)]'
+              : 'bg-white/70 backdrop-blur-lg border-white/80 shadow-[0_20px_60px_rgba(15,39,66,0.06)]'
           }`}
         >
-          {/* Logo & Brand Name */}
+          {/* Logo on Left: Peace Buddy serif 22px with Circular Emblem */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E] rounded-full p-1"
-            aria-label="Peace Buddy Tamil Home"
+            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5E83] rounded-full p-1"
+            aria-label="Peace Buddy Home"
           >
             <div className="relative w-9 h-9 flex-shrink-0">
               <Image
                 src="/Peace_Buddy_Teal_Circular_Emblem.webp"
-                alt="Peace Buddy Official Emblem"
+                alt="Peace Buddy Logo"
                 width={36}
                 height={36}
                 className="w-9 h-9 object-contain rounded-full group-hover:scale-105 transition-transform duration-300"
                 priority
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-serif text-base sm:text-lg tracking-tight text-[#2D2342] group-hover:text-[#7E6C9E] transition-colors leading-tight">
-                ✦ Peace Buddy
-              </span>
-              <span className="text-[10px] font-medium text-[#7E6C9E] -mt-0.5">
-                {lang === 'ta' ? 'தமிழ்' : 'Tamil'}
-              </span>
-            </div>
+            <span className="font-serif text-[22px] tracking-tight text-[#0F2742] group-hover:text-[#8B5E83] transition-colors leading-none font-medium">
+              Peace Buddy
+            </span>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-6">
+          {/* Desktop Navigation Links in the Middle */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             <Link
               href="/"
-              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
+              className="text-[15px] font-medium text-[#4A5A6A] hover:text-[#0F2742] transition-colors link-editorial py-1"
             >
               {t.nav.home}
             </Link>
             <Link
+              href="/programs"
+              className="text-[15px] font-medium text-[#4A5A6A] hover:text-[#0F2742] transition-colors link-editorial py-1"
+            >
+              {t.nav.programs}
+            </Link>
+            <Link
               href="/classes"
-              className="text-[14px] font-medium text-[#7E6C9E] hover:text-[#5E4C80] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E] rounded-md px-1 py-1"
+              className="text-[15px] font-medium text-[#4A5A6A] hover:text-[#0F2742] transition-colors link-editorial py-1"
             >
               {t.nav.classes}
             </Link>
             <Link
-              href="/programs"
-              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
-            >
-              {t.nav.programs}
-            </Link>
-            <Link
               href="/about"
-              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
+              className="text-[15px] font-medium text-[#4A5A6A] hover:text-[#0F2742] transition-colors link-editorial py-1"
             >
               {t.nav.about}
             </Link>
             <Link
               href="/resources"
-              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
+              className="text-[15px] font-medium text-[#4A5A6A] hover:text-[#0F2742] transition-colors link-editorial py-1"
             >
               {t.nav.resources}
             </Link>
             <Link
               href="/faq"
-              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
+              className="text-[15px] font-medium text-[#4A5A6A] hover:text-[#0F2742] transition-colors link-editorial py-1"
             >
               {t.nav.faq}
             </Link>
             <Link
               href="/contact"
-              className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
+              className="text-[15px] font-medium text-[#4A5A6A] hover:text-[#0F2742] transition-colors link-editorial py-1"
             >
               {t.nav.contact}
             </Link>
           </div>
 
-          {/* Action Buttons: Language Switcher + Sign In / CTA */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Language Toggle Button */}
+          {/* Right Controls: Language Pill + Navy Pill Button "Start Journey" */}
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            {/* Language Toggle Pill: EN | தமிழ் */}
             <button
               onClick={toggleLang}
               type="button"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium text-[#2D2342] hover:text-[#7E6C9E] bg-white/80 hover:bg-white rounded-pill border border-[#E8DFEF] transition-all min-h-[40px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E]"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs sm:text-[13px] font-medium text-[#0F2742] hover:text-[#8B5E83] bg-white/70 hover:bg-white rounded-full border border-white/80 shadow-xs transition-all min-h-[36px] active:scale-95"
               aria-label={`Switch language to ${lang === 'ta' ? 'English' : 'Tamil'}`}
             >
-              <Globe className="w-3.5 h-3.5 text-[#7E6C9E]" aria-hidden="true" />
-              <span>{t.nav.langToggle}</span>
+              <Globe className="w-3.5 h-3.5 text-[#8B5E83]" aria-hidden="true" />
+              <span>{lang === 'ta' ? 'EN' : 'தமிழ்'}</span>
             </button>
 
-            {/* Login Link */}
-            <Link
-              href="/login"
-              className="hidden lg:inline-flex items-center gap-1 px-3 py-1.5 text-xs sm:text-sm font-medium text-[#2D2342] hover:text-[#7E6C9E] transition-colors"
-            >
-              <span>{t.nav.login}</span>
-            </Link>
-
-            {/* Pill CTA Button (Soul Serenity Lilac) */}
+            {/* Dark Navy Pill Button "Start Journey" */}
             <Link
               href="/classes"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-pill bg-[#725E96] hover:bg-[#5E4C80] text-white text-xs sm:text-sm font-medium shadow-xs hover:shadow transition-all min-h-[42px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E]"
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0F2742] hover:bg-[#1E3B5C] text-white text-[15px] font-medium shadow-sm hover:shadow transition-all min-h-[40px] active:scale-95 group"
             >
-              <span>{t.nav.classes}</span>
-              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+              <span>{lang === 'ta' ? 'அமைதிப் பயணம்' : 'Start Journey'}</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
             </Link>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Hamburger Button */}
             <button
               type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-full text-ink hover:text-navy hover:bg-mist/50 transition-colors min-h-[48px] min-w-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue"
-              aria-expanded={mobileMenuOpen}
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              onClick={() => setMobileMenuOpen(true)}
+              className="lg:hidden inline-flex items-center justify-center p-2 rounded-full text-[#0F2742] hover:bg-white/80 transition-colors"
+              aria-label="Open navigation menu"
             >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6" aria-hidden="true" />
-              ) : (
-                <Menu className="w-6 h-6" aria-hidden="true" />
-              )}
+              <Menu className="w-5 h-5" />
             </button>
           </div>
         </nav>
+      </header>
 
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div
-            className="pointer-events-auto absolute top-16 left-4 right-4 bg-white/95 backdrop-blur-xl border border-mist rounded-2xl shadow-xl p-5 md:hidden flex flex-col gap-4 animate-slide-up"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile Navigation"
-          >
+      {/* Mobile Full-Screen Menu (Soft Warm Cream Background) */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[100] bg-[#F8F5F1] p-6 flex flex-col justify-between overflow-y-auto animate-fade-in">
+          {/* Top Bar with Logo and Close Button */}
+          <div className="flex items-center justify-between pb-6 border-b border-[#EFEAE2]">
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 text-base font-medium text-ink hover:text-ringBlue rounded-lg min-h-[48px] flex items-center"
+              className="flex items-center gap-2.5"
+            >
+              <div className="relative w-9 h-9">
+                <Image
+                  src="/Peace_Buddy_Teal_Circular_Emblem.webp"
+                  alt="Peace Buddy Logo"
+                  width={36}
+                  height={36}
+                  className="rounded-full"
+                />
+              </div>
+              <span className="font-serif text-2xl font-medium text-[#0F2742]">
+                Peace Buddy
+              </span>
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 rounded-full bg-white/80 border border-white/80 text-[#0F2742]"
+              aria-label="Close navigation menu"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Links List */}
+          <nav className="flex flex-col gap-5 py-8">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="font-serif text-2xl text-[#0F2742] hover:text-[#8B5E83] transition-colors"
             >
               {t.nav.home}
             </Link>
             <Link
-              href="/classes"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 text-base font-semibold text-[#7E6C9E] hover:text-[#5E4C80] rounded-lg min-h-[48px] flex items-center bg-[#F5EFF7]"
-            >
-              ✦ {t.nav.classes}
-            </Link>
-            <Link
               href="/programs"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 text-base font-medium text-ink hover:text-ringBlue rounded-lg min-h-[48px] flex items-center"
+              className="font-serif text-2xl text-[#0F2742] hover:text-[#8B5E83] transition-colors"
             >
               {t.nav.programs}
             </Link>
             <Link
+              href="/classes"
+              onClick={() => setMobileMenuOpen(false)}
+              className="font-serif text-2xl text-[#0F2742] hover:text-[#8B5E83] transition-colors"
+            >
+              {t.nav.classes}
+            </Link>
+            <Link
               href="/about"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 text-base font-medium text-ink hover:text-ringBlue rounded-lg min-h-[48px] flex items-center"
+              className="font-serif text-2xl text-[#0F2742] hover:text-[#8B5E83] transition-colors"
             >
               {t.nav.about}
             </Link>
             <Link
               href="/resources"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 text-base font-medium text-ink hover:text-ringBlue rounded-lg min-h-[48px] flex items-center"
+              className="font-serif text-2xl text-[#0F2742] hover:text-[#8B5E83] transition-colors"
             >
               {t.nav.resources}
             </Link>
             <Link
               href="/faq"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 text-base font-medium text-ink hover:text-ringBlue rounded-lg min-h-[48px] flex items-center"
+              className="font-serif text-2xl text-[#0F2742] hover:text-[#8B5E83] transition-colors"
             >
               {t.nav.faq}
             </Link>
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 text-base font-medium text-ink hover:text-ringBlue rounded-lg min-h-[48px] flex items-center"
+              className="font-serif text-2xl text-[#0F2742] hover:text-[#8B5E83] transition-colors"
             >
               {t.nav.contact}
             </Link>
-            <Link
-              href="/privacy"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 text-sm text-ink-muted hover:text-navy rounded-lg min-h-[44px] flex items-center"
-            >
-              {t.nav.privacy}
-            </Link>
+          </nav>
 
-            <Link
-              href="/login"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 text-sm text-[#7E6C9E] font-medium rounded-lg min-h-[44px] flex items-center"
-            >
-              ✦ {t.nav.login} (Sign In)
-            </Link>
+          {/* Bottom Actions */}
+          <div className="pt-6 border-t border-[#EFEAE2] flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-[#4A5A6A]">
+                {lang === 'ta' ? 'மொழி தேர்வு' : 'Language'}
+              </span>
+              <button
+                onClick={toggleLang}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#EFEAE2] text-sm font-medium text-[#0F2742]"
+              >
+                <Globe className="w-4 h-4 text-[#8B5E83]" />
+                <span>{lang === 'ta' ? 'Switch to English' : 'தமிழுக்கு மாறவும்'}</span>
+              </button>
+            </div>
 
             <Link
               href="/classes"
               onClick={() => setMobileMenuOpen(false)}
-              className="mt-2 w-full flex items-center justify-center gap-2 py-3 px-5 rounded-pill bg-[#725E96] hover:bg-[#5E4C80] text-white text-base font-medium min-h-[48px] shadow-sm transition-colors"
+              className="w-full text-center py-3.5 rounded-full bg-[#0F2742] text-white text-[15px] font-medium shadow-md flex items-center justify-center gap-2"
             >
-              <span>{t.nav.startCta}</span>
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              <span>{lang === 'ta' ? 'அமைதிப் பயணம்' : 'Start Journey'}</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-        )}
-      </header>
+        </div>
+      )}
     </>
   );
 }

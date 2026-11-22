@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
-import { BookOpen, Clock, Tag, ArrowRight, Headphones } from 'lucide-react';
+import { BookOpen, Clock, Sparkles, ArrowRight } from 'lucide-react';
 
 export default function ResourcesPage() {
   const { lang, t } = useLanguage();
@@ -22,7 +22,7 @@ export default function ResourcesPage() {
         ? 'எண்ணங்கள் சுழன்று கொண்டே இருக்கும்போது, நமது கவனம் உடலையும் மூச்சையும் நோக்கி திரும்புவது மட்டுமே அந்த சுழற்சியை உடைக்கும்.'
         : 'When thoughts cycle uncontrollably, grounding your sensory attention into the physical breath is the single most effective way to break the spiral.',
       content: lang === 'ta'
-        ? 'ஓவர்திங்கிங் என்பது எதிர்காலத்தைப் பற்றிய பயம் அல்லது கடந்த காலத்தைப் பற்றிய வருத்தத்தால் ஏற்படுகிறது. இதை நிறுத்த "5-4-3-2-1" விழிப்புணர்வு முறை பெரிதும் உதவுகிறது: உங்கள் கண்களுக்குத் தெரியும் 5 பொருட்கள், தொடக்கூடிய 4 பொருட்கள், கேட்கும் 3 ஒலிகள், நுகரக்கூடிய 2 வாசனை, மற்றும் உங்கள் வாயில் உணரக்கூடிய 1 சுவை. இந்த எளிய تمرین உடனடியாக உங்கள் நரம்பு மண்டலத்தை அமைதி நிலைக்குக் கொண்டுவருகிறது.'
+        ? 'ஓவர்திங்கிங் என்பது எதிர்காலத்தைப் பற்றிய பயம் அல்லது கடந்த காலத்தைப் பற்றிய வருத்தத்தால் ஏற்படுகிறது. இதை நிறுத்த "5-4-3-2-1" விழிப்புணர்வு முறை பெரிதும் உதவுகிறது: உங்கள் கண்களுக்குத் தெரியும் 5 பொருட்கள், தொடக்கூடிய 4 பொருட்கள், கேட்கும் 3 ஒலிகள், நுகரக்கூடிய 2 வாசனை, மற்றும் உங்கள் வாயில் உணரக்கூடிய 1 சுவை. இந்த எளிய பயிற்சி உடனடியாக உங்கள் நரம்பு மண்டலத்தை அமைதி நிலைக்குக் கொண்டுவருகிறது.'
         : 'Overthinking is often the mind trying to solve uncertainties in the future or analyze past events. The 5-4-3-2-1 grounding technique immediately interrupts this loop by anchoring into your physical senses.'
     },
     {
@@ -62,142 +62,121 @@ export default function ResourcesPage() {
     : articles.filter(a => a.category === filter);
 
   return (
-    <div className="pt-28 sm:pt-36 pb-20 bg-gradient-to-b from-mist/40 via-ice to-white min-h-screen">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+    <div className="pt-28 sm:pt-36 pb-24 bg-[#F8F5F1] min-h-screen relative overflow-hidden">
+      {/* Ambient Glows */}
+      <div className="absolute top-20 left-1/4 w-[500px] h-[500px] rounded-full bg-[#E8D7F1] opacity-25 blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-[#F4D9DF] opacity-25 blur-[120px] pointer-events-none -z-10" />
+
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-12">
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex items-center gap-2 text-xs text-ink-muted">
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex items-center gap-2 text-xs text-[#4A5A6A]">
             <li>
-              <Link href="/" className="hover:text-navy transition-colors">
+              <Link href="/" className="hover:text-[#0F2742] transition-colors">
                 {t.nav.home}
               </Link>
             </li>
             <li>/</li>
-            <li className="text-navy font-medium" aria-current="page">
+            <li className="text-[#0F2742] font-medium" aria-current="page">
               {t.nav.resources}
             </li>
           </ol>
         </nav>
 
         {/* Page Header */}
-        <div className="mb-10 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-pill bg-white border border-mist text-navy font-medium text-xs sm:text-sm mb-4">
-            <BookOpen className="w-3.5 h-3.5 text-ringBlue" aria-hidden="true" />
-            <span>{t.articles.badge}</span>
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/70 backdrop-blur-md border border-white/80 text-[#0F2742] font-semibold text-[12px] uppercase tracking-[0.14em] mb-4 shadow-xs">
+            <BookOpen className="w-3.5 h-3.5 text-[#8B5E83]" aria-hidden="true" />
+            <span>{lang === 'ta' ? 'அமைதி வழிகாட்டல்கள்' : 'MINDFUL PERSPECTIVES'}</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-bold text-navy tracking-tight mb-4 font-tamil">
-            {t.articles.title}
+
+          <h1 className="text-[36px] sm:text-[52px] lg:text-[60px] font-serif font-medium text-[#0F2742] leading-[1.08] tracking-tight mb-4">
+            {lang === 'ta' ? (
+              <span className="font-tamil-serif">
+                கட்டுரைகள் & வழிகாட்டிகள்
+                <br />
+                <span className="italic font-serif text-[#8B5E83] text-[28px] sm:text-[44px]">
+                  (தினசரி அமைதிப் பயிற்சிகள்)
+                </span>
+              </span>
+            ) : (
+              <>
+                Mindful Guides & Resources
+                <br />
+                <span className="italic font-serif text-[#8B5E83] text-[28px] sm:text-[44px]">
+                  (Calm Daily Practices)
+                </span>
+              </>
+            )}
           </h1>
-          <p className="text-base sm:text-lg text-ink-secondary leading-relaxed">
-            {t.articles.subtitle}
+
+          <p className="text-[16px] sm:text-[18px] text-[#4A5A6A] leading-[1.7] max-w-2xl mx-auto font-normal">
+            {lang === 'ta'
+              ? 'ஓவர்திங்கிங் நீக்கும் வழிகள், ஆழ்ந்த உறக்கம் மற்றும் விழிப்புணர்வு வாழ்விற்கான நடைமுறை கட்டுரைகள்.'
+              : 'Practical guides to quiet overthinking, restore restorative sleep, and weave mindfulness into everyday living.'}
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-12">
-          <button
-            type="button"
-            onClick={() => setFilter('all')}
-            className={`px-4 py-2 rounded-pill text-xs sm:text-sm font-medium transition-all min-h-[44px] ${
-              filter === 'all'
-                ? 'bg-navy text-white shadow-xs'
-                : 'bg-white text-ink hover:bg-mist border border-mist'
-            }`}
-          >
-            {lang === 'ta' ? 'அனைத்தும்' : 'All Topics'}
-          </button>
-          <button
-            type="button"
-            onClick={() => setFilter('clarity')}
-            className={`px-4 py-2 rounded-pill text-xs sm:text-sm font-medium transition-all min-h-[44px] ${
-              filter === 'clarity'
-                ? 'bg-navy text-white shadow-xs'
-                : 'bg-white text-ink hover:bg-mist border border-mist'
-            }`}
-          >
-            {lang === 'ta' ? 'மனத்தெளிவு' : 'Clarity'}
-          </button>
-          <button
-            type="button"
-            onClick={() => setFilter('sleep')}
-            className={`px-4 py-2 rounded-pill text-xs sm:text-sm font-medium transition-all min-h-[44px] ${
-              filter === 'sleep'
-                ? 'bg-navy text-white shadow-xs'
-                : 'bg-white text-ink hover:bg-mist border border-mist'
-            }`}
-          >
-            {lang === 'ta' ? 'தூக்கம் & நலம்' : 'Sleep'}
-          </button>
-          <button
-            type="button"
-            onClick={() => setFilter('habits')}
-            className={`px-4 py-2 rounded-pill text-xs sm:text-sm font-medium transition-all min-h-[44px] ${
-              filter === 'habits'
-                ? 'bg-navy text-white shadow-xs'
-                : 'bg-white text-ink hover:bg-mist border border-mist'
-            }`}
-          >
-            {lang === 'ta' ? 'கவன வாழ்க்கை' : 'Mindfulness'}
-          </button>
+        {/* Category Filters: Pills */}
+        <div className="flex items-center justify-center gap-2.5 flex-wrap mb-12">
+          {['all', 'clarity', 'sleep', 'habits'].map((cat) => {
+            const labels: Record<string, { ta: string; en: string }> = {
+              all: { ta: 'அனைத்தும்', en: 'All Topics' },
+              clarity: { ta: 'மனத்தெளிவு', en: 'Clarity' },
+              sleep: { ta: 'தூக்கம் & நலம்', en: 'Sleep' },
+              habits: { ta: 'கவன வாழ்க்கை', en: 'Mindfulness' },
+            };
+            const isSelected = filter === cat;
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setFilter(cat)}
+                className={`px-5 py-2.5 rounded-full text-xs sm:text-[14px] font-medium transition-all ${
+                  isSelected
+                    ? 'bg-[#0F2742] text-white shadow-sm'
+                    : 'bg-white/80 text-[#4A5A6A] hover:text-[#0F2742] border border-white/90'
+                }`}
+              >
+                {lang === 'ta' ? labels[cat].ta : labels[cat].en}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Articles List */}
-        <div className="space-y-8">
+        {/* Articles List in Frosted Cards (28px Radius) */}
+        <div className="space-y-8 max-w-4xl mx-auto mb-16">
           {filteredArticles.map((art) => (
             <article
               key={art.id}
               id={art.id}
-              className="bg-white rounded-calm-lg p-6 sm:p-10 border border-mist shadow-xs hover:shadow-md transition-shadow"
+              className="p-8 sm:p-10 rounded-[28px] bg-white/70 backdrop-blur-md border border-white/85 shadow-[0_20px_60px_rgba(15,39,66,0.08)] hover:-translate-y-1 transition-all"
             >
-              <div className="flex items-center justify-between gap-4 mb-4">
-                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-ringBlue bg-mist/60 px-3 py-1 rounded-full">
-                  <Tag className="w-3 h-3" aria-hidden="true" />
-                  <span>{art.tag}</span>
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <span className="px-3 py-1 rounded-full text-[12px] font-semibold uppercase tracking-[0.14em] bg-[#F4D9DF] text-[#8B5E83]">
+                  {art.tag}
                 </span>
-                <span className="inline-flex items-center gap-1 text-xs text-ink-muted">
-                  <Clock className="w-3.5 h-3.5" aria-hidden="true" />
+                <span className="inline-flex items-center gap-1.5 text-xs text-[#4A5A6A]">
+                  <Clock className="w-3.5 h-3.5 text-[#8B5E83]" />
                   <span>{art.readTime}</span>
                 </span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-bold text-navy mb-3 font-tamil">
+              <h2 className="text-[24px] sm:text-[28px] font-serif font-medium text-[#0F2742] mb-3 leading-snug">
                 {art.title}
               </h2>
-              <p className="text-base text-ink-secondary mb-4 leading-relaxed font-tamil">
+
+              <p className="text-[15px] sm:text-[16px] text-[#4A5A6A] leading-[1.75] mb-6">
                 {art.excerpt}
               </p>
 
-              {/* Full Text Dropdown / Reader */}
-              <div className="p-5 rounded-2xl bg-ice border border-mist/80 text-ink text-sm sm:text-base leading-relaxed font-tamil whitespace-pre-line mt-4">
+              <div className="pt-5 border-t border-[#0F2742]/10 whitespace-pre-line text-[14px] sm:text-[15px] text-[#4A5A6A] leading-[1.8] bg-white/50 p-6 rounded-[20px] border border-white/80">
                 {art.content}
               </div>
             </article>
           ))}
         </div>
 
-        {/* Free Audio Guide Strip */}
-        <div className="mt-14 bg-navy rounded-calm-lg p-8 sm:p-10 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-ringBlue flex items-center justify-center flex-shrink-0">
-              <Headphones className="w-6 h-6 text-white" aria-hidden="true" />
-            </div>
-            <div>
-              <h3 className="font-bold text-xl font-tamil">
-                {lang === 'ta' ? '10 நிமிட தமிழ் தியான ஆடியோ வழிகாட்டி' : '10-Minute Tamil Guided Meditation Audio'}
-              </h3>
-              <p className="text-sm text-softAccent mt-0.5">
-                {lang === 'ta' ? '[AUDIO DOWNLOAD: அமைதியான தூக்கத்திற்கான தமிழ் வழிகாட்டல்]' : '[AUDIO DOWNLOAD: Tamil Sleep Reset Guide]'}
-              </p>
-            </div>
-          </div>
-          <Link
-            href="/#newsletter"
-            className="w-full sm:w-auto px-6 py-3 rounded-pill bg-white hover:bg-mist text-navy text-sm font-semibold text-center transition-colors min-h-[44px] flex items-center justify-center gap-2 whitespace-nowrap"
-          >
-            <span>{lang === 'ta' ? 'இலவசமாகப் பெறுக' : 'Get Free Audio'}</span>
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
-          </Link>
-        </div>
       </div>
     </div>
   );

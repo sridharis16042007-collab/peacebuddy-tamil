@@ -4,171 +4,174 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
-import { PhoneCall, Heart, MessageCircle, Mail } from 'lucide-react';
+import { Heart, Instagram, Youtube, Twitter, Globe } from 'lucide-react';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   return (
     <footer
-      aria-label="Site Footer"
-      className="bg-[#1C1628] text-white/90 pt-16 sm:pt-20 pb-12 border-t border-[#2D2342]"
+      aria-label="Peace Buddy Site Footer"
+      className="bg-[#F6EBEE] pt-16 sm:pt-24 pb-12 border-t border-[#0F2742]/10 relative overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Main Footer Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 lg:gap-12 mb-12 sm:mb-16">
-          {/* Col 1: Emblem & Brand Purpose */}
-          <div className="md:col-span-2">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-12">
+        {/* Top Section: Brand Story & 3 Columns of Links */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-16 border-b border-[#0F2742]/10">
+          
+          {/* Brand Col */}
+          <div className="md:col-span-5 space-y-4">
             <Link
               href="/"
-              className="inline-flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E] rounded-lg p-1"
-              aria-label="Peace Buddy Tamil Home"
+              className="flex items-center gap-3 group"
+              aria-label="Peace Buddy Home"
             >
-              <div className="relative w-12 h-12 flex-shrink-0">
+              <div className="relative w-10 h-10 flex-shrink-0">
                 <Image
                   src="/Peace_Buddy_Teal_Circular_Emblem.webp"
-                  alt="Peace Buddy Circular Emblem"
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 object-contain rounded-full shadow-md"
+                  alt="Peace Buddy Logo"
+                  width={40}
+                  height={40}
+                  className="rounded-full shadow-xs"
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="font-serif font-bold text-xl tracking-tight text-white group-hover:text-[#C5B3E6] transition-colors">
-                  ✦ Peace Buddy Tamil
-                </span>
-                <span className="text-xs text-[#9B8BB8] font-medium">
-                  அமைதியான மனம் • தெளிவான வாழ்வு
-                </span>
-              </div>
+              <span className="font-serif text-[24px] font-medium text-[#0F2742] tracking-tight">
+                Peace Buddy
+              </span>
             </Link>
 
-            <p className="mt-4 text-sm sm:text-base text-white/70 max-w-md leading-relaxed font-tamil">
-              {t.footer.tagline}
+            <p className="text-[15px] text-[#4A5A6A] leading-[1.7] max-w-sm">
+              {lang === 'ta'
+                ? 'அமைதியான மனம், தெளிவான சிந்தனை மற்றும் நிம்மதியான வாழ்விற்கான தமிழ் புகலிடம்.'
+                : 'A dedicated Tamil-first sanctuary for inner peace, emotional wellbeing, and mindful daily living.'}
             </p>
 
-            <div className="mt-6 flex items-center gap-4 text-sm text-[#C5B3E6]">
-              <span className="inline-flex items-center gap-1.5">
-                <Heart className="w-4 h-4 text-[#9B8BB8]" aria-hidden="true" />
-                <span>Made with peace for Tamil speakers worldwide</span>
-              </span>
+            {/* Circular Social Buttons */}
+            <div className="pt-2 flex items-center gap-2.5">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/80 border border-white/90 flex items-center justify-center text-[#0F2742] hover:text-[#8B5E83] hover:bg-white shadow-xs transition-all"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/80 border border-white/90 flex items-center justify-center text-[#0F2742] hover:text-[#8B5E83] hover:bg-white shadow-xs transition-all"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-4 h-4" />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/80 border border-white/90 flex items-center justify-center text-[#0F2742] hover:text-[#8B5E83] hover:bg-white shadow-xs transition-all"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
-          {/* Col 2: Navigation Links */}
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-softAccent mb-4">
-              {t.footer.quickLinks}
-            </h4>
-            <ul className="space-y-2.5 text-sm text-white/80">
-              <li>
-                <Link
-                  href="/"
-                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
-                >
-                  {t.nav.home}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/programs"
-                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
-                >
-                  {t.nav.programs}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
-                >
-                  {t.nav.about}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources"
-                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
-                >
-                  {t.nav.resources}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/faq"
-                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
-                >
-                  {t.nav.faq}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded py-0.5 inline-block"
-                >
-                  {t.nav.contact}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 3: Direct Connect & Placeholders */}
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-softAccent mb-4">
-              {t.nav.contact}
-            </h4>
-            <ul className="space-y-3 text-sm text-white/80">
-              <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-softAccent flex-shrink-0" aria-hidden="true" />
-                <span className="font-mono text-xs text-white/90">[CLIENT EMAIL]</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <MessageCircle className="w-4 h-4 text-softAccent flex-shrink-0" aria-hidden="true" />
-                <span className="font-mono text-xs text-white/90">[CLIENT WHATSAPP]</span>
-              </li>
-              <li className="pt-2 flex items-center gap-4">
-                <Link
-                  href="/privacy"
-                  className="text-xs text-white/60 hover:text-white transition-colors py-1 inline-block"
-                >
-                  {t.nav.privacy}
-                </Link>
-                <span className="text-white/20">•</span>
-                <Link
-                  href="/admin"
-                  className="text-xs text-softAccent/70 hover:text-softAccent transition-colors py-1 inline-block"
-                >
-                  Admin Portal
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Essential Trust: Verified Crisis Helpline Notice (India) */}
-        <div className="bg-navy/80 rounded-2xl p-5 sm:p-6 border border-ringBlue/30 mb-10 text-xs sm:text-sm text-white/85">
-          <div className="flex items-start gap-3">
-            <PhoneCall className="w-5 h-5 text-softAccent flex-shrink-0 mt-0.5" aria-hidden="true" />
+          {/* 3 Columns of Links */}
+          <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {/* Col 1: Explore */}
             <div>
-              <p className="font-semibold text-white mb-1">
-                {t.footer.helplineTitle}
+              <span className="text-[12px] uppercase tracking-[0.16em] font-semibold text-[#8B5E83] block mb-4">
+                {lang === 'ta' ? 'வழிகாட்டல்' : 'EXPLORE'}
+              </span>
+              <ul className="space-y-2.5 text-[15px] text-[#4A5A6A]">
+                <li>
+                  <Link href="/" className="hover:text-[#0F2742] transition-colors link-editorial">
+                    {t.nav.home}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/programs" className="hover:text-[#0F2742] transition-colors link-editorial">
+                    {t.nav.programs}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/classes" className="hover:text-[#0F2742] transition-colors link-editorial">
+                    {t.nav.classes}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="hover:text-[#0F2742] transition-colors link-editorial">
+                    {t.nav.about}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Col 2: Sanctuary */}
+            <div>
+              <span className="text-[12px] uppercase tracking-[0.16em] font-semibold text-[#8B5E83] block mb-4">
+                {lang === 'ta' ? 'அமைதி வளங்கள்' : 'SANCTUARY'}
+              </span>
+              <ul className="space-y-2.5 text-[15px] text-[#4A5A6A]">
+                <li>
+                  <Link href="/resources" className="hover:text-[#0F2742] transition-colors link-editorial">
+                    {t.nav.resources}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/faq" className="hover:text-[#0F2742] transition-colors link-editorial">
+                    {t.nav.faq}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-[#0F2742] transition-colors link-editorial">
+                    {t.nav.contact}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/login" className="hover:text-[#0F2742] transition-colors link-editorial">
+                    {t.nav.login}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Col 3: Safe Space */}
+            <div className="col-span-2 sm:col-span-1">
+              <span className="text-[12px] uppercase tracking-[0.16em] font-semibold text-[#8B5E83] block mb-4">
+                {lang === 'ta' ? 'பாதுகாப்பு' : 'ETHOS'}
+              </span>
+              <p className="text-xs text-[#4A5A6A] leading-relaxed mb-3">
+                {lang === 'ta'
+                  ? 'விளம்பரங்களற்ற, அமைதியான மற்றும் மரியாதையான தனிப்பட்ட இடம்.'
+                  : 'Zero trackers. Calm, intentional, and respectful of your inner space.'}
               </p>
-              <p className="text-white/70 mb-2 leading-relaxed">
-                {t.footer.helplineText}
-              </p>
-              <p className="font-mono font-medium text-softAccent">
-                {t.footer.helplineNumber}
-              </p>
+              <Link
+                href="/privacy"
+                className="text-xs text-[#8B5E83] hover:underline font-medium"
+              >
+                {t.nav.privacy}
+              </Link>
             </div>
           </div>
+
         </div>
 
-        {/* Bottom Disclaimer & Copyright */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50 text-center sm:text-left">
-          <p className="max-w-2xl font-tamil">
-            {t.footer.disclaimer}
-          </p>
-          <p>{t.footer.copyright}</p>
+        {/* Big Serif Wordmark "Peace Buddy" at the Bottom */}
+        <div className="py-12 text-center select-none overflow-hidden">
+          <span className="text-[52px] sm:text-[90px] lg:text-[130px] font-serif font-medium text-[#0F2742]/15 tracking-tight leading-none block hover:text-[#0F2742]/25 transition-colors duration-500">
+            Peace Buddy
+          </span>
+        </div>
+
+        {/* Copyright & Disclaimer */}
+        <div className="pt-6 border-t border-[#0F2742]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#4A5A6A]">
+          <p>© {new Date().getFullYear()} Peace Buddy Tamil. All rights reserved.</p>
+          <div className="flex items-center gap-1.5 text-[#8B5E83]">
+            <Heart className="w-3.5 h-3.5 fill-[#8B5E83]" />
+            <span>Nurturing calm for Tamil speakers worldwide</span>
+          </div>
         </div>
       </div>
     </footer>
