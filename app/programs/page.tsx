@@ -17,8 +17,6 @@ import {
 
 export default function ProgramsPage() {
   const { lang, t } = useLanguage();
-  const [morningImage, setMorningImage] = useState<'sunrise' | 'garden'>('sunrise');
-  const [eveningImage, setEveningImage] = useState<'moonlight' | 'bedtime'>('moonlight');
 
   return (
     <div className="pt-28 sm:pt-36 pb-24 bg-[#F8F5F1] min-h-screen relative overflow-hidden">
@@ -127,7 +125,7 @@ export default function ProgramsPage() {
                 {/* Morning Session Visual Hero Image (Sunrise Gratitude & Meditation) */}
                 <div className="relative w-full h-52 sm:h-60 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
-                    src={morningImage === 'sunrise' ? '/assets/morning-gratitude-sunrise.jpg' : '/assets/morning-garden-meditation.jpg'}
+                    src="/assets/morning-gratitude-sunrise.jpg"
                     alt="Brahma Muhurtham Morning Meditation and Gratitude Writing"
                     fill
                     sizes="(max-width: 768px) 100vw, 550px"
@@ -136,36 +134,14 @@ export default function ProgramsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/65 via-transparent to-transparent pointer-events-none" />
 
-                  {/* Photo Title & Interactive Switcher */}
+                  {/* Photo Title */}
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
                     <span className="font-serif font-medium text-[13px]">
                       ✦ {lang === 'ta' ? 'பிரம்ம முகூர்த்தம் & நன்றியுணர்வு' : 'Brahma Muhurtham & Gratitude'}
                     </span>
-                    <div className="flex items-center gap-1.5 text-[10px]">
-                      <button
-                        type="button"
-                        onClick={() => setMorningImage('sunrise')}
-                        className={`px-2 py-0.5 rounded-full transition-colors ${morningImage === 'sunrise'
-                            ? 'bg-white/30 text-white font-bold'
-                            : 'text-white/70 hover:text-white'
-                          }`}
-                        title="Sunrise Gratitude View"
-                      >
-                        {lang === 'ta' ? 'சூரியோதயம்' : 'Sunrise'}
-                      </button>
-                      <span className="opacity-40">|</span>
-                      <button
-                        type="button"
-                        onClick={() => setMorningImage('garden')}
-                        className={`px-2 py-0.5 rounded-full transition-colors ${morningImage === 'garden'
-                            ? 'bg-white/30 text-white font-bold'
-                            : 'text-white/70 hover:text-white'
-                          }`}
-                        title="Garden Meditation View"
-                      >
-                        {lang === 'ta' ? 'தோட்டம்' : 'Garden'}
-                      </button>
-                    </div>
+                    <span className="text-[11px] text-[#FDE2D2] font-sans">
+                      {lang === 'ta' ? 'விடியற்காலை அமைதி' : 'Golden Sunrise'}
+                    </span>
                   </div>
                 </div>
 
@@ -260,11 +236,11 @@ export default function ProgramsPage() {
                   </div>
                 </div>
 
-                {/* Evening Session Visual Hero Image (Moonlight Journaling & Night Meditation) */}
+                {/* Evening Session Visual Hero Image (Night Gratitude Meditation) */}
                 <div className="relative w-full h-52 sm:h-60 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
-                    src={eveningImage === 'moonlight' ? '/assets/evening-moonlight-journal.jpg' : '/assets/evening-bedtime-meditation.jpg'}
-                    alt="Moonlight Journal Writing and Night Guided Sleep Meditation"
+                    src="/assets/evening-moonlight-journal.jpg"
+                    alt="Night Gratitude Meditation and Reflection"
                     fill
                     sizes="(max-width: 768px) 100vw, 550px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -272,36 +248,14 @@ export default function ProgramsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/70 via-transparent to-transparent pointer-events-none" />
 
-                  {/* Photo Title & Interactive Switcher */}
+                  {/* Photo Title */}
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
                     <span className="font-serif font-medium text-[13px]">
-                      ✦ {lang === 'ta' ? 'நிலவொளி ஜர்னல் & இரவு தியானம்' : 'Moonlight Journal & Sleep Meditation'}
+                      ✦ {lang === 'ta' ? 'இரவு நன்றியுணர்வு தியானம்' : 'Night Gratitude Meditation'}
                     </span>
-                    <div className="flex items-center gap-1.5 text-[10px]">
-                      <button
-                        type="button"
-                        onClick={() => setEveningImage('moonlight')}
-                        className={`px-2 py-0.5 rounded-full transition-colors ${eveningImage === 'moonlight'
-                            ? 'bg-white/30 text-white font-bold'
-                            : 'text-white/70 hover:text-white'
-                          }`}
-                        title="Moonlight Journaling View"
-                      >
-                        {lang === 'ta' ? 'நிலா & ஜர்னல்' : 'Moonlight'}
-                      </button>
-                      <span className="opacity-40">|</span>
-                      <button
-                        type="button"
-                        onClick={() => setEveningImage('bedtime')}
-                        className={`px-2 py-0.5 rounded-full transition-colors ${eveningImage === 'bedtime'
-                            ? 'bg-white/30 text-white font-bold'
-                            : 'text-white/70 hover:text-white'
-                          }`}
-                        title="Bedtime Meditation View"
-                      >
-                        {lang === 'ta' ? 'உறக்கத் தியானம்' : 'Bedtime'}
-                      </button>
-                    </div>
+                    <span className="text-[11px] text-[#E8D7F1] font-sans">
+                      {lang === 'ta' ? 'இரவு அமைதி' : 'Night Sanctuary'}
+                    </span>
                   </div>
                 </div>
 
