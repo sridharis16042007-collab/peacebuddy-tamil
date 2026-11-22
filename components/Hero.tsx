@@ -113,7 +113,7 @@ export default function Hero() {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 w-full">
-                {/* 1. 2 Mindful Programs Card - Monthly Transformation */}
+                {/* 1. Monthly Transformation Program Card */}
                 <Link
                   href="/programs"
                   className="group flex items-start gap-3 p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 transition-all shadow-sm"
@@ -123,12 +123,12 @@ export default function Hero() {
                   </div>
                   <div>
                     <h2 className="text-sm font-serif font-medium text-white group-hover:text-[#FFE3A8] transition-colors tracking-wide">
-                      {lang === 'ta' ? '2 சிறப்புப் பயிற்சிகள்' : '2 Mindful Programs'}
+                      {lang === 'ta' ? 'மாதாந்திர மாற்றப் பயிற்சி' : 'Monthly Transformation'}
                     </h2>
                     <p className="text-xs text-white/90 leading-snug mt-0.5 font-light">
                       {lang === 'ta'
-                        ? 'மாதாந்திர மாற்றப் பயிற்சி (காலை & மாலை நேர அமர்வுகள்)'
-                        : 'Monthly Transformation (Morning & Evening Sessions)'}
+                        ? 'காலை பிரம்ம முகூர்த்தம் & இரவு அமைதி அமர்வுகள்'
+                        : 'Morning Brahma Muhurtham & Evening Calm Sessions'}
                     </p>
                   </div>
                 </Link>
