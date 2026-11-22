@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
 import {
@@ -16,6 +17,7 @@ import {
 
 export default function ProgramsPage() {
   const { lang, t } = useLanguage();
+  const [morningImage, setMorningImage] = useState<'sunrise' | 'garden'>('sunrise');
 
   return (
     <div className="pt-28 sm:pt-36 pb-24 bg-[#F8F5F1] min-h-screen relative overflow-hidden">
@@ -121,6 +123,53 @@ export default function ProgramsPage() {
                   </div>
                 </div>
 
+                {/* Morning Session Visual Hero Image (Sunrise Gratitude & Meditation) */}
+                <div className="relative w-full h-52 sm:h-60 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
+                  <Image
+                    src={morningImage === 'sunrise' ? '/assets/morning-gratitude-sunrise.jpg' : '/assets/morning-garden-meditation.jpg'}
+                    alt="Brahma Muhurtham Morning Meditation and Gratitude Writing"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 550px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/65 via-transparent to-transparent pointer-events-none" />
+                  
+                  {/* Photo Title & Interactive Switcher */}
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
+                    <span className="font-serif font-medium text-[13px]">
+                      ✦ {lang === 'ta' ? 'பிரம்ம முகூர்த்தம் & நன்றியுணர்வு' : 'Brahma Muhurtham & Gratitude'}
+                    </span>
+                    <div className="flex items-center gap-1.5 text-[10px]">
+                      <button
+                        type="button"
+                        onClick={() => setMorningImage('sunrise')}
+                        className={`px-2 py-0.5 rounded-full transition-colors ${
+                          morningImage === 'sunrise'
+                            ? 'bg-white/30 text-white font-bold'
+                            : 'text-white/70 hover:text-white'
+                        }`}
+                        title="Sunrise Gratitude View"
+                      >
+                        {lang === 'ta' ? 'சூரியோதயம்' : 'Sunrise'}
+                      </button>
+                      <span className="opacity-40">|</span>
+                      <button
+                        type="button"
+                        onClick={() => setMorningImage('garden')}
+                        className={`px-2 py-0.5 rounded-full transition-colors ${
+                          morningImage === 'garden'
+                            ? 'bg-white/30 text-white font-bold'
+                            : 'text-white/70 hover:text-white'
+                        }`}
+                        title="Garden Meditation View"
+                      >
+                        {lang === 'ta' ? 'தோட்டம்' : 'Garden'}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
                 <p className="text-xs sm:text-sm text-[#4A5A6A] mb-6 leading-relaxed">
                   {lang === 'ta'
                     ? 'விடியற்காலை புத்துணர்ச்சியுடன் எழுந்து, அமைதியான மனநிலையுடன் அன்றைய நாளைத் தொடங்குவதற்கான 3 படிநிலைகள்:'
@@ -209,6 +258,26 @@ export default function ProgramsPage() {
                     <h3 className="text-xl sm:text-2xl font-serif font-medium text-[#0F2742]">
                       {lang === 'ta' ? 'மாலை அமர்வு' : 'Evening Session'}
                     </h3>
+                  </div>
+                </div>
+
+                {/* Evening Session Visual Hero Image */}
+                <div className="relative w-full h-52 sm:h-60 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
+                  <Image
+                    src="/assets/sunset-serenity.webp"
+                    alt="Evening Journaling and Night Guided Meditation"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 550px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/65 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
+                    <span className="font-serif font-medium text-[13px]">
+                      ✦ {lang === 'ta' ? 'சுயபரிசீலனை & இரவு தியானம்' : 'Reflection & Night Meditation'}
+                    </span>
+                    <span className="text-[11px] text-[#E8D7F1] font-sans">
+                      {lang === 'ta' ? 'இரவு அமைதி' : 'Tranquil Dusk'}
+                    </span>
                   </div>
                 </div>
 

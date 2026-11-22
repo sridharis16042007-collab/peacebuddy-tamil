@@ -145,11 +145,10 @@ export default function FAQPage() {
                   </h2>
 
                   <div
-                    className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 border ${
-                      isOpen
+                    className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 border ${isOpen
                         ? 'bg-[#8B5E83] text-white border-[#8B5E83] rotate-180'
                         : 'bg-white/80 text-[#0F2742] border-white/90 group-hover:bg-white'
-                    }`}
+                      }`}
                   >
                     {isOpen ? (
                       <Minus className="w-4 h-4" />

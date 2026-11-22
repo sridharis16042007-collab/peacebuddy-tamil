@@ -165,7 +165,7 @@ export default function ClassesPage() {
       <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-[#F4D9DF] opacity-25 blur-[120px] pointer-events-none -z-10" />
 
       <div className="max-w-[1200px] mx-auto px-6 sm:px-12">
-        
+
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-8">
           <ol className="flex items-center gap-2 text-xs text-[#4A5A6A]">
@@ -258,21 +258,19 @@ export default function ClassesPage() {
           <div className="inline-flex items-center p-1.5 rounded-full bg-white/80 backdrop-blur-md border border-white/90 shadow-xs">
             <button
               onClick={() => setActiveTab('upcoming')}
-              className={`px-6 py-2.5 rounded-full text-xs sm:text-[14px] font-medium transition-all ${
-                activeTab === 'upcoming'
+              className={`px-6 py-2.5 rounded-full text-xs sm:text-[14px] font-medium transition-all ${activeTab === 'upcoming'
                   ? 'bg-[#0F2742] text-white shadow-sm'
                   : 'text-[#4A5A6A] hover:text-[#0F2742]'
-              }`}
+                }`}
             >
               {lang === 'ta' ? 'வரவிருக்கும் வகுப்புகள்' : 'Upcoming Classes'} ({upcomingClasses.length})
             </button>
             <button
               onClick={() => setActiveTab('past')}
-              className={`px-6 py-2.5 rounded-full text-xs sm:text-[14px] font-medium transition-all ${
-                activeTab === 'past'
+              className={`px-6 py-2.5 rounded-full text-xs sm:text-[14px] font-medium transition-all ${activeTab === 'past'
                   ? 'bg-[#0F2742] text-white shadow-sm'
                   : 'text-[#4A5A6A] hover:text-[#0F2742]'
-              }`}
+                }`}
             >
               {lang === 'ta' ? 'முடிந்த வகுப்புகள்' : 'Past Classes'} ({pastClasses.length})
             </button>

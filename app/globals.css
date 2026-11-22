@@ -46,13 +46,20 @@
     line-height: 1.8;
   }
 
-  h1, h2, h3, h4, .font-heading {
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-heading {
     font-family: 'Cormorant Garamond', 'Instrument Serif', 'Noto Serif Tamil', Georgia, serif;
     color: var(--text-navy);
     font-weight: 500;
   }
 
-  [lang="ta"] h1, [lang="ta"] h2, [lang="ta"] h3, [lang="ta"] h4,
+  [lang="ta"] h1,
+  [lang="ta"] h2,
+  [lang="ta"] h3,
+  [lang="ta"] h4,
   .font-tamil-serif {
     font-family: 'Noto Serif Tamil', serif;
     line-height: 1.4;
@@ -71,6 +78,7 @@
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
