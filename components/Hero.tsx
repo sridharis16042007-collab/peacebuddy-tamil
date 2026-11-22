@@ -54,7 +54,7 @@ export default function Hero() {
 
       {/* Main Centered Content */}
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 sm:px-12 w-full my-auto flex flex-col items-center text-center">
-        
+
         {/* Pill Label: "Structured pathways to peace" / "அமைதிக்கான சீரான நல்வழிகள்" */}
         <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-white/80 shadow-xs">
           <Sparkles className="w-3.5 h-3.5 text-[#8B5E83]" aria-hidden="true" />
@@ -111,7 +111,7 @@ export default function Hero() {
 
         {/* Center Image Arch with 4 Floating Glass Cards */}
         <div className="relative w-full max-w-[420px] mx-auto mt-2 mb-6">
-          
+
           {/* Connecting Curved Lines (Thin SVGs Behind Floating Cards) */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none -z-10 hidden md:block overflow-visible"
@@ -236,9 +236,9 @@ export default function Hero() {
             {/* Subtle Gradient Veil */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/50 via-transparent to-transparent pointer-events-none" />
 
-            {/* Emblem Overlay at bottom of arch */}
+            {/* Overlay Pill at bottom of arch: Choose your dreamed life */}
             <div
-              className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full border border-white/90 shadow-md backdrop-blur-md"
+              className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full border border-white/90 shadow-md backdrop-blur-md whitespace-nowrap"
               style={{
                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 237, 253, 0.92) 50%, rgba(229, 200, 251, 0.90) 100%)',
               }}
@@ -251,9 +251,22 @@ export default function Hero() {
                 className="w-6 h-6 rounded-full"
               />
               <span className="text-xs font-serif font-semibold text-[#0F2742] tracking-wide">
-                Peace Buddy Sanctuary
+                {lang === 'ta' ? 'உங்கள் கனவு வாழ்வை தேர்ந்தெடுங்கள்' : 'Choose your dreamed life'}
               </span>
             </div>
+          </div>
+
+          {/* Below picture: Peace Buddy Welcomes You */}
+          <div className="mt-4 sm:mt-5 text-center flex items-center justify-center">
+            <span
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#CFA5F7]/70 shadow-xs text-xs sm:text-[13px] font-serif font-semibold text-[#0F2742] tracking-wide"
+              style={{
+                background: 'linear-gradient(135deg, #FFFFFF 0%, #F6EDFD 35%, #E5C8FB 70%, #CEA0F6 100%)',
+              }}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#8B5E83]" aria-hidden="true" />
+              {lang === 'ta' ? 'பீஸ் படி உங்களை அன்புடன் வரவேற்கிறது' : 'Peace Buddy welcomes you'}
+            </span>
           </div>
 
         </div>
