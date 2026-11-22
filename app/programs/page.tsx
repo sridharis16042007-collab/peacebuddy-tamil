@@ -73,7 +73,7 @@ export default function ProgramsPage() {
           <p className="text-[16px] sm:text-[18px] text-[#4A5A6A] leading-[1.7] max-w-2xl mx-auto font-normal">
             {lang === 'ta'
               ? 'ஒரு மாத கால தினசரி தமிழ் வழிகாட்டல் மூலம் உங்கள் நாளை விழிப்புணர்வுடன் தொடங்கி, அன்றாட மன அழுத்தங்களை நீக்கி, இரவை ஆழ்ந்த அமைதியான உறக்கத்துடன் நிறைவு செய்யும் 30 நாள் வாழ்வியல் பயிற்சி.'
-              : 'A dedicated 30-day transformation program. Ground your mornings in Brahma Muhurtham stillness and wind down your evenings with reflective journaling and deep guided sleep meditation.'}
+              : 'A 30-day life transformation program in Tamil. Start your mornings with dawn meditation, end your days with peaceful sleep meditation, and grow with special weekend workshops.'}
           </p>
         </div>
 
@@ -144,8 +144,8 @@ export default function ProgramsPage() {
 
                 <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-6 leading-relaxed">
                   {lang === 'ta'
-                    ? 'விடியற்காலை புத்துணர்ச்சியுடன் எழுந்து, அமைதியான மனநிலையுடன் அன்றைய நாளைத் தொடங்குவதற்கான 3 படிநிலைகள்:'
-                    : 'Awaken with serene clarity and ground your day with these 3 ordered morning steps:'}
+                    ? 'விடியற்காலை புத்துணர்ச்சியுடன் எழுந்து, அமைதியான மனநிலையுடன் அன்றைய நாளைத் தொடங்குவதற்கான 3 எளிய படிநிலைகள்:'
+                    : 'Start your day calm, focused, and energized with these 3 daily morning steps:'}
                 </p>
 
                 {/* Ordered Steps List */}
@@ -159,12 +159,12 @@ export default function ProgramsPage() {
                       <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'தினசரி பிரம்ம முகூர்த்த தியானம்'
-                          : 'Daily Brahma Muhurtham Meditation'}
+                          : 'Daily Dawn Meditation'}
                       </h4>
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'விடியற்காலை பிரம்ம முகூர்த்தத்தின் அமைதியில் ஆழ்ந்து, மனதை ஒருமுகப்படுத்தி நரம்பு மண்டலத்தை அமைதிப்படுத்தும் ஆழ்ந்த தமிழ் தியானம்.'
-                          : 'Early morning meditation in the stillness of Brahma Muhurtham to quiet mental noise and center your nervous system.'}
+                          : 'Early morning meditation at dawn to quiet a busy mind, reduce stress, and start your day with deep peace.'}
                       </p>
                     </div>
                   </div>
@@ -183,7 +183,7 @@ export default function ProgramsPage() {
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'அன்றைய நாளை நேர்மறை எண்ணங்கள், அமைதி மற்றும் வாழ்வின் நன்மைகளை உணர்ந்து போற்றும் வழிகாட்டப்பட்ட நன்றியுணர்வு பதிவு.'
-                          : 'Structured gratitude prompts to cultivate positive emotional resonance and ground your heart before the day begins.'}
+                          : 'Write down what you are thankful for every morning to fill your heart with positive energy and joy.'}
                       </p>
                     </div>
                   </div>
@@ -197,12 +197,12 @@ export default function ProgramsPage() {
                       <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'அன்றைய நாள் வழிகாட்டல் & விழிப்புணர்வு'
-                          : 'Day Follow-up & Mindful Intentions'}
+                          : 'Mindful Daily Reminders'}
                       </h4>
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'நாள் முழுவதும் அவசரமின்றி, பதற்றமின்றி விழிப்புணர்வுடன் செயல்படுவதற்கான கவனமுள்ள தொடர் வழிகாட்டல்.'
-                          : 'Setting conscious daily intentions and gentle reminders to prevent overthinking throughout work and daily tasks.'}
+                          : 'Simple reminders during your day to avoid stress, stop overthinking, and work with a relaxed mind.'}
                       </p>
                     </div>
                   </div>
@@ -265,8 +265,8 @@ export default function ProgramsPage() {
 
                 <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-6 leading-relaxed">
                   {lang === 'ta'
-                    ? 'அன்றாட சோர்வு மற்றும் சிந்தனைகளை இறக்கி வைத்து, நிம்மதியான உறக்கத்திற்குத் தயாராகும் 3 படிநிலைகள்:'
-                    : 'Decompress from the day’s stress and ease into deep, tranquil rest with these 3 ordered evening steps:'}
+                    ? 'அன்றாட சோர்வு மற்றும் சிந்தனைகளை இறக்கி வைத்து, நிம்மதியான உறக்கத்திற்குத் தயாராகும் 3 எளிய படிநிலைகள்:'
+                    : 'Let go of daily stress, clear your mind, and prepare for a deep, peaceful sleep with these 3 steps:'}
                 </p>
 
                 {/* Ordered Steps List */}
@@ -285,7 +285,7 @@ export default function ProgramsPage() {
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'அன்றைய நிகழ்வுகள், உணர்வுகள் மற்றும் மன அழுத்தங்களை அமைதியாக எழுதி மனதை இலகுவாக்கும் எளிய ஜர்னல் பயிற்சி.'
-                          : 'Quiet reflection on the day to untangle emotional tension, release lingering thoughts, and achieve mental clarity.'}
+                          : 'Write down your thoughts and feelings from the day to let go of tension and feel mentally light.'}
                       </p>
                     </div>
                   </div>
@@ -304,12 +304,12 @@ export default function ProgramsPage() {
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'அலைபாயும் எண்ணங்களை முழுமையாக சாந்தப்படுத்தி, உடலையும் மனதையும் தளர்த்தி ஆழ்ந்த, நிம்மதியான உறக்கத்திற்கு அழைத்துச் செல்லும் இரவு தியானம்.'
-                          : 'Somatic calming meditation to halt racing thoughts, relax muscle tension, and welcome deep restorative sleep.'}
+                          : 'Guided meditation to calm racing thoughts, relax your whole body, and drift into peaceful sleep.'}
                       </p>
                     </div>
                   </div>
 
-                  {/* Step 3: Somatic Wind-down & Restful Sleep */}
+                  {/* Step 3: Deep & Restful Sleep */}
                   <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#8B5E83] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       3
@@ -318,12 +318,12 @@ export default function ProgramsPage() {
                       <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'ஆழ்ந்த உறக்க தளர்வு & மன அமைதி'
-                          : 'Somatic Wind-down & Restful Sleep'}
+                          : 'Deep & Restful Sleep'}
                       </h4>
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'அமைதியான சூழலை உருவாக்கி, நரம்பு மண்டலத்தை முழுமையாக சாந்தப்படுத்தி மறுநாள் புத்துணர்ச்சியோடு விழிக்க உதவும் எளிய தளர்வு.'
-                          : 'Gentle nervous system down-regulation to quiet racing thoughts and ease into deep, restorative sleep effortlessly.'}
+                          : 'Put away phone screens, relax completely, and wake up feeling refreshed and energized next morning.'}
                       </p>
                     </div>
                   </div>
@@ -336,12 +336,12 @@ export default function ProgramsPage() {
                   <span>{lang === 'ta' ? 'ஆழ்ந்த அமைதியான உறக்கம்' : 'Restorative, peaceful sleep'}</span>
                 </div>
                 <span className="px-2.5 py-1 rounded-full bg-[#E8D7F1] text-[#6B3E63] text-[11px] font-semibold border border-[#CBB3FE]/80 shadow-2xs">
-                  {lang === 'ta' ? 'இரண்டும் சேர்த்து: ₹999' : 'Both Included: ₹999'}
+                  {lang === 'ta' ? 'காலை + மாலை: ₹999' : 'Morning + Evening: ₹999'}
                 </span>
               </div>
             </div>
 
-            {/* 3. WEEKEND WORKSHOPS */}
+            {/* 3. WEEKEND WORKSHOPS (Money, Inner Self-Value, Open to Everyone in Simple English) */}
             <div className="rounded-[24px] p-6 sm:p-7 bg-gradient-to-b from-[#F3F8F5] via-[#EBF4EF] to-[#E3EFE8]/80 border border-[#C5DDD0]/80 shadow-[0_20px_60px_rgba(42,82,53,0.06)] flex flex-col justify-between relative overflow-hidden md:col-span-2 lg:col-span-1">
               <div>
                 {/* Session Header */}
@@ -354,16 +354,16 @@ export default function ProgramsPage() {
                       {lang === 'ta' ? 'அமர்வு 3' : 'Session 3'}
                     </span>
                     <h3 className="text-xl sm:text-2xl font-serif font-semibold text-[#0F2742]">
-                      {lang === 'ta' ? 'ஆற்றல்மிகு வார இறுதி பயிலரங்குகள்' : 'Powerful Weekend Workshops'}
+                      {lang === 'ta' ? 'வார இறுதி சிறப்பு பயிலரங்குகள்' : 'Weekend Life Workshops'}
                     </h3>
                   </div>
                 </div>
 
-                {/* Weekend Session Visual Hero Image (Powerful Weekend Workshops) */}
+                {/* Weekend Session Visual Hero Image (Tree of Life Sprout) */}
                 <div className="relative w-full h-48 sm:h-52 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
                     src="/assets/weekend-workshop-tree.jpg"
-                    alt="Powerful Weekend Workshops"
+                    alt="Weekend Life Workshops"
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -373,20 +373,20 @@ export default function ProgramsPage() {
                   {/* Photo Title */}
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-center text-center text-white text-xs px-3.5 py-2 rounded-full bg-black/45 backdrop-blur-md border border-white/20">
                     <span className="font-serif font-medium text-[13px] tracking-wide text-center">
-                      ✦ {lang === 'ta' ? 'ஆற்றல்மிகு வார இறுதி பயிலரங்குகள்' : 'Powerful Weekend Workshops'}
+                      ✦ {lang === 'ta' ? 'வார இறுதி சிறப்பு பயிலரங்குகள்' : 'Weekend Life Workshops'}
                     </span>
                   </div>
                 </div>
 
                 <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-6 leading-relaxed">
                   {lang === 'ta'
-                    ? 'வாரந்தோறும் நேரலை வழிகாட்டல், வினா-விடை மற்றும் ஆழ்ந்த மன அமைதிக்கான 3 சிறப்பு அம்சங்கள்:'
-                    : 'Deepen your transformation with interactive weekend intensives and mentor guidance:'}
+                    ? 'பணம், சுயமதிப்பு மற்றும் வாழ்க்கை வழிகாட்டல் குறித்த வாராந்திர/மாதாந்திர நேரலை பயிலரங்குகள். யார் வேண்டுமானாலும் கலந்து கொள்ளலாம்:'
+                    : 'Weekly and monthly live online workshops on practical life topics. Open for everyone to join:'}
                 </p>
 
                 {/* Ordered Steps List */}
                 <div className="space-y-4">
-                  {/* Step 1: Live Interactive Q&A */}
+                  {/* Step 1: Money & Financial Mindset */}
                   <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#2A5235] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       1
@@ -394,18 +394,18 @@ export default function ProgramsPage() {
                     <div>
                       <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
-                          ? 'நேரலை வினா-விடை & வழிகாட்டல்'
-                          : 'Live Interactive Q&A & Mentoring'}
+                          ? 'பணம் & மன அமைதி வழிகாட்டல்'
+                          : 'Money Mindset & Financial Peace'}
                       </h4>
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
-                          ? 'வாழ்க்கைப் பிரச்சனைகள் மற்றும் தியான சந்தேகங்களைத் தீர்த்து தனிப்பயனாக்கப்பட்ட நேரலை வழிகாட்டல் பெறும் சத்ஸங்கம்.'
-                          : 'Open group Satsang to resolve personal life dilemmas, deepen meditation, and receive direct 1-on-1 guidance.'}
+                          ? 'பணம் குறித்த பயம் மற்றும் அழுத்தங்களை நீக்கி, பணத்தை நேர்மறையாகக் கையாளவும் அமைதியோடு செல்வத்தை ஈர்க்கவும் எளிய வழிகாட்டல்.'
+                          : 'Learn how to remove money stress, build a healthy relationship with wealth, and attract abundance with peace of mind.'}
                       </p>
                     </div>
                   </div>
 
-                  {/* Step 2: Somatic Breathwork & Sound Healing */}
+                  {/* Step 2: Inner Self-Value & Confidence */}
                   <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#2A5235] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       2
@@ -413,18 +413,18 @@ export default function ProgramsPage() {
                     <div>
                       <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
-                          ? 'ஆழ்ந்த மூச்சுப்பயிற்சி & ஒலி தியானம்'
-                          : 'Somatic Breathwork & Sound Bath'}
+                          ? 'சுயமதிப்பு & தன்னம்பிக்கை'
+                          : 'Inner Self-Value & Confidence'}
                       </h4>
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
-                          ? 'உடலிலும் நரம்புகளிலும் தேங்கியுள்ள ஆழமான அழுத்தங்களை விடுவிக்க வழிகாட்டப்பட்ட பிராணாயாமம் மற்றும் ஒலி தியானம்.'
-                          : 'Therapeutic pranayama and resonance sound frequencies to release stored stress and emotional blocks.'}
+                          ? 'சுயமதிப்பை உணர்ந்து, சுய சந்தேகங்களை விலக்கி, பிறருடன் ஒப்பிடாமல் உண்மையான தன்னம்பிக்கையை வளர்த்தல்.'
+                          : 'Understand your true inner worth, overcome self-doubt, stop comparing yourself to others, and build lasting self-love.'}
                       </p>
                     </div>
                   </div>
 
-                  {/* Step 3: Weekly Habit Review & Accountability */}
+                  {/* Step 3: Open for Everyone */}
                   <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#2A5235] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       3
@@ -432,13 +432,13 @@ export default function ProgramsPage() {
                     <div>
                       <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
-                          ? 'வாராந்திர முன்னேற்ற ஆய்வு'
-                          : 'Weekly Habit Review & Accountability'}
+                          ? 'அனைவருக்குமான நேரலை அரங்கம்'
+                          : 'Open for Everyone (Live Sessions)'}
                       </h4>
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
-                          ? 'வாராந்திர பழக்கவழக்க முன்னேற்றங்களை ஆய்வு செய்து, அடுத்த வாரத்திற்கான நேர்மறை அமைதியுடன் தொடங்குதல்.'
-                          : 'Milestone check-ins, mindful group reflection, and setting conscious intentions for the coming week.'}
+                          ? 'இதில் யார் வேண்டுமானாலும் கலந்து கொள்ளலாம். உங்கள் வாழ்க்கை சந்தேகங்களை நேரடியாகக் கேட்டு எளிய வாழ்வியல் தீர்வுகளைப் பெறலாம்.'
+                          : 'Anyone can join these interactive live sessions. Ask your life questions directly, learn practical tools, and grow together.'}
                       </p>
                     </div>
                   </div>
@@ -469,13 +469,13 @@ export default function ProgramsPage() {
             <div className="flex flex-col">
               <span className="text-[11px] uppercase tracking-wider text-[#8B5E83]">{lang === 'ta' ? 'கட்டணம்' : 'Program Fee'}</span>
               <strong className="text-sm text-[#0F2742] font-serif font-bold mt-0.5 text-[#0F2742]">
-                {lang === 'ta' ? '₹999 (காலை & மாலை இரண்டும்)' : '₹999 (Both Morning & Evening)'}
+                {lang === 'ta' ? '₹999 (காலை & மாலை இரண்டும்)' : '₹999 (Morning + Evening)'}
               </strong>
             </div>
             <div className="flex flex-col">
               <span className="text-[11px] uppercase tracking-wider text-[#8B5E83]">{lang === 'ta' ? 'மொழி' : 'Language'}</span>
               <strong className="text-sm text-[#0F2742] font-serif font-medium mt-0.5">
-                {lang === 'ta' ? '100% எளிய தமிழ்' : '100% Tamil Guidance'}
+                {lang === 'ta' ? '100% எளிய தமிழ்' : 'Simple Tamil Guidance'}
               </strong>
             </div>
             <div className="flex flex-col">
