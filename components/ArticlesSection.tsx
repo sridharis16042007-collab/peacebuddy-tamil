@@ -37,7 +37,7 @@ export default function ArticlesSection() {
         lang === 'ta'
           ? 'எண்ணங்களின் சுழற்சியில் சிக்கிக் கொள்ளாமல், உடனடி நிகழ்காலத்திற்குத் திரும்பும் எளிய நுட்பங்கள்.'
           : 'Gentle cognitive steps to step back from recursive loops and return to the grounded present.',
-      image: '/assets/chakra-meditation.webp',
+      image: '/assets/soothe-overthinking.jpg',
       href: '/resources#article-2',
     },
     {
