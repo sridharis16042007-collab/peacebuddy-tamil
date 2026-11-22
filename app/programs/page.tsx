@@ -209,9 +209,14 @@ export default function ProgramsPage() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex items-center gap-2 text-xs text-[#2A5235] font-semibold">
-                <CheckCircle2 className="w-4 h-4 text-[#2A5235]" />
-                <span>{lang === 'ta' ? 'புத்துணர்ச்சியான தொடக்கம்' : 'Energizing, mindful start'}</span>
+              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold">
+                <div className="flex items-center gap-2 text-[#2A5235]">
+                  <CheckCircle2 className="w-4 h-4 text-[#2A5235]" />
+                  <span>{lang === 'ta' ? 'புத்துணர்ச்சியான தொடக்கம்' : 'Energizing, mindful start'}</span>
+                </div>
+                <span className="px-2.5 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] text-[11px] font-semibold border border-[#FDE68A]/80 shadow-2xs">
+                  {lang === 'ta' ? 'காலை + மாலை: ₹999' : 'Morning + Evening: ₹999'}
+                </span>
               </div>
             </div>
 
@@ -325,9 +330,14 @@ export default function ProgramsPage() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#8B5E83]/20 flex items-center gap-2 text-xs text-[#6B3E63] font-semibold">
-                <CheckCircle2 className="w-4 h-4 text-[#8B5E83]" />
-                <span>{lang === 'ta' ? 'ஆழ்ந்த அமைதியான உறக்கம்' : 'Restorative, peaceful sleep'}</span>
+              <div className="mt-6 pt-4 border-t border-[#8B5E83]/20 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold">
+                <div className="flex items-center gap-2 text-[#6B3E63]">
+                  <CheckCircle2 className="w-4 h-4 text-[#8B5E83]" />
+                  <span>{lang === 'ta' ? 'ஆழ்ந்த அமைதியான உறக்கம்' : 'Restorative, peaceful sleep'}</span>
+                </div>
+                <span className="px-2.5 py-1 rounded-full bg-[#E8D7F1] text-[#6B3E63] text-[11px] font-semibold border border-[#CBB3FE]/80 shadow-2xs">
+                  {lang === 'ta' ? 'இரண்டும் சேர்த்து: ₹999' : 'Both Included: ₹999'}
+                </span>
               </div>
             </div>
 
@@ -435,9 +445,14 @@ export default function ProgramsPage() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex items-center gap-2 text-xs text-[#2A5235] font-semibold">
-                <span className="w-2 h-2 rounded-full bg-[#2A5235] animate-pulse" />
-                <span>{lang === 'ta' ? 'விரைவில் தொடக்கம் (Upcoming)' : 'Upcoming'}</span>
+              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex flex-wrap items-center justify-between gap-2 text-xs text-[#2A5235] font-semibold">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#2A5235] animate-pulse" />
+                  <span>{lang === 'ta' ? 'விரைவில் தொடக்கம் (Upcoming)' : 'Upcoming'}</span>
+                </div>
+                <span className="px-2.5 py-1 rounded-full bg-[#DDE6DC]/70 text-[#2A5235] text-[11px] font-semibold border border-[#C5DDD0]">
+                  {lang === 'ta' ? 'விரைவில் அறிவிப்பு' : 'Coming Soon'}
+                </span>
               </div>
             </div>
 
@@ -452,9 +467,9 @@ export default function ProgramsPage() {
               </strong>
             </div>
             <div className="flex flex-col">
-              <span className="text-[11px] uppercase tracking-wider text-[#8B5E83]">{lang === 'ta' ? 'வடிவம்' : 'Format'}</span>
-              <strong className="text-sm text-[#0F2742] font-serif font-medium mt-0.5">
-                {lang === 'ta' ? 'காலை, மாலை & வார இறுதி' : 'Morning, Evening & Weekends'}
+              <span className="text-[11px] uppercase tracking-wider text-[#8B5E83]">{lang === 'ta' ? 'கட்டணம்' : 'Program Fee'}</span>
+              <strong className="text-sm text-[#0F2742] font-serif font-bold mt-0.5 text-[#0F2742]">
+                {lang === 'ta' ? '₹999 (காலை & மாலை இரண்டும்)' : '₹999 (Both Morning & Evening)'}
               </strong>
             </div>
             <div className="flex flex-col">
@@ -471,27 +486,34 @@ export default function ProgramsPage() {
             </div>
           </div>
 
-          {/* Bottom WhatsApp Booking Action */}
-          <div className="pt-6 border-t border-[#0F2742]/10 flex flex-col sm:flex-row items-center justify-between gap-5">
+          {/* Bottom WhatsApp Booking Action with Direct Combined Pricing */}
+          <div className="pt-6 border-t border-[#0F2742]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
             <div>
-              <p className="text-xs text-[#8B5E83] font-medium uppercase tracking-wider">
-                {lang === 'ta' ? 'முன்பதிவு & கட்டண விவரங்கள்:' : 'Enrollment & Inquiries:'}
-              </p>
-              <p className="text-sm sm:text-base font-serif font-medium text-[#0F2742]">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DDE6DC] text-[#2A5235] text-[11px] font-semibold uppercase tracking-wider mb-2">
+                <span>✦ {lang === 'ta' ? 'காலை & மாலை இரண்டுக்கும் சேர்த்து' : 'Special Combined Offering'} ✦</span>
+              </div>
+              <div className="flex items-baseline gap-2.5">
+                <span className="text-3xl sm:text-4xl font-serif font-bold text-[#0F2742]">₹999</span>
+                <span className="text-xs sm:text-sm text-[#4A5A6A] line-through">₹2,499</span>
+                <span className="text-xs sm:text-sm font-semibold text-[#8B5E83]">
+                  {lang === 'ta' ? '/ மாதம் (காலை & மாலை இரண்டும் சேர்த்து)' : '/ month (Both Morning & Evening Included)'}
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-[#4A5A6A] mt-1 font-medium">
                 {lang === 'ta'
-                  ? 'கட்டணம் மற்றும் நேரடி விவரங்களை வாட்ஸ்அப்பில் அறியலாம்'
-                  : 'Connect with our team directly on WhatsApp for full details'}
+                  ? 'பிரம்ம முகூர்த்த காலை தியானம் மற்றும் இரவு நேர வழிகாட்டப்பட்ட தியானம் ஆகிய இரண்டு அமர்வுகளும் சேர்த்து மாதக் கட்டணம் ₹999 மட்டுமே.'
+                  : 'Daily Morning Brahma Muhurtham Meditation & Night Guided Meditation combined together for ₹999 / month.'}
               </p>
             </div>
 
             <a
-              href="https://wa.me/?text=Hello%20Peace%20Buddy%2C%20I%20am%20interested%20in%20the%20Monthly%20Transformation%20Program."
+              href="https://wa.me/?text=Hello%20Peace%20Buddy%2C%20I%20want%20to%20enroll%20in%20the%20Monthly%20Transformation%20Program%20(Morning%20%2B%20Evening%20Combined%20at%20%E2%82%B9999)."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 py-3.5 px-8 rounded-full bg-[#0F2742] hover:bg-[#1E3B5C] text-white text-[15px] font-medium transition-all shadow-md active:scale-95 min-h-[48px]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 py-3.5 px-8 rounded-full bg-[#0F2742] hover:bg-[#1E3B5C] text-white text-[15px] font-medium transition-all shadow-md active:scale-95 min-h-[48px] flex-shrink-0"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>{lang === 'ta' ? 'வாட்ஸ்அப்பில் முன்பதிவு செய்ய' : 'Enroll via WhatsApp'}</span>
+              <span>{lang === 'ta' ? '₹999-க்கு முன்பதிவு செய்ய' : 'Enroll for ₹999 (Both Sessions)'}</span>
             </a>
           </div>
 
