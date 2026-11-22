@@ -73,7 +73,7 @@ export default function ProgramsPage() {
           <p className="text-[16px] sm:text-[18px] text-[#4A5A6A] leading-[1.7] max-w-2xl mx-auto font-normal">
             {lang === 'ta'
               ? 'ஒரு மாத கால தினசரி தமிழ் வழிகாட்டல் மூலம் உங்கள் நாளை விழிப்புணர்வுடன் தொடங்கி, அன்றாட மன அழுத்தங்களை நீக்கி, இரவை ஆழ்ந்த அமைதியான உறக்கத்துடன் நிறைவு செய்யும் 30 நாள் வாழ்வியல் பயிற்சி.'
-              : 'A dedicated 30-day sanctuary protocol. Ground your mornings in Brahma Muhurtham stillness and wind down your evenings with reflective journaling and deep guided sleep meditation.'}
+              : 'A dedicated 30-day transformation program. Ground your mornings in Brahma Muhurtham stillness and wind down your evenings with reflective journaling and deep guided sleep meditation.'}
           </p>
         </div>
 
@@ -84,7 +84,7 @@ export default function ProgramsPage() {
           <div className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-[#0F2742]/10">
             <div>
               <span className="inline-block px-3 py-1 rounded-full text-[12px] font-semibold text-[#8B5E83] bg-[#F4D9DF] mb-2 tracking-[0.12em] uppercase">
-                ✦ 30 DAYS DAILY SANCTUARY ✦
+                ✦ 30 DAYS DAILY TRANSFORMATION ✦
               </span>
               <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[#0F2742]">
                 {lang === 'ta'
@@ -117,16 +117,16 @@ export default function ProgramsPage() {
                       {lang === 'ta' ? 'அமர்வு 1' : 'Session 1'}
                     </span>
                     <h3 className="text-xl sm:text-2xl font-serif font-semibold text-[#0F2742]">
-                      {lang === 'ta' ? 'காலை அமர்வு' : 'Morning Session'}
+                      {lang === 'ta' ? 'பிரம்ம முகூர்த்த காலை அமர்வு' : 'Brahma Muhurtham Morning Session'}
                     </h3>
                   </div>
                 </div>
 
-                {/* Morning Session Visual Hero Image (Brahma Muhurtham Meditation) */}
+                {/* Morning Session Visual Hero Image */}
                 <div className="relative w-full h-48 sm:h-52 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
                     src="/assets/morning-garden-meditation.jpg"
-                    alt="Morning Brahma Muhurtham Meditation and Gratitude"
+                    alt="Brahma Muhurtham Morning Session"
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -135,12 +135,9 @@ export default function ProgramsPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#451A03]/70 via-[#78350F]/15 to-transparent pointer-events-none" />
 
                   {/* Photo Title */}
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
-                    <span className="font-serif font-medium text-[13px]">
-                      ✦ {lang === 'ta' ? 'காலை பிரம்ம முகூர்த்த தியானம்' : 'Morning Brahma Muhurtham Meditation'}
-                    </span>
-                    <span className="text-[11px] text-[#FDE2D2] font-sans">
-                      {lang === 'ta' ? 'விடியற்காலை அமைதி' : 'Brahma Muhurtham'}
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-center text-center text-white text-xs px-3.5 py-2 rounded-full bg-black/45 backdrop-blur-md border border-white/20">
+                    <span className="font-serif font-medium text-[13px] tracking-wide text-center">
+                      ✦ {lang === 'ta' ? 'பிரம்ம முகூர்த்த காலை அமர்வு' : 'Brahma Muhurtham Morning Session'}
                     </span>
                   </div>
                 </div>
@@ -236,16 +233,16 @@ export default function ProgramsPage() {
                       {lang === 'ta' ? 'அமர்வு 2' : 'Session 2'}
                     </span>
                     <h3 className="text-xl sm:text-2xl font-serif font-semibold text-[#0F2742]">
-                      {lang === 'ta' ? 'மாலை அமர்வு' : 'Evening Session'}
+                      {lang === 'ta' ? 'இரவு நேர வழிகாட்டப்பட்ட தியானம்' : 'Night Guided Meditation'}
                     </h3>
                   </div>
                 </div>
 
-                {/* Evening Session Visual Hero Image (Night Gratitude Meditation) */}
+                {/* Evening Session Visual Hero Image (Night Guided Meditation) */}
                 <div className="relative w-full h-48 sm:h-52 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
                     src="/assets/evening-moonlight-journal.jpg"
-                    alt="Night Gratitude Meditation and Reflection"
+                    alt="Night Guided Meditation"
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -254,12 +251,9 @@ export default function ProgramsPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B]/75 via-[#1C1628]/25 to-transparent pointer-events-none" />
 
                   {/* Photo Title */}
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
-                    <span className="font-serif font-medium text-[13px]">
-                      ✦ {lang === 'ta' ? 'இரவு நன்றியுணர்வு தியானம்' : 'Night Gratitude Meditation'}
-                    </span>
-                    <span className="text-[11px] text-[#E8D7F1] font-sans">
-                      {lang === 'ta' ? 'இரவு அமைதி' : 'Night Sanctuary'}
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-center text-center text-white text-xs px-3.5 py-2 rounded-full bg-black/45 backdrop-blur-md border border-white/20">
+                    <span className="font-serif font-medium text-[13px] tracking-wide text-center">
+                      ✦ {lang === 'ta' ? 'இரவு நேர வழிகாட்டப்பட்ட தியானம்' : 'Night Guided Meditation'}
                     </span>
                   </div>
                 </div>
@@ -310,7 +304,7 @@ export default function ProgramsPage() {
                     </div>
                   </div>
 
-                  {/* Step 3: Somatic Wind-down & Restful Sleep Sanctuary */}
+                  {/* Step 3: Somatic Wind-down & Restful Sleep */}
                   <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#8B5E83] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       3
@@ -319,7 +313,7 @@ export default function ProgramsPage() {
                       <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'ஆழ்ந்த உறக்க தளர்வு & மன அமைதி'
-                          : 'Somatic Wind-down & Sleep Sanctuary'}
+                          : 'Somatic Wind-down & Restful Sleep'}
                       </h4>
                       <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
@@ -350,16 +344,16 @@ export default function ProgramsPage() {
                       {lang === 'ta' ? 'அமர்வு 3' : 'Session 3'}
                     </span>
                     <h3 className="text-xl sm:text-2xl font-serif font-semibold text-[#0F2742]">
-                      {lang === 'ta' ? 'வார இறுதி பயிலரங்குகள்' : 'Weekend Workshops'}
+                      {lang === 'ta' ? 'ஆற்றல்மிகு வார இறுதி பயிலரங்குகள்' : 'Powerful Weekend Workshops'}
                     </h3>
                   </div>
                 </div>
 
-                {/* Weekend Session Visual Hero Image (Live Masterclasses & Healing) */}
+                {/* Weekend Session Visual Hero Image (Powerful Weekend Workshops) */}
                 <div className="relative w-full h-48 sm:h-52 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
                     src="/assets/sunset-serenity.jpg"
-                    alt="Weekend Workshops, Live Q&A and Somatic Breathwork"
+                    alt="Powerful Weekend Workshops"
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -367,12 +361,9 @@ export default function ProgramsPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A2612]/75 via-[#1C3D26]/20 to-transparent pointer-events-none" />
 
                   {/* Photo Title */}
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
-                    <span className="font-serif font-medium text-[13px]">
-                      ✦ {lang === 'ta' ? 'வார இறுதி சிறப்பு பயிலரங்கு' : 'Weekend Healing Masterclass'}
-                    </span>
-                    <span className="text-[11px] text-[#DDE6DC] font-sans">
-                      {lang === 'ta' ? 'நேரலை பயிலரங்கு' : 'Weekly Live Immersion'}
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-center text-center text-white text-xs px-3.5 py-2 rounded-full bg-black/45 backdrop-blur-md border border-white/20">
+                    <span className="font-serif font-medium text-[13px] tracking-wide text-center">
+                      ✦ {lang === 'ta' ? 'ஆற்றல்மிகு வார இறுதி பயிலரங்குகள்' : 'Powerful Weekend Workshops'}
                     </span>
                   </div>
                 </div>
@@ -469,7 +460,7 @@ export default function ProgramsPage() {
             <div className="flex flex-col">
               <span className="text-[11px] uppercase tracking-wider text-[#8B5E83]">{lang === 'ta' ? 'மொழி' : 'Language'}</span>
               <strong className="text-sm text-[#0F2742] font-serif font-medium mt-0.5">
-                {lang === 'ta' ? '100% எளிய தமிழ்' : 'Tamil-First Sanctuary'}
+                {lang === 'ta' ? '100% எளிய தமிழ்' : '100% Tamil Guidance'}
               </strong>
             </div>
             <div className="flex flex-col">
