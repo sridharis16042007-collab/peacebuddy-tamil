@@ -46,8 +46,14 @@ export default function Hero() {
               </textPath>
             </text>
           </svg>
-          <div className="absolute inset-0 flex items-center justify-center text-[#8B5E83]">
-            <Sparkles className="w-4 h-4" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Image
+              src="/Peace_Buddy_Teal_Circular_Emblem.png"
+              alt="Peace Buddy Logo"
+              width={32}
+              height={32}
+              className="w-8 h-8 rounded-full object-contain shadow-xs"
+            />
           </div>
         </div>
       </div>
