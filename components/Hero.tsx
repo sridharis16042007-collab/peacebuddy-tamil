@@ -152,53 +152,73 @@ export default function Hero() {
           </svg>
 
           {/* Floating Card 1: Top-Left ("Calm your mind" / -4 deg / float-slow) */}
-          <div className="hidden md:flex absolute -left-48 lg:-left-56 top-16 z-20 flex-col items-start p-4 rounded-[22px] bg-white/75 backdrop-blur-md border border-white/85 shadow-[0_20px_50px_rgba(15,39,66,0.08)] max-w-[210px] text-left transform -rotate-4 animate-float-slow hover:scale-105 transition-transform">
-            <div className="w-8 h-8 rounded-full bg-[#F6EBEE] flex items-center justify-center text-[#8B5E83] mb-2 shadow-xs">
+          <div
+            className="hidden md:flex absolute -left-48 lg:-left-56 top-16 z-20 flex-col items-start p-4 rounded-[22px] border border-[#CFA5F7]/80 shadow-[0_20px_50px_rgba(180,140,230,0.22)] max-w-[210px] text-left transform -rotate-4 animate-float-slow hover:scale-105 hover:shadow-[0_25px_60px_rgba(180,140,230,0.30)] transition-all duration-300"
+            style={{
+              background: 'linear-gradient(135deg, #FFFFFF 0%, #F6EDFD 35%, #E5C8FB 70%, #CEA0F6 100%)',
+            }}
+          >
+            <div className="w-8 h-8 rounded-full bg-white/90 border border-white flex items-center justify-center text-[#8B5E83] mb-2 shadow-xs">
               <Wind className="w-4 h-4" />
             </div>
-            <h2 className="text-[15px] font-serif font-medium text-[#0F2742] leading-tight">
+            <h2 className="text-[15px] font-serif font-semibold text-[#0F2742] leading-tight">
               {lang === 'ta' ? 'மன அமைதி' : 'Calm your mind'}
             </h2>
-            <p className="text-[12px] text-[#4A5A6A] leading-snug mt-1">
+            <p className="text-[12px] text-[#3D2652] font-medium leading-snug mt-1">
               {lang === 'ta' ? 'எண்ணங்களை அமைதிப்படுத்துங்கள்' : 'Quiet mental noise daily'}
             </p>
           </div>
 
           {/* Floating Card 2: Bottom-Left ("Sleep deeply" / +3 deg / float-reverse) */}
-          <div className="hidden md:flex absolute -left-44 lg:-left-52 bottom-20 z-20 flex-col items-start p-4 rounded-[22px] bg-white/75 backdrop-blur-md border border-white/85 shadow-[0_20px_50px_rgba(15,39,66,0.08)] max-w-[210px] text-left transform rotate-3 animate-float-reverse hover:scale-105 transition-transform">
-            <div className="w-8 h-8 rounded-full bg-[#F1EAF4] flex items-center justify-center text-[#8B5E83] mb-2 shadow-xs">
+          <div
+            className="hidden md:flex absolute -left-44 lg:-left-52 bottom-20 z-20 flex-col items-start p-4 rounded-[22px] border border-[#CFA5F7]/80 shadow-[0_20px_50px_rgba(180,140,230,0.22)] max-w-[210px] text-left transform rotate-3 animate-float-reverse hover:scale-105 hover:shadow-[0_25px_60px_rgba(180,140,230,0.30)] transition-all duration-300"
+            style={{
+              background: 'linear-gradient(135deg, #FFFFFF 0%, #F6EDFD 35%, #E5C8FB 70%, #CEA0F6 100%)',
+            }}
+          >
+            <div className="w-8 h-8 rounded-full bg-white/90 border border-white flex items-center justify-center text-[#8B5E83] mb-2 shadow-xs">
               <Moon className="w-4 h-4" />
             </div>
-            <h2 className="text-[15px] font-serif font-medium text-[#0F2742] leading-tight">
+            <h2 className="text-[15px] font-serif font-semibold text-[#0F2742] leading-tight">
               {lang === 'ta' ? 'ஆழ்ந்த உறக்கம்' : 'Sleep deeply'}
             </h2>
-            <p className="text-[12px] text-[#4A5A6A] leading-snug mt-1">
+            <p className="text-[12px] text-[#3D2652] font-medium leading-snug mt-1">
               {lang === 'ta' ? 'நிம்மதியான இரவு அமைதி' : 'Wake up revitalized'}
             </p>
           </div>
 
           {/* Floating Card 3: Top-Right ("Daily 10-min practice" / +4 deg / float-slow) */}
-          <div className="hidden md:flex absolute -right-48 lg:-right-56 top-20 z-20 flex-col items-start p-4 rounded-[22px] bg-white/75 backdrop-blur-md border border-white/85 shadow-[0_20px_50px_rgba(15,39,66,0.08)] max-w-[210px] text-left transform rotate-4 animate-float-slow hover:scale-105 transition-transform">
-            <div className="w-8 h-8 rounded-full bg-[#DDE6DC] flex items-center justify-center text-[#2A5235] mb-2 shadow-xs">
+          <div
+            className="hidden md:flex absolute -right-48 lg:-right-56 top-20 z-20 flex-col items-start p-4 rounded-[22px] border border-[#CFA5F7]/80 shadow-[0_20px_50px_rgba(180,140,230,0.22)] max-w-[210px] text-left transform rotate-4 animate-float-slow hover:scale-105 hover:shadow-[0_25px_60px_rgba(180,140,230,0.30)] transition-all duration-300"
+            style={{
+              background: 'linear-gradient(135deg, #FFFFFF 0%, #F6EDFD 35%, #E5C8FB 70%, #CEA0F6 100%)',
+            }}
+          >
+            <div className="w-8 h-8 rounded-full bg-white/90 border border-white flex items-center justify-center text-[#2A5235] mb-2 shadow-xs">
               <Clock className="w-4 h-4" />
             </div>
-            <h2 className="text-[15px] font-serif font-medium text-[#0F2742] leading-tight">
+            <h2 className="text-[15px] font-serif font-semibold text-[#0F2742] leading-tight">
               {lang === 'ta' ? '10 நிமிட தியானம்' : 'Daily 10-min practice'}
             </h2>
-            <p className="text-[12px] text-[#4A5A6A] leading-snug mt-1">
+            <p className="text-[12px] text-[#3D2652] font-medium leading-snug mt-1">
               {lang === 'ta' ? 'எளிய தமிழ் பயிற்சிகள்' : 'Effortless, steady habit'}
             </p>
           </div>
 
           {/* Floating Card 4: Bottom-Right ("Mindful Living" / -3 deg / float-reverse) */}
-          <div className="hidden md:flex absolute -right-44 lg:-right-52 bottom-16 z-20 flex-col items-start p-4 rounded-[22px] bg-white/75 backdrop-blur-md border border-white/85 shadow-[0_20px_50px_rgba(15,39,66,0.08)] max-w-[210px] text-left transform -rotate-3 animate-float-reverse hover:scale-105 transition-transform">
-            <div className="w-8 h-8 rounded-full bg-[#F4D9DF] flex items-center justify-center text-[#8B5E83] mb-2 shadow-xs">
+          <div
+            className="hidden md:flex absolute -right-44 lg:-right-52 bottom-16 z-20 flex-col items-start p-4 rounded-[22px] border border-[#CFA5F7]/80 shadow-[0_20px_50px_rgba(180,140,230,0.22)] max-w-[210px] text-left transform -rotate-3 animate-float-reverse hover:scale-105 hover:shadow-[0_25px_60px_rgba(180,140,230,0.30)] transition-all duration-300"
+            style={{
+              background: 'linear-gradient(135deg, #FFFFFF 0%, #F6EDFD 35%, #E5C8FB 70%, #CEA0F6 100%)',
+            }}
+          >
+            <div className="w-8 h-8 rounded-full bg-white/90 border border-white flex items-center justify-center text-[#8B5E83] mb-2 shadow-xs">
               <Heart className="w-4 h-4" />
             </div>
-            <h2 className="text-[15px] font-serif font-medium text-[#0F2742] leading-tight">
+            <h2 className="text-[15px] font-serif font-semibold text-[#0F2742] leading-tight">
               {lang === 'ta' ? 'விழிப்புணர்வு வாழ்வு' : 'Mindful Living'}
             </h2>
-            <p className="text-[12px] text-[#4A5A6A] leading-snug mt-1">
+            <p className="text-[12px] text-[#3D2652] font-medium leading-snug mt-1">
               {lang === 'ta' ? 'அழுத்தமற்ற நல்வாழ்வு' : 'Less stress, true ease'}
             </p>
           </div>
@@ -217,7 +237,12 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/50 via-transparent to-transparent pointer-events-none" />
 
             {/* Emblem Overlay at bottom of arch */}
-            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md border border-white/90 shadow-md">
+            <div
+              className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full border border-white/90 shadow-md backdrop-blur-md"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 237, 253, 0.92) 50%, rgba(229, 200, 251, 0.90) 100%)',
+              }}
+            >
               <Image
                 src="/Peace_Buddy_Teal_Circular_Emblem.webp"
                 alt="Peace Buddy Emblem"
@@ -225,7 +250,7 @@ export default function Hero() {
                 height={24}
                 className="w-6 h-6 rounded-full"
               />
-              <span className="text-xs font-serif font-medium text-[#0F2742] tracking-wide">
+              <span className="text-xs font-serif font-semibold text-[#0F2742] tracking-wide">
                 Peace Buddy Sanctuary
               </span>
             </div>
