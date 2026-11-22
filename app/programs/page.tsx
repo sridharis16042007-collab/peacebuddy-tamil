@@ -105,11 +105,11 @@ export default function ProgramsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 my-10">
 
             {/* 1. MORNING SESSION */}
-            <div className="rounded-[24px] p-6 sm:p-8 bg-[#F6EBEE]/70 border border-white/90 shadow-sm flex flex-col justify-between relative overflow-hidden">
+            <div className="rounded-[24px] p-6 sm:p-8 bg-gradient-to-b from-[#FFFDF8] via-[#FFF9EE] to-[#FFF5E6]/80 border border-[#FDE68A]/70 shadow-[0_20px_60px_rgba(217,119,6,0.06)] flex flex-col justify-between relative overflow-hidden">
               <div>
                 {/* Session Header */}
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-full bg-[#DDE6DC] text-[#2A5235] flex-shrink-0">
+                  <div className="p-3 rounded-full bg-[#FEF3C7] text-[#B45309] flex-shrink-0">
                     <Sun className="w-6 h-6" />
                   </div>
                   <div>
@@ -122,25 +122,25 @@ export default function ProgramsPage() {
                   </div>
                 </div>
 
-                {/* Morning Session Visual Hero Image (Sunrise Gratitude & Meditation) */}
+                {/* Morning Session Visual Hero Image (Brahma Muhurtham Meditation) */}
                 <div className="relative w-full h-52 sm:h-60 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
-                    src="/assets/morning-gratitude-sunrise.jpg"
-                    alt="Brahma Muhurtham Morning Meditation and Gratitude Writing"
+                    src="/assets/morning-garden-meditation.jpg"
+                    alt="Morning Brahma Muhurtham Meditation and Gratitude"
                     fill
                     sizes="(max-width: 768px) 100vw, 550px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/65 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#451A03]/70 via-[#78350F]/15 to-transparent pointer-events-none" />
 
                   {/* Photo Title */}
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
                     <span className="font-serif font-medium text-[13px]">
-                      ✦ {lang === 'ta' ? 'பிரம்ம முகூர்த்தம் & நன்றியுணர்வு' : 'Brahma Muhurtham & Gratitude'}
+                      ✦ {lang === 'ta' ? 'காலை பிரம்ம முகூர்த்த தியானம்' : 'Morning Brahma Muhurtham Meditation'}
                     </span>
                     <span className="text-[11px] text-[#FDE2D2] font-sans">
-                      {lang === 'ta' ? 'விடியற்காலை அமைதி' : 'Golden Sunrise'}
+                      {lang === 'ta' ? 'விடியற்காலை அமைதி' : 'Brahma Muhurtham'}
                     </span>
                   </div>
                 </div>
@@ -219,7 +219,7 @@ export default function ProgramsPage() {
             </div>
 
             {/* 2. EVENING SESSION */}
-            <div className="rounded-[24px] p-6 sm:p-8 bg-[#F1EAF4]/70 border border-white/90 shadow-sm flex flex-col justify-between relative overflow-hidden">
+            <div className="rounded-[24px] p-6 sm:p-8 bg-gradient-to-b from-[#FAF7FD] via-[#F3EDF9] to-[#EBE2F5]/80 border border-[#E0D0EB]/90 shadow-[0_20px_60px_rgba(139,94,131,0.06)] flex flex-col justify-between relative overflow-hidden">
               <div>
                 {/* Session Header */}
                 <div className="flex items-center gap-3 mb-6">
@@ -246,7 +246,7 @@ export default function ProgramsPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F2742]/70 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B]/75 via-[#1C1628]/25 to-transparent pointer-events-none" />
 
                   {/* Photo Title */}
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
