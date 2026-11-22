@@ -201,7 +201,7 @@ export default function AdminPage() {
           <div className="flex items-center gap-4">
             <div className="relative w-12 h-12 flex-shrink-0">
               <Image
-                src="/Peace_Buddy_Teal_Circular_Emblem.webp"
+                src="/Peace_Buddy_Teal_Circular_Emblem.png"
                 alt="Peace Buddy Logo"
                 width={48}
                 height={48}

@@ -244,7 +244,7 @@ export default function Hero() {
               }}
             >
               <Image
-                src="/Peace_Buddy_Teal_Circular_Emblem.webp"
+                src="/Peace_Buddy_Teal_Circular_Emblem.png"
                 alt="Peace Buddy Emblem"
                 width={24}
                 height={24}

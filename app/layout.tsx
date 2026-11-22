@@ -133,9 +133,9 @@ export default function RootLayout({
         {/* Preload hero logo emblem for fastest LCP */}
         <link
           rel="preload"
-          href="/Peace_Buddy_Teal_Circular_Emblem.webp"
+          href="/Peace_Buddy_Teal_Circular_Emblem.png"
           as="image"
-          type="image/webp"
+          type="image/png"
         />
         {/* JSON-LD Structured Data */}
         <script

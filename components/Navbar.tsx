@@ -47,7 +47,7 @@ export default function Navbar() {
           >
             <div className="relative w-9 h-9 flex-shrink-0">
               <Image
-                src="/Peace_Buddy_Teal_Circular_Emblem.webp"
+                src="/Peace_Buddy_Teal_Circular_Emblem.png"
                 alt="Peace Buddy Logo"
                 width={36}
                 height={36}
@@ -153,7 +153,7 @@ export default function Navbar() {
             >
               <div className="relative w-9 h-9">
                 <Image
-                  src="/Peace_Buddy_Teal_Circular_Emblem.webp"
+                  src="/Peace_Buddy_Teal_Circular_Emblem.png"
                   alt="Peace Buddy Logo"
                   width={36}
                   height={36}
