@@ -1,0 +1,243 @@
+{
+  "classes": [
+    {
+      "id": "cls-1795331190033-n48lk",
+      "name": "fdsf",
+      "description": "gdf",
+      "date": "2026-11-22",
+      "start_time": "12:40",
+      "duration_minutes": 45,
+      "meet_link": "https://meet.google.com/home?pli=1",
+      "status": "scheduled",
+      "original_date": null,
+      "original_time": null,
+      "postpone_reason": null,
+      "cancel_reason": null,
+      "created_by": "admin-user-001",
+      "created_at": "2026-11-22T07:06:30.033Z",
+      "updated_at": "2026-11-22T07:06:30.033Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "admin-user-001",
+      "email": "admin@peacebuddytamil.com",
+      "password_hash": "9229f1a6a34f9c1bc61b33e34986a68d9b606a797fa1378503d0b9fbfef46012e504b1d970e83ecd350002e4fcbc7af71361aa68fe4edb4385d9a03e5334d728",
+      "name": "Peace Buddy Admin",
+      "role": "admin",
+      "payment_status": "paid",
+      "is_paid": true,
+      "created_at": "2026-11-22T06:49:22.708Z",
+      "last_login_at": "2026-11-22T07:30:54.397Z"
+    },
+    {
+      "id": "usr-1795330986823-m33ty",
+      "email": "sridharis16042007@gmail.com",
+      "password_hash": "96661280ccbde2b40c024b224dd5f569b39728a306b25932648727837f134ccbacec68ee38846441c62c00bac17b977f4200bdebeb6b4c5aa3e523f94289ecf9",
+      "name": "sridhari",
+      "phone": "+91 98765 43210",
+      "role": "customer",
+      "payment_status": "paid",
+      "is_paid": true,
+      "paid_at": "2026-11-22T07:30:54.419Z",
+      "notes": "மாதாந்திர கட்டணம் செலுத்தப்பட்டது (Full Monthly Access)",
+      "created_at": "2026-11-22T07:03:06.823Z",
+      "last_login_at": "2026-11-22T07:12:00.000Z"
+    },
+    {
+      "id": "usr-sample-02",
+      "email": "kavitha.tamil@gmail.com",
+      "password_hash": "96661280ccbde2b40c024b224dd5f569b39728a306b25932648727837f134ccbacec68ee38846441c62c00bac17b977f4200bdebeb6b4c5aa3e523f94289ecf9",
+      "name": "கவிதா சுந்தரம் (Kavitha)",
+      "phone": "+91 94432 11009",
+      "role": "customer",
+      "payment_status": "unpaid",
+      "is_paid": false,
+      "notes": "இலவச வெள்ளோட்டம் / கட்டணம் நிலுவையில் உள்ளது",
+      "created_at": "2026-11-22T06:55:00.000Z",
+      "last_login_at": "2026-11-22T07:00:00.000Z"
+    }
+  ],
+  "user_roles": [
+    {
+      "user_id": "admin-user-001",
+      "email": "admin@peacebuddytamil.com",
+      "role": "admin",
+      "created_at": "2026-11-22T06:49:22.708Z"
+    },
+    {
+      "user_id": "usr-1795330986823-m33ty",
+      "email": "sridharis16042007@gmail.com",
+      "role": "customer",
+      "created_at": "2026-11-22T07:03:06.823Z"
+    },
+    {
+      "user_id": "usr-sample-02",
+      "email": "kavitha.tamil@gmail.com",
+      "role": "customer",
+      "created_at": "2026-11-22T06:55:00.000Z"
+    }
+  ],
+  "subscribers": [
+    {
+      "id": "sub-sample-01",
+      "email": "sridharis16042007@gmail.com",
+      "user_id": null,
+      "is_subscribed": true,
+      "created_at": "2026-11-22T06:49:22.708Z"
+    }
+  ],
+  "email_logs": [
+    {
+      "id": "log-1795331190047-nmkzg",
+      "class_id": "cls-1795331190033-n48lk",
+      "class_name": "fdsf",
+      "recipient_email": "admin@peacebuddytamil.com",
+      "type": "created",
+      "status": "sent",
+      "error_message": null,
+      "sent_at": "2026-11-22T07:06:30.047Z"
+    },
+    {
+      "id": "log-1795331190041-p7r5s",
+      "class_id": "cls-1795331190033-n48lk",
+      "class_name": "fdsf",
+      "recipient_email": "sridharis16042007@gmail.com",
+      "type": "created",
+      "status": "sent",
+      "error_message": null,
+      "sent_at": "2026-11-22T07:06:30.041Z"
+    },
+    {
+      "id": "log-1795330769062-hpqmt",
+      "class_id": "cls-1795330769038-58va3",
+      "class_name": "mind os",
+      "recipient_email": "admin@peacebuddytamil.com",
+      "type": "created",
+      "status": "sent",
+      "error_message": null,
+      "sent_at": "2026-11-22T06:59:29.062Z"
+    },
+    {
+      "id": "log-1795330769047-9g6ky",
+      "class_id": "cls-1795330769038-58va3",
+      "class_name": "mind os",
+      "recipient_email": "sridharis16042007@gmail.com",
+      "type": "created",
+      "status": "sent",
+      "error_message": null,
+      "sent_at": "2026-11-22T06:59:29.047Z"
+    },
+    {
+      "id": "log-1795330194577-wub66",
+      "class_id": "cls-1795330194519-6yn6g",
+      "class_name": "விழிப்புணர்வு மாலை தியானம் (Mindful Sunset Peace)",
+      "recipient_email": "admin@peacebuddytamil.com",
+      "type": "postponed",
+      "status": "sent",
+      "error_message": null,
+      "sent_at": "2026-11-22T06:49:54.577Z"
+    },
+    {
+      "id": "log-1795330194572-rj6zy",
+      "class_id": "cls-1795330194519-6yn6g",
+      "class_name": "விழிப்புணர்வு மாலை தியானம் (Mindful Sunset Peace)",
+      "recipient_email": "sridharis16042007@gmail.com",
+      "type": "postponed",
+      "status": "sent",
+      "error_message": null,
+      "sent_at": "2026-11-22T06:49:54.572Z"
+    },
+    {
+      "id": "log-1795330194545-zykv0",
+      "class_id": "cls-1795330194519-6yn6g",
+      "class_name": "விழிப்புணர்வு மாலை தியானம் (Mindful Sunset Peace)",
+      "recipient_email": "admin@peacebuddytamil.com",
+      "type": "created",
+      "status": "sent",
+      "error_message": null,
+      "sent_at": "2026-11-22T06:49:54.545Z"
+    },
+    {
+      "id": "log-1795330194540-qh49k",
+      "class_id": "cls-1795330194519-6yn6g",
+      "class_name": "விழிப்புணர்வு மாலை தியானம் (Mindful Sunset Peace)",
+      "recipient_email": "sridharis16042007@gmail.com",
+      "type": "created",
+      "status": "sent",
+      "error_message": null,
+      "sent_at": "2026-11-22T06:49:54.540Z"
+    }
+  ],
+  "sessions": [
+    {
+      "token": "4b4ac85b3232503963ca8350bc6564a1d423470199f09ab94c5aeb2a5436026f",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T06:49:38.247Z"
+    },
+    {
+      "token": "1bb21942bb314ec344d8edee322ff62f6ffd65292d8f5a7b7032915e67bc1f39",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T06:49:38.253Z"
+    },
+    {
+      "token": "636c6e027d72fb93f2e69d7d329238f9aa9eec26602b343343780bad6da11dda",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T06:49:54.492Z"
+    },
+    {
+      "token": "c192b3adfa802549f6d49743c98c0cc94cc1906aa663de5c885172768860ee24",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T06:49:54.497Z"
+    },
+    {
+      "token": "9d61961dd62d35c4db7b08f227098ed375735b67ab456dad96c4e3482e7b291e",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T06:56:56.396Z"
+    },
+    {
+      "token": "74b8ede6286838001d4ab019609d1d2db72363bdf008c1ac61d6d9f2cf661d23",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T06:56:56.404Z"
+    },
+    {
+      "token": "08f29fda1c4b8d536c9aea6ad5a0e2790ef79f7487950783abbcbdc86ab9bbb3",
+      "user_id": "usr-1795330986823-m33ty",
+      "expires_at": "2026-12-22T07:03:06.831Z"
+    },
+    {
+      "token": "3e5528704b6351c842f83c4607f5038972d26ee6ff047000cf2ac0597079372c",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T07:05:29.654Z"
+    },
+    {
+      "token": "2cd6e29d1aaeea91247bb5c24058e9f3855cb062ff18c3d0111fdd90c914aa97",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T07:05:29.664Z"
+    },
+    {
+      "token": "8ff1f16e61f9d08dfece12766012bad6cc192f02192bb2b126fca222011b8307",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T07:30:41.023Z"
+    },
+    {
+      "token": "747e51c40f9fdb7e8c8b382d28043d5e7a241ff63ddb46c2d1e35145c1921858",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T07:30:41.030Z"
+    },
+    {
+      "token": "9a9bb5db062003d2127872184bf5915133b427ece6b9e6620e014cb33a796ffc",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T07:30:54.388Z"
+    },
+    {
+      "token": "b883af6c1ead4bea18a91f2758f8215eb1e663c41ea1df0853430394ced98129",
+      "user_id": "admin-user-001",
+      "expires_at": "2026-12-22T07:30:54.393Z"
+    }
+  ],
+  "settings": {
+    "google_sheets_url": "https://script.google.com/macros/s/AKfycbzCRDSvt56PAXknih3RtgNL4JMH1fuKtZ4G6vUSUDHI_xz4Bz7UmbCHZgGGkMfMWynl9A/exec",
+    "site_url": "http://localhost:3000"
+  }
+}

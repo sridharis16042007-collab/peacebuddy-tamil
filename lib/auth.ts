@@ -5,6 +5,7 @@ import {
   hashPassword,
   createSession,
   deleteSession,
+  recordUserLogin,
   UserItem,
   UserRoleType,
 } from './db';
@@ -73,6 +74,7 @@ export async function authenticateCredentials(
   if (!auth) return null;
 
   const token = await createSession(user.id);
+  await recordUserLogin(user.id);
   return { user: auth.user, role: auth.role, token };
 }
 

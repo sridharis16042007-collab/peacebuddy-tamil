@@ -42,6 +42,8 @@ export default function ClassesPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isPaid, setIsPaid] = useState(false);
+  const [paymentStatus, setPaymentStatus] = useState<string>('unpaid');
   const [userRole, setUserRole] = useState<string | null>(null);
   const [now, setNow] = useState<number>(Date.now());
   const [activeTab, setActiveTab] = useState<'upcoming' | 'past'>('upcoming');
@@ -61,6 +63,8 @@ export default function ClassesPage() {
       if (data.success) {
         setClasses(data.classes || []);
         setIsLoggedIn(!!data.isLoggedIn);
+        setIsPaid(!!data.isPaid);
+        setPaymentStatus(data.paymentStatus || 'unpaid');
         setUserRole(data.userRole || null);
       } else {
         setError(data.error || 'Failed to load class schedule');
@@ -218,10 +222,25 @@ export default function ClassesPage() {
             </div>
 
             {isLoggedIn ? (
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#ECFDF5] border border-[#A7F3D0] text-[#065F46] font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#059669]" />
-                <span>{lang === 'ta' ? 'உள்நுழைந்துள்ளீர்கள் (Meet இணைப்புகள் தெரியும்)' : 'Logged In (Meet links visible)'}</span>
-              </div>
+              isPaid || userRole === 'admin' ? (
+                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#ECFDF5] border border-[#A7F3D0] text-[#065F46] font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#059669]" />
+                  <span>
+                    {lang === 'ta'
+                      ? 'கட்டண உறுப்பினர் (Meet நேரலை இயங்கும்)'
+                      : 'Paid Member (Live Meet Enabled)'}
+                  </span>
+                </div>
+              ) : (
+                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFFBEB] border border-[#FDE68A] text-[#92400E] font-medium">
+                  <AlertCircle className="w-3.5 h-3.5 text-[#D97706]" />
+                  <span>
+                    {lang === 'ta'
+                      ? 'கட்டணம் நிலுவை (சந்தா செயல்படுத்தவும்)'
+                      : 'Payment Pending (Activation Required)'}
+                  </span>
+                </div>
+              )
             ) : (
               <Link
                 href="/login?redirect=/classes"
@@ -462,8 +481,26 @@ export default function ClassesPage() {
                             : 'Google Meet link is only visible to logged-in members.'}
                         </p>
                       </div>
+                    ) : !isPaid && userRole !== 'admin' ? (
+                      /* Logged in but Unpaid - Prompt to activate subscription */
+                      <div className="space-y-2">
+                        <a
+                          href="https://wa.me/919944445555?text=வணக்கம்%20Peace%20Buddy,%20நான்%20வகுப்பில்%20இணைய%20சந்தாவை%20செயல்படுத்த%20விரும்புகிறேன்"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-gradient-to-r from-[#D97706] to-[#F59E0B] hover:from-[#B45309] hover:to-[#D97706] text-white text-xs sm:text-sm font-semibold shadow-md transition-all min-h-[48px]"
+                        >
+                          <Lock className="w-4 h-4" />
+                          <span>{lang === 'ta' ? 'சந்தா செயல்படுத்த WhatsApp செய்க' : 'Activate Access on WhatsApp'}</span>
+                        </a>
+                        <p className="text-[11px] text-[#B45309] text-center font-medium">
+                          {lang === 'ta'
+                            ? 'இந்த வகுப்பில் இணைய கட்டணச் சந்தா தேவை. நிர்வாகியைத் தொடர்புகொள்ளவும்.'
+                            : 'Active subscription required. Contact admin to activate access.'}
+                        </p>
+                      </div>
                     ) : isJoinActive && cls.meet_link ? (
-                      /* Logged in & Active window - Enabled Join Button */
+                      /* Logged in & Paid & Active window - Enabled Join Button */
                       <div className="space-y-2">
                         <a
                           href={cls.meet_link}
@@ -480,7 +517,7 @@ export default function ClassesPage() {
                         </p>
                       </div>
                     ) : (
-                      /* Logged in but not yet 10m before start - Disabled Countdown Button */
+                      /* Logged in & Paid but not yet 10m before start - Disabled Countdown Button */
                       <div className="space-y-2">
                         <button
                           disabled

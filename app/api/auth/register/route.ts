@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createUser, createSession } from '@/lib/db';
 import { setSessionCookie } from '@/lib/auth';
+import { syncCustomerToGoogleSheets } from '@/lib/googleSheets';
 
 export async function POST(req: NextRequest) {
   try {
@@ -27,6 +28,11 @@ export async function POST(req: NextRequest) {
       name,
       role: 'customer',
     });
+
+    // Automatically sync new customer to Google Sheets
+    syncCustomerToGoogleSheets(user).catch((err) =>
+      console.error('Failed to sync new customer to Google Sheets:', err)
+    );
 
     const token = await createSession(user.id);
     const response = NextResponse.json({

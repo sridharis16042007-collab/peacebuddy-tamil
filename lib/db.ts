@@ -4,6 +4,7 @@ import crypto from 'crypto';
 
 export type ClassStatus = 'scheduled' | 'postponed' | 'cancelled';
 export type UserRoleType = 'admin' | 'customer';
+export type PaymentStatus = 'paid' | 'unpaid' | 'trial';
 export type EmailLogType = 'created' | 'updated' | 'postponed' | 'cancelled' | 'reminder';
 
 export interface ClassItem {
@@ -29,7 +30,15 @@ export interface UserItem {
   email: string;
   password_hash: string;
   name: string;
+  phone?: string;
+  role?: UserRoleType;
+  payment_status: PaymentStatus;
+  is_paid: boolean;
+  paid_at?: string | null;
+  paid_until?: string | null;
+  notes?: string;
   created_at: string;
+  last_login_at?: string | null;
 }
 
 export interface UserRoleItem {
@@ -58,6 +67,11 @@ export interface EmailLogItem {
   sent_at: string;
 }
 
+export interface SettingsData {
+  google_sheets_url?: string;
+  site_url?: string;
+}
+
 interface DatabaseSchema {
   classes: ClassItem[];
   users: UserItem[];
@@ -65,6 +79,7 @@ interface DatabaseSchema {
   subscribers: SubscriberItem[];
   email_logs: EmailLogItem[];
   sessions: { token: string; user_id: string; expires_at: string }[];
+  settings?: SettingsData;
 }
 
 const DATA_DIR = path.join(process.cwd(), 'data');
@@ -135,7 +150,11 @@ function getInitialData(): DatabaseSchema {
         email: defaultAdminEmail,
         password_hash: defaultAdminPassword,
         name: 'Peace Buddy Admin',
+        role: 'admin',
+        payment_status: 'paid',
+        is_paid: true,
         created_at: new Date().toISOString(),
+        last_login_at: new Date().toISOString(),
       },
     ],
     user_roles: [
@@ -157,6 +176,12 @@ function getInitialData(): DatabaseSchema {
     ],
     email_logs: [],
     sessions: [],
+    settings: {
+      google_sheets_url:
+        process.env.GOOGLE_SHEETS_WEBHOOK_URL ||
+        'https://script.google.com/macros/s/AKfycbzCRDSvt56PAXknih3RtgNL4JMH1fuKtZ4G6vUSUDHI_xz4Bz7UmbCHZgGGkMfMWynl9A/exec',
+      site_url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+    },
   };
 }
 
@@ -180,6 +205,24 @@ function readDb(): DatabaseSchema {
     if (!parsed.subscribers) parsed.subscribers = [];
     if (!parsed.email_logs) parsed.email_logs = [];
     if (!parsed.sessions) parsed.sessions = [];
+    if (!parsed.settings) {
+      parsed.settings = {
+        google_sheets_url:
+          process.env.GOOGLE_SHEETS_WEBHOOK_URL ||
+          'https://script.google.com/macros/s/AKfycbzCRDSvt56PAXknih3RtgNL4JMH1fuKtZ4G6vUSUDHI_xz4Bz7UmbCHZgGGkMfMWynl9A/exec',
+        site_url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+      };
+    }
+
+    // Ensure users have payment fields
+    parsed.users.forEach((u: UserItem) => {
+      if (u.payment_status === undefined) {
+        const isAdmin = parsed.user_roles.some((r: any) => r.user_id === u.id && r.role === 'admin');
+        u.is_paid = isAdmin ? true : Boolean(u.is_paid);
+        u.payment_status = isAdmin ? 'paid' : (u.is_paid ? 'paid' : 'unpaid');
+      }
+    });
+
     return parsed;
   } catch (err) {
     console.error('Error reading db.json, returning initial data fallback:', err);
@@ -409,7 +452,11 @@ export async function createUser(data: {
     email: cleanEmail,
     password_hash: hashPassword(data.password),
     name: (data.name || cleanEmail.split('@')[0]).trim(),
+    role: data.role || 'customer',
+    payment_status: data.role === 'admin' ? 'paid' : 'unpaid',
+    is_paid: data.role === 'admin',
     created_at: new Date().toISOString(),
+    last_login_at: null,
   };
 
   const userRole: UserRoleItem = {
@@ -552,4 +599,92 @@ export async function logEmailSend(params: {
 export async function getEmailLogs(limit = 100): Promise<EmailLogItem[]> {
   const db = readDb();
   return db.email_logs.slice(0, limit);
+}
+
+// =====================================================================
+// CUSTOMERS & PAYMENTS MANAGEMENT
+// =====================================================================
+
+export async function getAllCustomers(): Promise<UserItem[]> {
+  const db = readDb();
+  // Filter for customers (or users with role 'customer')
+  const customers = db.users.map((u) => {
+    const roleRecord = db.user_roles.find((r) => r.user_id === u.id);
+    const role = roleRecord?.role || u.role || 'customer';
+    const isPaid = role === 'admin' ? true : Boolean(u.is_paid);
+    const paymentStatus: PaymentStatus = role === 'admin' ? 'paid' : (u.payment_status || (isPaid ? 'paid' : 'unpaid'));
+    return {
+      ...u,
+      role,
+      is_paid: isPaid,
+      payment_status: paymentStatus,
+    };
+  });
+
+  // Sort by created_at descending (newest first)
+  customers.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+  return customers;
+}
+
+export async function updateCustomerPayment(
+  userId: string,
+  isPaid: boolean,
+  notes?: string
+): Promise<UserItem> {
+  const db = readDb();
+  const user = db.users.find((u) => u.id === userId);
+  if (!user) {
+    throw new Error('User not found');
+  }
+
+  user.is_paid = isPaid;
+  user.payment_status = isPaid ? 'paid' : 'unpaid';
+  if (isPaid) {
+    user.paid_at = new Date().toISOString();
+  }
+  if (notes !== undefined) {
+    user.notes = notes;
+  }
+
+  writeDb(db);
+  return user;
+}
+
+export async function recordUserLogin(userId: string): Promise<void> {
+  try {
+    const db = readDb();
+    const user = db.users.find((u) => u.id === userId);
+    if (user) {
+      user.last_login_at = new Date().toISOString();
+      writeDb(db);
+    }
+  } catch (err) {
+    console.error('Error recording user login:', err);
+  }
+}
+
+// =====================================================================
+// SYSTEM SETTINGS (Google Sheets URL, etc.)
+// =====================================================================
+
+export async function getSettings(): Promise<SettingsData> {
+  const db = readDb();
+  return (
+    db.settings || {
+      google_sheets_url:
+        process.env.GOOGLE_SHEETS_WEBHOOK_URL ||
+        'https://script.google.com/macros/s/AKfycbzCRDSvt56PAXknih3RtgNL4JMH1fuKtZ4G6vUSUDHI_xz4Bz7UmbCHZgGGkMfMWynl9A/exec',
+      site_url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+    }
+  );
+}
+
+export async function updateSettings(newSettings: Partial<SettingsData>): Promise<SettingsData> {
+  const db = readDb();
+  if (!db.settings) {
+    db.settings = {};
+  }
+  db.settings = { ...db.settings, ...newSettings };
+  writeDb(db);
+  return db.settings;
 }

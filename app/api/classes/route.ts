@@ -10,6 +10,8 @@ export async function GET(req: NextRequest) {
   try {
     const auth = await getAuthContext(req);
     const isLoggedIn = !!auth;
+    const isPaid = auth?.role === 'admin' ? true : Boolean(auth?.user?.is_paid);
+    const paymentStatus = auth?.role === 'admin' ? 'paid' : (auth?.user?.payment_status || (isPaid ? 'paid' : 'unpaid'));
 
     const { searchParams } = new URL(req.url);
     const search = searchParams.get('search') || undefined;
@@ -18,20 +20,22 @@ export async function GET(req: NextRequest) {
 
     const allClasses = await getAllClasses({ search, date, status });
 
-    // Sanitize classes: hide meet_link for anonymous users
+    // Sanitize classes: hide meet_link for anonymous users or unpaid customers
     const sanitized = allClasses.map((cls) => {
-      if (isLoggedIn) {
+      if (isLoggedIn && (isPaid || auth?.role === 'admin')) {
         return cls;
       }
       return {
         ...cls,
-        meet_link: '', // Masked for non-logged in users
+        meet_link: '', // Masked for non-logged in or unpaid users
       };
     });
 
     return NextResponse.json({
       success: true,
       isLoggedIn,
+      isPaid,
+      paymentStatus,
       userRole: auth?.role || null,
       classes: sanitized,
     });

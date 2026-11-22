@@ -23,6 +23,15 @@ import {
   ArrowRight,
   Filter,
   Users,
+  Copy,
+  Check,
+  Send,
+  CreditCard,
+  UserCheck,
+  UserX,
+  FileSpreadsheet,
+  Database,
+  Lock,
 } from 'lucide-react';
 
 interface ClassItem {
@@ -42,6 +51,20 @@ interface ClassItem {
   updated_at: string;
 }
 
+interface CustomerItem {
+  id: string;
+  email: string;
+  name: string;
+  phone?: string;
+  role?: string;
+  payment_status: 'paid' | 'unpaid' | 'trial';
+  is_paid: boolean;
+  paid_at?: string | null;
+  notes?: string;
+  created_at: string;
+  last_login_at?: string | null;
+}
+
 interface EmailLogItem {
   id: string;
   class_id?: string | null;
@@ -53,6 +76,140 @@ interface EmailLogItem {
   sent_at: string;
 }
 
+const APPS_SCRIPT_SNIPPET = `/**
+ * PEACE BUDDY TAMIL — GOOGLE SHEETS & FREE EMAIL WEBHOOK
+ * Paste into Extensions > Apps Script in your Google Sheet, then Deploy as Web App.
+ */
+function doGet(e) {
+  return ContentService.createTextOutput(JSON.stringify({
+    status: "active",
+    message: "Peace Buddy Google Sheets & Free Email Service is running!"
+  })).setMimeType(ContentService.MimeType.JSON);
+}
+
+function doPost(e) {
+  var lock = LockService.getScriptLock();
+  try { lock.waitLock(30000); } catch(err) {
+    return ContentService.createTextOutput(JSON.stringify({ success: false, error: "Lock error" }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  try {
+    var raw = e && e.postData ? e.postData.contents : "";
+    var data = raw ? JSON.parse(raw) : (e ? e.parameter : {});
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var action = data.action || "";
+
+    if (action === "send_email" || action === "email") {
+      var recipient = data.to || data.recipient_email;
+      MailApp.sendEmail({
+        to: recipient,
+        subject: data.subject || "✦ Peace Buddy Tamil Notification",
+        htmlBody: data.html || "",
+        body: data.text || "Please view in HTML email client",
+        name: "Peace Buddy Tamil"
+      });
+      return ContentService.createTextOutput(JSON.stringify({ success: true, message: "Email sent to " + recipient }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "sync_customer") {
+      syncCustomerRow(ss, data.customer);
+      return ContentService.createTextOutput(JSON.stringify({ success: true })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "sync_all_customers") {
+      var customers = data.customers || [];
+      for (var i = 0; i < customers.length; i++) {
+        syncCustomerRow(ss, customers[i]);
+      }
+      return ContentService.createTextOutput(JSON.stringify({ success: true, count: customers.length })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "sync_class") {
+      syncClassRow(ss, data.classItem);
+      return ContentService.createTextOutput(JSON.stringify({ success: true })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "sync_all_classes") {
+      var classesList = data.classes || [];
+      for (var j = 0; j < classesList.length; j++) {
+        syncClassRow(ss, classesList[j]);
+      }
+      return ContentService.createTextOutput(JSON.stringify({ success: true, count: classesList.length })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "test") {
+      var testTo = data.to || Session.getActiveUser().getEmail();
+      MailApp.sendEmail({
+        to: testTo,
+        subject: "✦ [Peace Buddy] Free Email Test via Google Sheets",
+        htmlBody: "<h2>✦ Google Sheets Free Email Connected!</h2><p>Your Peace Buddy website is now sending free emails directly through your Google account!</p>",
+        name: "Peace Buddy Tamil"
+      });
+      return ContentService.createTextOutput(JSON.stringify({ success: true, message: "Test email sent to " + testTo })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    return ContentService.createTextOutput(JSON.stringify({ success: false, error: "Unknown action" })).setMimeType(ContentService.MimeType.JSON);
+  } catch(err) {
+    return ContentService.createTextOutput(JSON.stringify({ success: false, error: err.toString() })).setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function syncCustomerRow(ss, customer) {
+  if (!customer || !customer.email) return;
+  var sheet = ss.getSheetByName("Customers");
+  if (!sheet) {
+    sheet = ss.insertSheet("Customers");
+    sheet.appendRow(["User ID", "Name", "Email", "Phone", "Payment Status", "Is Paid", "Joined Date", "Last Login", "Role", "Notes", "Last Synced"]);
+    sheet.getRange(1, 1, 1, 11).setBackground("#2D2342").setFontColor("#FFFFFF").setFontWeight("bold");
+    sheet.setFrozenRows(1);
+  }
+  var email = String(customer.email).toLowerCase().trim();
+  var isPaid = Boolean(customer.is_paid || customer.payment_status === "paid");
+  var rowData = [customer.id||"", customer.name||"", email, customer.phone||"", isPaid ? "PAID" : "UNPAID", isPaid ? "TRUE" : "FALSE", customer.created_at||"", customer.last_login_at||"Never", customer.role||"customer", customer.notes||"", new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })];
+  var lastRow = sheet.getLastRow();
+  var foundRow = -1;
+  if (lastRow > 1) {
+    var emails = sheet.getRange(2, 3, lastRow - 1, 1).getValues();
+    for (var r = 0; r < emails.length; r++) {
+      if (String(emails[r][0]).toLowerCase().trim() === email) { foundRow = r + 2; break; }
+    }
+  }
+  var targetRow = foundRow > 0 ? foundRow : lastRow + 1;
+  sheet.getRange(targetRow, 1, 1, rowData.length).setValues([rowData]);
+  var statusCell = sheet.getRange(targetRow, 5);
+  if (isPaid) {
+    statusCell.setBackground("#D1E7DD").setFontColor("#0F5132").setFontWeight("bold");
+  } else {
+    statusCell.setBackground("#F8D7DA").setFontColor("#842029").setFontWeight("bold");
+  }
+}
+
+function syncClassRow(ss, classItem) {
+  if (!classItem || !classItem.id) return;
+  var sheet = ss.getSheetByName("Classes");
+  if (!sheet) {
+    sheet = ss.insertSheet("Classes");
+    sheet.appendRow(["Class ID", "Name", "Date", "Start Time", "Duration", "Status", "Meet Link", "Postpone Reason", "Cancel Reason", "Updated At"]);
+    sheet.getRange(1, 1, 1, 10).setBackground("#3A2B5C").setFontColor("#FFFFFF").setFontWeight("bold");
+    sheet.setFrozenRows(1);
+  }
+  var rowData = [classItem.id, classItem.name||"", classItem.date||"", classItem.start_time||"", classItem.duration_minutes||45, (classItem.status||"").toUpperCase(), classItem.meet_link||"", classItem.postpone_reason||"", classItem.cancel_reason||"", new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })];
+  var lastRow = sheet.getLastRow();
+  var foundRow = -1;
+  if (lastRow > 1) {
+    var ids = sheet.getRange(2, 1, lastRow - 1, 1).getValues();
+    for (var r = 0; r < ids.length; r++) {
+      if (String(ids[r][0]) === String(classItem.id)) { foundRow = r + 2; break; }
+    }
+  }
+  var targetRow = foundRow > 0 ? foundRow : lastRow + 1;
+  sheet.getRange(targetRow, 1, 1, rowData.length).setValues([rowData]);
+}`;
+
 export default function AdminClassesPage() {
   const router = useRouter();
 
@@ -63,8 +220,23 @@ export default function AdminClassesPage() {
   // Data states
   const [classes, setClasses] = useState<ClassItem[]>([]);
   const [emailLogs, setEmailLogs] = useState<EmailLogItem[]>([]);
+  const [customers, setCustomers] = useState<CustomerItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'classes' | 'logs'>('classes');
+  const [activeTab, setActiveTab] = useState<'classes' | 'customers' | 'sheets' | 'logs'>('classes');
+
+  // Customer filter and search states
+  const [customerFilter, setCustomerFilter] = useState<'all' | 'paid' | 'unpaid'>('all');
+  const [customerSearch, setCustomerSearch] = useState('');
+
+  // Google Sheets states
+  const [syncingSheets, setSyncingSheets] = useState(false);
+  const [testingEmail, setTestingEmail] = useState(false);
+  const [testEmailTo, setTestEmailTo] = useState('');
+  const [googleSheetsUrlInput, setGoogleSheetsUrlInput] = useState(
+    'https://script.google.com/macros/s/AKfycbzCRDSvt56PAXknih3RtgNL4JMH1fuKtZ4G6vUSUDHI_xz4Bz7UmbCHZgGGkMfMWynl9A/exec'
+  );
+  const [savingSettings, setSavingSettings] = useState(false);
+  const [copiedCode, setCopiedCode] = useState(false);
 
   // Filter states
   const [statusFilter, setStatusFilter] = useState('all');
@@ -144,11 +316,15 @@ export default function AdminClassesPage() {
           setCurrentAdminEmail(data.user?.email || 'admin@peacebuddytamil.com');
           fetchClasses();
           fetchLogs();
+          fetchCustomers();
+          fetchSettings();
         } else if (isPinAdmin) {
           setIsAdmin(true);
           setCurrentAdminEmail('admin (PIN session)');
           fetchClasses();
           fetchLogs();
+          fetchCustomers();
+          fetchSettings();
         } else {
           setIsAdmin(false);
           router.push('/admin/login');
@@ -174,6 +350,117 @@ export default function AdminClassesPage() {
       showToast('error', 'Network error fetching classes');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchCustomers = async () => {
+    try {
+      const res = await fetch('/api/admin/customers');
+      const data = await res.json();
+      if (data.success) {
+        setCustomers(data.customers || []);
+      }
+    } catch (err) {
+      console.error('Error fetching customers:', err);
+    }
+  };
+
+  const fetchSettings = async () => {
+    try {
+      const res = await fetch('/api/admin/settings');
+      const data = await res.json();
+      if (data.success && data.settings?.google_sheets_url) {
+        setGoogleSheetsUrlInput(data.settings.google_sheets_url);
+      }
+    } catch (err) {
+      console.error('Error fetching settings:', err);
+    }
+  };
+
+  const handleTogglePayment = async (userId: string, currentPaid: boolean) => {
+    setActionLoading(true);
+    try {
+      const res = await fetch('/api/admin/customers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, isPaid: !currentPaid }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Failed to update payment status');
+      }
+      showToast(
+        'success',
+        !currentPaid
+          ? 'பயனர் கட்டணம் செலுத்தியவராக மாற்றப்பட்டது (Marked as PAID) & கூகிள் ஷீட்டில் புதுப்பிக்கப்பட்டது!'
+          : 'பயனர் கட்டணம் நிலுவையில் உள்ளவராக மாற்றப்பட்டது (Marked as UNPAID)'
+      );
+      fetchCustomers();
+    } catch (err: any) {
+      showToast('error', err.message);
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  const handleSyncToGoogleSheets = async () => {
+    setSyncingSheets(true);
+    try {
+      const res = await fetch('/api/admin/google-sheets/sync', { method: 'POST' });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Sync failed');
+      }
+      showToast(
+        'success',
+        'அனைத்து வாடிக்கையாளர்கள் மற்றும் வகுப்புகள் வெற்றிகரமாக Google Sheets-ல் சேமிக்கப்பட்டன!'
+      );
+    } catch (err: any) {
+      showToast('error', err.message);
+    } finally {
+      setSyncingSheets(false);
+    }
+  };
+
+  const handleSaveSettings = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSavingSettings(true);
+    try {
+      const res = await fetch('/api/admin/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ google_sheets_url: googleSheetsUrlInput }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Failed to save settings');
+      }
+      showToast('success', 'Google Sheets Webhook URL வெற்றிகரமாக சேமிக்கப்பட்டது!');
+    } catch (err: any) {
+      showToast('error', err.message);
+    } finally {
+      setSavingSettings(false);
+    }
+  };
+
+  const handleSendTestEmail = async () => {
+    setTestingEmail(true);
+    try {
+      const res = await fetch('/api/admin/google-sheets/test', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ to: testEmailTo || currentAdminEmail }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || data.message || 'Failed to send test email');
+      }
+      showToast('success', `இலவச சோதனை மின்னஞ்சல் அனுப்பப்பட்டது: ${data.message}`);
+      fetchLogs();
+    } catch (err: any) {
+      showToast('error', err.message);
+    } finally {
+      setTestingEmail(false);
     }
   };
 
@@ -438,6 +725,34 @@ export default function AdminClassesPage() {
     };
   }, [classes]);
 
+  // Customer filter and metrics calculation
+  const filteredCustomers = useMemo(() => {
+    let result = [...customers];
+    if (customerFilter === 'paid') {
+      result = result.filter((c) => c.is_paid);
+    } else if (customerFilter === 'unpaid') {
+      result = result.filter((c) => !c.is_paid);
+    }
+
+    if (customerSearch.trim()) {
+      const q = customerSearch.toLowerCase().trim();
+      result = result.filter(
+        (c) =>
+          (c.name || '').toLowerCase().includes(q) ||
+          (c.email || '').toLowerCase().includes(q) ||
+          (c.phone || '').toLowerCase().includes(q)
+      );
+    }
+    return result;
+  }, [customers, customerFilter, customerSearch]);
+
+  const customerMetrics = useMemo(() => {
+    const total = customers.length;
+    const paid = customers.filter((c) => c.is_paid).length;
+    const unpaid = total - paid;
+    return { total, paid, unpaid };
+  }, [customers]);
+
   if (isAdmin === null) {
     return (
       <div className="min-h-screen bg-[#FDFBFE] flex items-center justify-center">
@@ -547,7 +862,7 @@ export default function AdminClassesPage() {
 
         {/* Action Bar & Tabs */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-6">
-          <div className="flex items-center gap-2 p-1 bg-[#F5EFF7] rounded-full w-fit">
+          <div className="flex flex-wrap items-center gap-2 p-1 bg-[#F5EFF7] rounded-2xl sm:rounded-full w-fit">
             <button
               onClick={() => setActiveTab('classes')}
               className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
@@ -556,7 +871,29 @@ export default function AdminClassesPage() {
                   : 'text-[#7A6E91] hover:text-[#2D2342]'
               }`}
             >
-              Classes Management ({classes.length})
+              Classes ({classes.length})
+            </button>
+            <button
+              onClick={() => setActiveTab('customers')}
+              className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 ${
+                activeTab === 'customers'
+                  ? 'bg-white text-[#2D2342] shadow-xs font-semibold'
+                  : 'text-[#7A6E91] hover:text-[#2D2342]'
+              }`}
+            >
+              <Users className="w-3.5 h-3.5" />
+              <span>Customers & Payments ({customers.length})</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('sheets')}
+              className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 ${
+                activeTab === 'sheets'
+                  ? 'bg-white text-[#2D2342] shadow-xs font-semibold'
+                  : 'text-[#7A6E91] hover:text-[#2D2342]'
+              }`}
+            >
+              <FileSpreadsheet className="w-3.5 h-3.5 text-[#059669]" />
+              <span>Google Sheets & Free Email</span>
             </button>
             <button
               onClick={() => setActiveTab('logs')}
@@ -566,22 +903,35 @@ export default function AdminClassesPage() {
                   : 'text-[#7A6E91] hover:text-[#2D2342]'
               }`}
             >
-              Email Notification Logs ({emailLogs.length})
+              Email Logs ({emailLogs.length})
             </button>
           </div>
 
-          {activeTab === 'classes' && (
-            <button
-              onClick={() => setIsAddModalOpen(true)}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#7E6C9E] hover:bg-[#624F85] text-white text-xs sm:text-sm font-medium shadow-md hover:shadow-lg transition-all"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Add New Class / புதிய வகுப்பு</span>
-            </button>
-          )}
+          <div className="flex items-center gap-2">
+            {activeTab === 'classes' && (
+              <button
+                onClick={() => setIsAddModalOpen(true)}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#7E6C9E] hover:bg-[#624F85] text-white text-xs sm:text-sm font-medium shadow-md hover:shadow-lg transition-all"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Add Class / புதிய வகுப்பு</span>
+              </button>
+            )}
+
+            {(activeTab === 'customers' || activeTab === 'sheets') && (
+              <button
+                onClick={handleSyncToGoogleSheets}
+                disabled={syncingSheets}
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[#059669] hover:bg-[#047857] text-white text-xs sm:text-sm font-medium shadow-md hover:shadow-lg transition-all disabled:opacity-50"
+              >
+                <RefreshCw className={`w-3.5 h-3.5 ${syncingSheets ? 'animate-spin' : ''}`} />
+                <span>{syncingSheets ? 'Syncing...' : 'Sync to Google Sheets / ஷீட்டில் சேமி'}</span>
+              </button>
+            )}
+          </div>
         </div>
 
-        {activeTab === 'classes' ? (
+        {activeTab === 'classes' && (
           <>
             {/* Filters and Search Bar */}
             <div className="bg-white p-4 rounded-2xl border border-[#E8DFEF] shadow-xs mb-6 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
@@ -796,8 +1146,350 @@ export default function AdminClassesPage() {
               </div>
             </div>
           </>
-        ) : (
-          /* Email Logs Table */
+        )}
+
+        {/* ===================================================================== */}
+        {/* TAB 2: CUSTOMERS & PAYMENTS                                           */}
+        {/* ===================================================================== */}
+        {activeTab === 'customers' && (
+          <div className="space-y-6">
+            {/* Customer Summary Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="bg-white p-5 rounded-2xl border border-[#E8DFEF] shadow-xs">
+                <span className="text-xs text-[#7A6E91] font-medium uppercase tracking-wider">
+                  மொத்த வாடிக்கையாளர்கள் (Total Customers)
+                </span>
+                <div className="text-2xl font-serif font-semibold text-[#2D2342] mt-1">
+                  {customerMetrics.total}
+                </div>
+              </div>
+              <div className="bg-white p-5 rounded-2xl border border-[#A7F3D0] shadow-xs bg-gradient-to-br from-white to-[#ECFDF5]">
+                <span className="text-xs text-[#065F46] font-medium uppercase tracking-wider">
+                  கட்டணம் செலுத்தியவர்கள் (Paid Members)
+                </span>
+                <div className="text-2xl font-serif font-semibold text-[#065F46] mt-1">
+                  {customerMetrics.paid}
+                </div>
+              </div>
+              <div className="bg-white p-5 rounded-2xl border border-[#FDE68A] shadow-xs bg-gradient-to-br from-white to-[#FFFBEB]">
+                <span className="text-xs text-[#92400E] font-medium uppercase tracking-wider">
+                  கட்டணம் நிலுவை (Unpaid / Pending)
+                </span>
+                <div className="text-2xl font-serif font-semibold text-[#B45309] mt-1">
+                  {customerMetrics.unpaid}
+                </div>
+              </div>
+            </div>
+
+            {/* Customers Filter & Search Bar */}
+            <div className="bg-white p-4 rounded-2xl border border-[#E8DFEF] shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+              <div className="relative flex-1">
+                <input
+                  type="text"
+                  value={customerSearch}
+                  onChange={(e) => setCustomerSearch(e.target.value)}
+                  placeholder="பெயர், மின்னஞ்சல் அல்லது தொலைபேசி கொண்டு தேடுங்கள்..."
+                  className="w-full pl-9 pr-4 py-2 rounded-xl bg-[#FBF8FC] border border-[#E8DFEF] text-xs text-[#2D2342] focus:bg-white focus:outline-none focus:border-[#7E6C9E]"
+                />
+                <Search className="w-4 h-4 text-[#7A6E91] absolute left-3 top-2.5" />
+              </div>
+
+              {/* Status Filter Pills */}
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+                <button
+                  onClick={() => setCustomerFilter('all')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
+                    customerFilter === 'all'
+                      ? 'bg-[#7E6C9E] text-white shadow-xs'
+                      : 'bg-[#FBF8FC] text-[#5A4D6E] hover:bg-[#F5EFF7]'
+                  }`}
+                >
+                  All ({customers.length})
+                </button>
+                <button
+                  onClick={() => setCustomerFilter('paid')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
+                    customerFilter === 'paid'
+                      ? 'bg-[#059669] text-white shadow-xs'
+                      : 'bg-[#FBF8FC] text-[#065F46] hover:bg-[#ECFDF5]'
+                  }`}
+                >
+                  Paid ({customerMetrics.paid})
+                </button>
+                <button
+                  onClick={() => setCustomerFilter('unpaid')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
+                    customerFilter === 'unpaid'
+                      ? 'bg-[#D97706] text-white shadow-xs'
+                      : 'bg-[#FBF8FC] text-[#92400E] hover:bg-[#FFFBEB]'
+                  }`}
+                >
+                  Unpaid ({customerMetrics.unpaid})
+                </button>
+              </div>
+            </div>
+
+            {/* Customers Table */}
+            <div className="bg-white rounded-2xl border border-[#E8DFEF] shadow-xs overflow-hidden">
+              <div className="p-4 bg-[#FAF7FB] border-b border-[#E8DFEF] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 className="font-semibold text-sm text-[#2D2342]">
+                    பதிவு செய்த வாடிக்கையாளர்கள் & கட்டண நிலை (Registered Customers & Payment Status)
+                  </h3>
+                  <p className="text-xs text-[#7A6E91]">
+                    பயனர்களின் கட்டண நிலையை மாற்ற 1-க்ளிக் பட்டனைப் பயன்படுத்தவும். அனைத்து மாற்றங்களும் உடனுக்குடன் கூகிள் ஷீட்டில் சேமிக்கப்படும்.
+                  </p>
+                </div>
+                <button
+                  onClick={fetchCustomers}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#E8DFEF] text-xs font-medium text-[#7E6C9E] hover:bg-[#F5EFF7] w-fit"
+                >
+                  <RefreshCw className="w-3.5 h-3.5" />
+                  <span>Refresh List</span>
+                </button>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-[#FAF7FB] border-b border-[#E8DFEF] text-[11px] font-semibold text-[#7A6E91] uppercase tracking-wider">
+                      <th className="py-3 px-4">வாடிக்கையாளர் (Customer)</th>
+                      <th className="py-3 px-4">மின்னஞ்சல் (Email)</th>
+                      <th className="py-3 px-4">கட்டண நிலை (Payment Status)</th>
+                      <th className="py-3 px-4">பதிவு தேதி (Joined)</th>
+                      <th className="py-3 px-4">கடைசி உள்நுழைவு (Last Login)</th>
+                      <th className="py-3 px-4 text-right">செயல்கள் (Toggle Payment)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#E8DFEF] text-xs text-[#2D2342]">
+                    {filteredCustomers.length === 0 ? (
+                      <tr>
+                        <td colSpan={6} className="py-12 text-center text-[#7A6E91]">
+                          வாடிக்கையாளர்கள் எதுவும் கிடைக்கவில்லை (No customers match filter)
+                        </td>
+                      </tr>
+                    ) : (
+                      filteredCustomers.map((c) => (
+                        <tr key={c.id} className="hover:bg-[#FAF7FB]/60 transition-colors">
+                          <td className="py-3.5 px-4 font-medium">
+                            <div className="flex items-center gap-2.5">
+                              <div className="w-8 h-8 rounded-full bg-[#7E6C9E]/15 text-[#7E6C9E] flex items-center justify-center font-bold text-xs uppercase flex-shrink-0">
+                                {(c.name || c.email).charAt(0)}
+                              </div>
+                              <div>
+                                <span className="font-semibold text-[#2D2342]">{c.name || 'Member'}</span>
+                                {c.role === 'admin' && (
+                                  <span className="ml-1.5 px-1.5 py-0.5 rounded text-[10px] bg-[#7E6C9E] text-white">
+                                    ADMIN
+                                  </span>
+                                )}
+                                {c.phone && <div className="text-[11px] text-[#7A6E91]">{c.phone}</div>}
+                              </div>
+                            </div>
+                          </td>
+                          <td className="py-3.5 px-4 text-[#5A4D6E] font-mono text-[11px]">{c.email}</td>
+                          <td className="py-3.5 px-4">
+                            {c.is_paid ? (
+                              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-[#D1E7DD] text-[#0F5132]">
+                                <UserCheck className="w-3.5 h-3.5" />
+                                <span>PAID (கட்டணம் செலுத்தியவர்)</span>
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-[#F8D7DA] text-[#842029]">
+                                <UserX className="w-3.5 h-3.5" />
+                                <span>UNPAID (கட்டணம் நிலுவை)</span>
+                              </span>
+                            )}
+                          </td>
+                          <td className="py-3.5 px-4 text-[#7A6E91] text-[11px]">
+                            {new Date(c.created_at).toLocaleDateString('ta-IN', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric',
+                            })}
+                          </td>
+                          <td className="py-3.5 px-4 text-[#7A6E91] text-[11px]">
+                            {c.last_login_at
+                              ? new Date(c.last_login_at).toLocaleString('en-IN', {
+                                  timeZone: 'Asia/Kolkata',
+                                  month: 'short',
+                                  day: 'numeric',
+                                  hour: '2-digit',
+                                  minute: '2-digit',
+                                })
+                              : 'இன்னும் இல்லை (Never)'}
+                          </td>
+                          <td className="py-3.5 px-4 text-right">
+                            {c.role === 'admin' ? (
+                              <span className="text-[11px] text-[#7A6E91] italic">நிர்வாகி (Admin)</span>
+                            ) : (
+                              <button
+                                onClick={() => handleTogglePayment(c.id, c.is_paid)}
+                                disabled={actionLoading}
+                                className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
+                                  c.is_paid
+                                    ? 'bg-[#FFF1F2] hover:bg-[#FFE4E6] text-[#BE123C] border border-[#FECDD3]'
+                                    : 'bg-[#ECFDF5] hover:bg-[#D1FAE5] text-[#065F46] border border-[#A7F3D0]'
+                                }`}
+                              >
+                                {c.is_paid ? (
+                                  <>
+                                    <UserX className="w-3 h-3" />
+                                    <span>Mark as Unpaid</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <UserCheck className="w-3 h-3" />
+                                    <span>Mark as Paid</span>
+                                  </>
+                                )}
+                              </button>
+                            )}
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ===================================================================== */}
+        {/* TAB 3: GOOGLE SHEETS & FREE EMAIL SETTINGS                            */}
+        {/* ===================================================================== */}
+        {activeTab === 'sheets' && (
+          <div className="space-y-6">
+            {/* Connection Status & Webhook URL Box */}
+            <div className="bg-white p-6 rounded-2xl border border-[#E8DFEF] shadow-xs">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-2xl bg-[#059669]/10 text-[#059669] flex-shrink-0">
+                  <FileSpreadsheet className="w-6 h-6" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-serif font-semibold text-[#2D2342]">
+                    Google Sheets & 100% Free Email Automation Service
+                  </h3>
+                  <p className="text-xs text-[#5A4D6E] mt-1 leading-relaxed">
+                    கூகிள் ஷீட்ஸ் (Google Sheets) மற்றும் உங்கள் கூகிள் கணக்கின் மூலம் எந்த கட்டணமும் இல்லாமல் <strong>முற்றிலும் இலவசமாக (100% Free)</strong> மின்னஞ்சல்களை அனுப்பவும், வாடிக்கையாளர் மற்றும் வகுப்பு விவரங்களை தானாகவே Google Sheet-ல் பதிவு செய்யவும் இது பயன்படுகிறது.
+                  </p>
+
+                  <form onSubmit={handleSaveSettings} className="mt-5 space-y-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-[#2D2342] mb-1.5">
+                        Google Apps Script Web App URL *
+                      </label>
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <input
+                          type="url"
+                          required
+                          value={googleSheetsUrlInput}
+                          onChange={(e) => setGoogleSheetsUrlInput(e.target.value)}
+                          placeholder="https://script.google.com/macros/s/.../exec"
+                          className="flex-1 px-4 py-2.5 rounded-xl bg-[#FBF8FC] border border-[#E8DFEF] text-xs text-[#2D2342] font-mono focus:bg-white focus:outline-none focus:border-[#7E6C9E]"
+                        />
+                        <button
+                          type="submit"
+                          disabled={savingSettings}
+                          className="px-5 py-2.5 rounded-xl bg-[#7E6C9E] hover:bg-[#624F85] text-white text-xs font-semibold shadow-xs transition-all disabled:opacity-50 flex items-center justify-center gap-1.5"
+                        >
+                          {savingSettings ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5" />}
+                          <span>Save & Connect / சேமி</span>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+
+                  {/* Actions & Test Section */}
+                  <div className="mt-6 pt-6 border-t border-[#E8DFEF] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                      <input
+                        type="email"
+                        value={testEmailTo}
+                        onChange={(e) => setTestEmailTo(e.target.value)}
+                        placeholder="சோதனை மின்னஞ்சல் முகவரி (எ.கா: user@gmail.com)"
+                        className="px-3.5 py-2 rounded-xl bg-[#FBF8FC] border border-[#E8DFEF] text-xs text-[#2D2342] min-w-[260px] focus:bg-white focus:outline-none focus:border-[#7E6C9E]"
+                      />
+                      <button
+                        onClick={handleSendTestEmail}
+                        disabled={testingEmail}
+                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-[#2D2342] hover:bg-[#1C1628] text-white text-xs font-medium transition-all disabled:opacity-50 shadow-xs"
+                      >
+                        {testingEmail ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Send className="w-3.5 h-3.5" />}
+                        <span>Send Free Test Email / சோதனை மின்னஞ்சல்</span>
+                      </button>
+                    </div>
+
+                    <button
+                      onClick={handleSyncToGoogleSheets}
+                      disabled={syncingSheets}
+                      className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-[#059669] hover:bg-[#047857] text-white text-xs font-semibold shadow-xs transition-all disabled:opacity-50"
+                    >
+                      <RefreshCw className={`w-3.5 h-3.5 ${syncingSheets ? 'animate-spin' : ''}`} />
+                      <span>Sync All to Google Sheet / அனைத்தையும் சேமி</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step-by-Step Setup Guide */}
+            <div className="bg-white p-6 rounded-2xl border border-[#E8DFEF] shadow-xs">
+              <h3 className="font-semibold text-sm text-[#2D2342] mb-3 flex items-center gap-2">
+                <span>✦ கூகிள் ஷீட்ஸ் அமைக்கும் எளிய வழிமுறைகள் (3-Minute Setup Guide)</span>
+              </h3>
+              <ol className="list-decimal list-inside space-y-2 text-xs text-[#5A4D6E] leading-relaxed">
+                <li>
+                  உங்கள் கூகிள் டிரைவில் புதிய கூகிள் ஷீட்டைத் திறக்கவும்: <a href="https://sheets.new" target="_blank" rel="noopener noreferrer" className="text-[#7E6C9E] underline font-medium">sheets.new</a>
+                </li>
+                <li>
+                  மேல் மெனுவில் <strong>Extensions &gt; Apps Script</strong> என்பதைக் கிளிக் செய்யவும்.
+                </li>
+                <li>
+                  அங்குள்ள பழைய குறியீடுகளை நீக்கிவிட்டு, கீழே உள்ள முழு <strong>Google Apps Script குறியீட்டை</strong> அப்படியே நகலெடுத்து (Copy) ஒட்டவும் (Paste).
+                </li>
+                <li>
+                  சேமி ஐகானை (💾) அழுத்தவும். பின்னர் மேலே வலதுபுறம் உள்ள <strong>Deploy &gt; Manage deployments</strong> (அல்லது New deployment) கிளிக் செய்து:
+                  <ul className="list-disc list-inside ml-5 mt-1 text-[#7A6E91]">
+                    <li>Type: <strong>Web app</strong></li>
+                    <li>Execute as: <strong>Me</strong> (உங்கள் கூகிள் மின்னஞ்சல்)</li>
+                    <li>Who has access: <strong>Anyone</strong> (அனைவரும் அணுகலாம்)</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Deploy</strong> கொடுத்து Google அனுமதி கேட்டால் (Authorize access) வழங்கவும். கிடைக்கும் <strong>Web App URL</strong>-ஐ மேலே உள்ள பெட்டியில் ஒட்டி Save செய்யவும்!
+                </li>
+              </ol>
+
+              {/* Copy Code Box */}
+              <div className="mt-5">
+                <div className="flex items-center justify-between pb-2">
+                  <span className="text-xs font-mono font-semibold text-[#2D2342]">google-apps-script.js (Code.gs)</span>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(APPS_SCRIPT_SNIPPET);
+                      setCopiedCode(true);
+                      setTimeout(() => setCopiedCode(false), 3000);
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F5EFF7] hover:bg-[#E8DFEF] text-xs font-semibold text-[#7E6C9E] transition-colors"
+                  >
+                    {copiedCode ? <Check className="w-3.5 h-3.5 text-[#059669]" /> : <Copy className="w-3.5 h-3.5" />}
+                    <span>{copiedCode ? 'குறியீடு நகலெடுக்கப்பட்டது! (Copied)' : 'Copy Script Code (குறியீட்டை நகலெடு)'}</span>
+                  </button>
+                </div>
+                <pre className="p-4 rounded-xl bg-[#1C1628] text-white/90 text-[11px] font-mono overflow-x-auto max-h-72 border border-black/10 select-all">
+                  {APPS_SCRIPT_SNIPPET}
+                </pre>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ===================================================================== */}
+        {/* TAB 4: EMAIL NOTIFICATION LOGS                                        */}
+        {/* ===================================================================== */}
+        {activeTab === 'logs' && (
           <div className="bg-white rounded-2xl border border-[#E8DFEF] shadow-xs overflow-hidden">
             <div className="p-4 bg-[#FAF7FB] border-b border-[#E8DFEF] flex items-center justify-between">
               <div>

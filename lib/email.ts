@@ -1,4 +1,9 @@
 import { ClassItem, EmailLogType, getActiveSubscribers, logEmailSend } from './db';
+import {
+  sendEmailViaGoogleSheets,
+  getGoogleSheetsWebhookUrl,
+  syncClassToGoogleSheets,
+} from './googleSheets';
 
 export interface SendClassEmailOptions {
   classItem: ClassItem;
@@ -272,6 +277,12 @@ export async function sendClassNotification(options: SendClassEmailOptions): Pro
     return { success: true, totalRecipients: 0, sentCount: 0, failedCount: 0 };
   }
 
+  // Also sync class details to Google Sheets automatically
+  syncClassToGoogleSheets(classItem).catch((err) =>
+    console.error('Failed to sync class to Google Sheets:', err)
+  );
+
+  const googleSheetsUrl = await getGoogleSheetsWebhookUrl();
   const resendApiKey = process.env.RESEND_API_KEY;
   const brevoApiKey = process.env.BREVO_API_KEY;
   const fromEmail = process.env.EMAIL_FROM || 'Peace Buddy Tamil <notifications@peacebuddytamil.com>';
@@ -294,7 +305,21 @@ export async function sendClassNotification(options: SendClassEmailOptions): Pro
         });
 
         try {
-          if (resendApiKey) {
+          if (googleSheetsUrl) {
+            // Send 100% FREE email via Google Apps Script MailApp
+            const gasRes = await sendEmailViaGoogleSheets({
+              to: recipient,
+              subject,
+              html,
+              text,
+              class_name: classItem.name,
+              type,
+            });
+
+            if (!gasRes.success) {
+              throw new Error(gasRes.error || 'Google Apps Script email send failed');
+            }
+          } else if (resendApiKey) {
             // Send via Resend API
             const res = await fetch('https://api.resend.com/emails', {
               method: 'POST',
