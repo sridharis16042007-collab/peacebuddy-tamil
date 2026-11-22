@@ -11,59 +11,40 @@ export default function ProgramsPage() {
   const programs = [
     {
       id: 'program-1',
-      badge: lang === 'ta' ? 'முதன்மை பயிற்சி' : 'Signature Program',
+      badge: lang === 'ta' ? 'முதன்மை மாதாந்திர பயிற்சி' : 'Signature Transformation',
       title: lang === 'ta'
-        ? '[PROGRAM 1: 21 நாள் அமைதி வாழ்வியல் பயிற்சி (21-Day Mindful Routine)]'
-        : '[PROGRAM 1: 21-Day Mindful Living Cohort]',
+        ? 'மாதாந்திர மாற்றப் பயிற்சி (காலை & மாலை நேர அமர்வுகள்)'
+        : 'Monthly Transformation (Morning & Evening Sessions)',
       description: lang === 'ta'
-        ? 'தினசரி 15 நிமிட எளிய தமிழ் வழிகாட்டல் மூலம் உங்கள் மனதை அமைதிப்படுத்தி, சீரான காலை மற்றும் இரவு பழக்கங்களை உருவாக்கும் தொடர் பயிற்சி.'
-        : 'A 21-day guided journey with daily 15-minute mother-tongue audio reflections to ground your mornings and restore inner calm.',
-      duration: lang === 'ta' ? '21 நாட்கள்' : '21 Days',
-      format: lang === 'ta' ? 'தினசரி தமிழ் ஆடியோ + வழிகாட்டி' : 'Daily Audio + Workbook',
+        ? 'ஒரு மாத கால முழுமையான மாற்றப் பயிற்சி. காலை நேர விழிப்புணர்வு தியானம் மூலம் புத்துணர்ச்சியான மனநிலையும், மாலை நேர அமைதி அமர்வு மூலம் அன்றாட சோர்வு நீங்கி ஆழ்ந்த மன அமைதியும் பெறும் தொடர் வழிகாட்டல்.'
+        : 'A dedicated 1-month guided transformation journey. Morning grounding sessions for clarity & calm focus, paired with restorative evening wind-down sessions to quiet overthinking and cultivate lasting peace.',
+      duration: lang === 'ta' ? '1 மாதம் (30 நாட்கள்)' : '1 Month (30 Days)',
+      format: lang === 'ta' ? 'காலை & மாலை நேர அமர்வுகள் + தமிழ் ஆடியோ & ஜர்னல்' : 'Morning & Evening Sessions + Audio & Journal',
       fees: '[PROGRAM 1 FEES]',
       features: [
-        lang === 'ta' ? 'தினசரி 15 நிமிட தமிழ் தியான ஆடியோ' : 'Daily 15-minute guided audio sessions',
-        lang === 'ta' ? 'எழுத்து வழியிலான விழிப்புணர்வு (Mindful Journaling)' : 'Daily quiet journaling prompts',
-        lang === 'ta' ? 'வாட்ஸ்அப் தனிநபர் ஆதரவு & வழிகாட்டல்' : 'Personal check-ins via WhatsApp',
-        lang === 'ta' ? 'வாழ்நாள் ஆடியோ அணுகல் (Lifetime Access)' : 'Lifetime audio replay access'
+        lang === 'ta' ? 'காலை நேர புத்துணர்ச்சி & விழிப்புணர்வு தியான அமர்வு' : 'Daily morning awakening & grounding mindfulness',
+        lang === 'ta' ? 'மாலை நேர மன அமைதி & தளர்வு பயிற்சி' : 'Daily evening serene wind-down & relaxation session',
+        lang === 'ta' ? 'வாட்ஸ்அப் தனிநபர் கனிவான ஆதரவு & வழிகாட்டல்' : 'Personal 1-on-1 check-ins via WhatsApp',
+        lang === 'ta' ? 'வாழ்நாள் ஆடியோ அணுகல் & அமைதி கையேடு' : 'Lifetime audio replay access & peace journal'
       ]
     },
     {
       id: 'program-2',
-      badge: lang === 'ta' ? 'மனத்தெளிவு பயிற்சி' : 'Emotional Clarity',
+      badge: lang === 'ta' ? 'மனத்தெளிவு & அமைதி பயிற்சி' : 'Inner Clarity Intensive',
       title: lang === 'ta'
-        ? '[PROGRAM 2: ஓவர்திங்கிங் தணிப்பு பட்டறை (Overthinking Relief Workshop)]'
-        : '[PROGRAM 2: Overthinking to Inner Clarity Intensive]',
+        ? 'உள் அமைதி மற்றும் மனத்தெளிவு தீவிரப் பயிற்சி'
+        : 'Inner Peace & Emotional Clarity Intensive',
       description: lang === 'ta'
-        ? 'எண்ணங்களின் சுழற்சி மற்றும் எதிர்கால பதற்றத்திலிருந்து விடுபட நடைமுறை அறிவாற்றல் நுட்பங்கள் (Cognitive Grounding).'
-        : 'Practical grounding techniques and somatic awareness designed to halt runaway thoughts and cultivate mental lightness.',
+        ? 'எண்ணங்களின் சுழற்சி (Overthinking) மற்றும் எதிர்கால பதற்றத்திலிருந்து விடுபட்டு, உள் அமைதியையும் மனத் தெளிவையும் மீட்டெடுக்கும் பிரத்யேக தமிழ் வழிகாட்டல்.'
+        : 'Practical grounding techniques and somatic awareness designed to halt runaway thoughts, soothe anxiety, and cultivate lasting mental lightness.',
       duration: lang === 'ta' ? '2 வாரங்கள்' : '2 Weeks',
-      format: lang === 'ta' ? 'வார இறுதி நேரலை அமர்வுகள் + பயிற்சிகள்' : 'Weekend Live Sessions + Exercises',
+      format: lang === 'ta' ? 'வார இறுதி நேரலை அமர்வுகள் + நடைமுறை பயிற்சிகள்' : 'Weekend Live Sessions + Grounding Exercises',
       fees: '[PROGRAM 2 FEES]',
       features: [
-        lang === 'ta' ? '5-4-3-2-1 மற்றும் 4-4-6 மூச்சுப் பயிற்சி முறைகள்' : 'Mastery of 4-4-6 breathing & grounding',
-        lang === 'ta' ? 'எண்ணங்களை எதிர்கொள்ளும் நடைமுறை பயிற்சிகள்' : 'Cognitive defusion thought exercises',
-        lang === 'ta' ? 'அமைதியான முடிவெடுக்கும் தெளிவு' : 'Decision-making clarity frameworks',
-        lang === 'ta' ? 'கேள்வி-பதில் நேரலை வழிகாட்டல்' : 'Live interactive Q&A'
-      ]
-    },
-    {
-      id: 'program-3',
-      badge: lang === 'ta' ? 'ஆழ்ந்த தூக்கம்' : 'Restorative Sleep',
-      title: lang === 'ta'
-        ? '[PROGRAM 3: அமைதியான தூக்க வழிகாட்டல் (Sleep Reset Masterclass)]'
-        : '[PROGRAM 3: Deep Sleep & Night Calm Ritual]',
-      description: lang === 'ta'
-        ? 'இரவு நேர படபடப்பு மற்றும் தூக்கமின்மையை நீக்கி, ஆழ்ந்த புத்துணர்ச்சியூட்டும் தூக்கத்தைப் பெறுவதற்கான மாலை நேர வழக்கம்.'
-        : 'A gentle evening wind-down protocol with bedtime somatic audio to ease nervous system arousal and foster restorative sleep.',
-      duration: lang === 'ta' ? '7 நாட்கள்' : '7 Days',
-      format: lang === 'ta' ? 'மாலை நேர வழிகாட்டல் + Sleep Audio' : 'Evening Routine + Sleep Audio',
-      fees: '[PROGRAM 3 FEES]',
-      features: [
-        lang === 'ta' ? 'படுக்கை நேர அமைதி தியான ஆடியோ' : 'Bedtime calming audio tracks',
-        lang === 'ta' ? 'டிஜிட்டல் நச்சுநீக்கம் (Digital Detox Guide)' : 'Digital boundary evening architecture',
-        lang === 'ta' ? 'உடல் தளர்வு பயிற்சி (Body Scan Meditation)' : 'Somatic body-scan guided relaxation',
-        lang === 'ta' ? 'காலை புத்துணர்ச்சி நுட்பங்கள்' : 'Morning waking clarity routines'
+        lang === 'ta' ? 'மனதை அமைதிப்படுத்தும் உடனடி நடைமுறை நுட்பங்கள்' : 'Mindful somatic grounding & calming techniques',
+        lang === 'ta' ? 'எண்ணங்களை எதிர்கொள்ளும் விழிப்புணர்வு பயிற்சிகள்' : 'Cognitive defusion thought exercises',
+        lang === 'ta' ? 'அமைதியான முடிவெடுக்கும் தெளிவு வழிகாட்டிகள்' : 'Decision-making clarity frameworks',
+        lang === 'ta' ? 'கேள்வி-பதில் கனிவான நேரலை வழிகாட்டல்' : 'Live interactive compassionate Q&A'
       ]
     }
   ];
@@ -94,31 +75,31 @@ export default function ProgramsPage() {
             <span>{lang === 'ta' ? 'அமைதி பயிற்சிகள் & பட்டறைகள்' : 'Mindfulness Programs & Cohorts'}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-bold text-[#12263A] tracking-tight mb-4 font-tamil">
+          <h1 className="text-3xl sm:text-5xl font-serif font-light text-[#2D2342] tracking-wide mb-4">
             {lang === 'ta'
               ? 'உங்கள் மன நலனுக்கான வழிகாட்டப்பட்ட பயிற்சிகள்'
               : 'Structured Pathways to Lasting Peace of Mind'}
           </h1>
-          <p className="text-base sm:text-lg text-[#36526D] leading-relaxed font-tamil">
+          <p className="text-base sm:text-lg text-[#5A4D6E] leading-relaxed font-tamil font-light">
             {lang === 'ta'
               ? 'எந்தவித வணிக அழுத்தமும் இன்றி, உங்கள் சொந்த வேகத்தில் நீங்கள் தாய்மொழியில் பழகக்கூடிய நிதானமான பயிற்சித் திட்டங்கள்.'
               : 'Thoughtfully designed, pressure-free programs to help you dissolve anxiety, conquer overthinking, and rest deeply.'}
           </p>
         </div>
 
-        {/* 3 Core Programs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* 2 Mindful Programs Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
           {programs.map((prog) => (
             <div
               key={prog.id}
-              className="bg-white rounded-3xl p-6 sm:p-8 border border-mist hover:border-[#1583C7]/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8DFEF] hover:border-[#7E6C9E]/50 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold text-[#0B3D6B] bg-mist/60 mb-4">
+                <span className="inline-block px-3.5 py-1 rounded-full text-xs font-medium text-[#7E6C9E] bg-[#F5EFF7] mb-4">
                   {prog.badge}
                 </span>
 
-                <h2 className="text-xl font-bold text-[#12263A] mb-3 font-tamil leading-snug">
+                <h2 className="text-xl sm:text-2xl font-serif font-medium text-[#2D2342] mb-3 leading-snug">
                   {prog.title}
                 </h2>
 

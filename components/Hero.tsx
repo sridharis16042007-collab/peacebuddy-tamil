@@ -52,18 +52,18 @@ export default function Hero() {
             {/* Sacred Sanctuary Eyebrow Pill */}
             <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 shadow-sm">
               <Sparkles className="w-3.5 h-3.5 text-[#FFE3A8]" aria-hidden="true" />
-              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-[#FFE3A8]">
+              <span className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.25em] text-[#FFE3A8]">
                 {lang === 'ta' ? 'அமைதிக்கான தமிழ் புகலிடம்' : 'A SACRED SANCTUARY'}
               </span>
               <Sparkles className="w-3.5 h-3.5 text-[#FFE3A8]" aria-hidden="true" />
             </div>
 
-            {/* Display Headline: "A place to find your inner peace" */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif text-white tracking-tight leading-[1.14] mb-5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.65)]">
+            {/* Display Headline: Refined, Light, Elegant Serenity Typography */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-serif font-light text-white tracking-wide leading-[1.2] mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
               {lang === 'ta' ? (
-                <span className="font-tamil font-normal">
+                <span className="font-tamil-serif font-light">
                   உங்கள்{' '}
-                  <span className="italic font-serif text-[#FFD68A] font-light">
+                  <span className="italic font-serif text-[#FFE3A8] font-normal">
                     உள் அமைதியைக்
                   </span>{' '}
                   கண்டறியும் கனிவான இடம்.
@@ -71,7 +71,7 @@ export default function Hero() {
               ) : (
                 <>
                   A place to find your{' '}
-                  <span className="italic font-serif text-[#FFD68A] font-light">
+                  <span className="italic font-serif text-[#FFE3A8] font-normal">
                     inner peace.
                   </span>
                 </>
@@ -79,7 +79,7 @@ export default function Hero() {
             </h1>
 
             {/* Harmonious Subheading blending inner peace and calmness */}
-            <p className="text-base sm:text-lg text-white/95 max-w-2xl leading-relaxed mb-7 font-tamil font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
+            <p className="text-base sm:text-lg text-white/95 max-w-2xl leading-relaxed mb-7 font-tamil font-light drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
               {lang === 'ta'
                 ? 'அளவுக்கு அதிகமான சிந்தனைகள், மன அழுத்தம் மற்றும் அவசர உலகத்திலிருந்து விடுபட்டு, உங்கள் சொந்த தாய்மொழியில் ஆழ்ந்த மன அமைதியையும், நிம்மதியான உள் அமைதியையும் (inner calmness) மீட்டெடுங்கள்.'
                 : 'Where calmness meets clarity. Step away from overthinking and daily noise in a dedicated, Tamil-first sanctuary to quiet your mind, restore deep inner peace, and cultivate lasting tranquility.'}
@@ -90,7 +90,7 @@ export default function Hero() {
               {/* Primary Explore Programs Button */}
               <Link
                 href="/programs"
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#7B2CBF] to-[#9D4EDD] hover:from-[#6A1EB0] hover:to-[#883BCB] text-white text-base font-medium shadow-xl hover:shadow-2xl transition-all min-h-[48px] border border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD68A]"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#7B2CBF] to-[#9D4EDD] hover:from-[#6A1EB0] hover:to-[#883BCB] text-white text-base font-medium shadow-xl hover:shadow-2xl transition-all min-h-[48px] border border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFE3A8]"
               >
                 <span>{lang === 'ta' ? 'பயிற்சிகளைக் காண்க' : 'Explore Programs'}</span>
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -101,32 +101,34 @@ export default function Hero() {
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/20 hover:bg-white/30 text-white border border-white/40 text-base font-serif italic transition-all min-h-[48px] shadow-lg backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                <MessageCircle className="w-4 h-4 text-[#FFD68A]" aria-hidden="true" />
+                <MessageCircle className="w-4 h-4 text-[#FFE3A8]" aria-hidden="true" />
                 <span>{lang === 'ta' ? 'நேரடி உதவி / WhatsApp' : 'Direct Guidance'}</span>
               </Link>
             </div>
 
             {/* Complete Website Overview (4 Key Pillars on the First Page) */}
             <div className="w-full pt-6 border-t border-white/20">
-              <p className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.18em] text-[#FFE3A8]/90 mb-3.5">
+              <p className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.2em] text-[#FFE3A8]/90 mb-3.5">
                 {lang === 'ta' ? '✦ பீஸ் படி வழங்கும் முழு விவரங்கள்' : '✦ WHAT PEACE BUDDY OFFERS'}
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
-                {/* 1. Programs Card */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 w-full">
+                {/* 1. 2 Mindful Programs Card - Monthly Transformation */}
                 <Link
                   href="/programs"
-                  className="group flex items-start gap-3 p-3 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 transition-all shadow-sm"
+                  className="group flex items-start gap-3 p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 transition-all shadow-sm"
                 >
-                  <div className="p-2 rounded-xl bg-[#7B2CBF]/60 text-[#FFE3A8] flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <div className="p-2.5 rounded-xl bg-[#7B2CBF]/60 text-[#FFE3A8] flex-shrink-0 group-hover:scale-105 transition-transform">
                     <Sparkles className="w-4 h-4" />
                   </div>
                   <div>
-                    <h2 className="text-sm font-semibold text-white group-hover:text-[#FFD68A] transition-colors">
-                      {lang === 'ta' ? '3 சிறப்புப் பயிற்சிகள்' : '3 Mindful Programs'}
+                    <h2 className="text-sm font-serif font-medium text-white group-hover:text-[#FFE3A8] transition-colors tracking-wide">
+                      {lang === 'ta' ? '2 சிறப்புப் பயிற்சிகள்' : '2 Mindful Programs'}
                     </h2>
-                    <p className="text-xs text-white/80 leading-snug">
-                      {lang === 'ta' ? '21 நாள் வழக்கம் • Overthinking • ஆழ்ந்த உறக்கம்' : '21-Day Routine, Overthinking Relief, Deep Sleep'}
+                    <p className="text-xs text-white/90 leading-snug mt-0.5 font-light">
+                      {lang === 'ta'
+                        ? 'மாதாந்திர மாற்றப் பயிற்சி (காலை & மாலை நேர அமர்வுகள்)'
+                        : 'Monthly Transformation (Morning & Evening Sessions)'}
                     </p>
                   </div>
                 </Link>
@@ -134,16 +136,16 @@ export default function Hero() {
                 {/* 2. Guided Meditation Card */}
                 <Link
                   href="/resources"
-                  className="group flex items-start gap-3 p-3 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 transition-all shadow-sm"
+                  className="group flex items-start gap-3 p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 transition-all shadow-sm"
                 >
-                  <div className="p-2 rounded-xl bg-[#2A9D8F]/60 text-white flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <div className="p-2.5 rounded-xl bg-[#2A9D8F]/60 text-white flex-shrink-0 group-hover:scale-105 transition-transform">
                     <Wind className="w-4 h-4" />
                   </div>
                   <div>
-                    <h2 className="text-sm font-semibold text-white group-hover:text-[#FFD68A] transition-colors">
+                    <h2 className="text-sm font-serif font-medium text-white group-hover:text-[#FFE3A8] transition-colors tracking-wide">
                       {lang === 'ta' ? 'வழிகாட்டப்பட்ட தியானம்' : 'Guided Meditation'}
                     </h2>
-                    <p className="text-xs text-white/80 leading-snug">
+                    <p className="text-xs text-white/90 leading-snug mt-0.5 font-light">
                       {lang === 'ta' ? 'அமைதியான தமிழ் தியானம் & மன அமைதி பயிற்சிகள்' : 'Calm Tamil meditations & mindfulness practices'}
                     </p>
                   </div>
@@ -152,16 +154,16 @@ export default function Hero() {
                 {/* 3. 1-on-1 Confidential Guidance */}
                 <Link
                   href="/contact"
-                  className="group flex items-start gap-3 p-3 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 transition-all shadow-sm"
+                  className="group flex items-start gap-3 p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 transition-all shadow-sm"
                 >
-                  <div className="p-2 rounded-xl bg-[#E76F51]/60 text-white flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <div className="p-2.5 rounded-xl bg-[#E76F51]/60 text-white flex-shrink-0 group-hover:scale-105 transition-transform">
                     <HeartHandshake className="w-4 h-4" />
                   </div>
                   <div>
-                    <h2 className="text-sm font-semibold text-white group-hover:text-[#FFD68A] transition-colors">
+                    <h2 className="text-sm font-serif font-medium text-white group-hover:text-[#FFE3A8] transition-colors tracking-wide">
                       {lang === 'ta' ? 'நேரடி வழிகாட்டல்' : '1-on-1 Guidance'}
                     </h2>
-                    <p className="text-xs text-white/80 leading-snug">
+                    <p className="text-xs text-white/90 leading-snug mt-0.5 font-light">
                       {lang === 'ta' ? '100% ரகசியமான, கனிவான தமிழ் ஆதரவு' : 'Safe, private & compassionate listening'}
                     </p>
                   </div>
@@ -170,16 +172,16 @@ export default function Hero() {
                 {/* 4. Free Resources & Audio */}
                 <Link
                   href="/resources"
-                  className="group flex items-start gap-3 p-3 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 transition-all shadow-sm"
+                  className="group flex items-start gap-3 p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 transition-all shadow-sm"
                 >
-                  <div className="p-2 rounded-xl bg-[#9D4EDD]/60 text-[#FFE3A8] flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <div className="p-2.5 rounded-xl bg-[#9D4EDD]/60 text-[#FFE3A8] flex-shrink-0 group-hover:scale-105 transition-transform">
                     <BookOpen className="w-4 h-4" />
                   </div>
                   <div>
-                    <h2 className="text-sm font-semibold text-white group-hover:text-[#FFD68A] transition-colors">
+                    <h2 className="text-sm font-serif font-medium text-white group-hover:text-[#FFE3A8] transition-colors tracking-wide">
                       {lang === 'ta' ? 'இலவச ஆடியோ & வழிகாட்டிகள்' : 'Audio & Guides'}
                     </h2>
-                    <p className="text-xs text-white/80 leading-snug">
+                    <p className="text-xs text-white/90 leading-snug mt-0.5 font-light">
                       {lang === 'ta' ? '10 நிமிட தமிழ் தியான ஆடியோ பதிவிறக்கம்' : 'Tamil meditation audio & mindfulness articles'}
                     </p>
                   </div>
@@ -194,7 +196,7 @@ export default function Hero() {
             <div className="relative group w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[380px] xl:max-w-[420px] aspect-square flex items-center justify-center">
               
               {/* Radiant Ambient Breathing Halo */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#7B2CBF]/50 via-[#E0AAFF]/40 to-[#FFD68A]/40 blur-3xl opacity-90 group-hover:opacity-100 transition-opacity animate-breathe-glow" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#7B2CBF]/50 via-[#E0AAFF]/40 to-[#FFE3A8]/40 blur-3xl opacity-90 group-hover:opacity-100 transition-opacity animate-breathe-glow" />
 
               {/* Crystal Frost Outer Ring */}
               <div className="relative w-full h-full rounded-full p-3 sm:p-4 bg-white/20 backdrop-blur-2xl border-2 border-white/50 shadow-2xl shadow-black/50 flex items-center justify-center transition-transform duration-700 group-hover:scale-[1.03]">
@@ -210,8 +212,8 @@ export default function Hero() {
 
               {/* Floating Brand Badge */}
               <div className="absolute -bottom-5 px-5 py-2 rounded-full bg-[#1A0B22]/95 backdrop-blur-xl border border-[#FFE3A8]/40 shadow-2xl text-center flex items-center gap-2">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#FFD68A]" aria-hidden="true" />
-                <span className="text-xs sm:text-sm font-semibold text-white tracking-wide">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#FFE3A8]" aria-hidden="true" />
+                <span className="text-xs sm:text-sm font-medium text-white tracking-wide font-serif">
                   ✦ PEACE BUDDY TAMIL ✦
                 </span>
               </div>

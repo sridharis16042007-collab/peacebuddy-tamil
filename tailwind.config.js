@@ -55,8 +55,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        serif: ['Fraunces', 'Playfair Display', 'Georgia', 'serif'],
-        tamil: ['Noto Sans Tamil', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        serif: ['"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
+        tamilSerif: ['"Noto Serif Tamil"', 'serif'],
+        tamil: ['"Noto Sans Tamil"', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         english: ['Inter', 'Nunito', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       borderRadius: {
