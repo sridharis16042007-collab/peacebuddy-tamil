@@ -246,7 +246,7 @@ export default function ProgramsPage() {
                 {/* Evening Session Visual Hero Image (Night Guided Meditation) */}
                 <div className="relative w-full h-48 sm:h-52 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
-                    src="/assets/evening-moonlight-journal.jpg"
+                    src="/assets/evening-bedtime-window-meditation.jpg"
                     alt="Night Guided Meditation"
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
