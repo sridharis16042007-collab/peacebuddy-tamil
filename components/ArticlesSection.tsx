@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
-import { Sparkles, ArrowRight, Clock } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
 export default function ArticlesSection() {
   const { lang, t } = useLanguage();
@@ -52,7 +52,7 @@ export default function ArticlesSection() {
         lang === 'ta'
           ? 'அதிகாலை அமைதியில் மனதை ஒருமுகப்படுத்தி அன்றைய நாளை தெளிவுடன் தொடங்குவது எப்படி.'
           : 'Harness the quietest dawn hours to nourish your nervous system and start the day grounded.',
-      image: '/assets/sunset-serenity.webp',
+      image: '/assets/brahma-muhurtham-dawn.jpg',
       href: '/resources#article-3',
     },
   ];
@@ -124,12 +124,6 @@ export default function ArticlesSection() {
                       {art.tag}
                     </span>
                   </div>
-                </div>
-
-                {/* Read Time */}
-                <div className="flex items-center gap-1.5 text-xs text-[#8B5E83] font-medium mb-2.5">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>{art.readTime}</span>
                 </div>
 
                 {/* Serif Title */}
