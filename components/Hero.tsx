@@ -30,30 +30,32 @@ export default function Hero() {
 
       {/* Rotating Circular Text Badge Top Right ("A CALMER MIND • EVERY DAY •") */}
       <div className="absolute top-24 right-4 sm:top-28 sm:right-10 lg:right-16 z-20 hidden sm:block">
-        <div className="relative w-28 h-28 flex items-center justify-center">
+        <div className="relative w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center">
           <svg
             viewBox="0 0 140 140"
             className="w-full h-full animate-spin-slow select-none pointer-events-none"
           >
             <path
               id="circlePath"
-              d="M 70, 70 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"
+              d="M 70, 70 m -53, 0 a 53,53 0 1,1 106,0 a 53,53 0 1,1 -106,0"
               fill="none"
             />
-            <text className="text-[11px] uppercase tracking-[0.24em] fill-[#0F2742] font-semibold">
+            <text className="text-[10px] uppercase tracking-[0.22em] fill-[#0F2742] font-semibold">
               <textPath href="#circlePath" startOffset="0%">
                 A CALMER MIND • EVERY DAY •
               </textPath>
             </text>
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
-            <Image
-              src="/Peace_Buddy_Teal_Circular_Emblem.png"
-              alt="Peace Buddy Logo"
-              width={32}
-              height={32}
-              className="w-8 h-8 rounded-full object-contain shadow-xs"
-            />
+            <div className="p-1 sm:p-1.5 rounded-full bg-white/90 backdrop-blur-md border border-white/90 shadow-[0_4px_20px_rgba(15,39,66,0.12)] flex items-center justify-center">
+              <Image
+                src="/Peace_Buddy_Teal_Circular_Emblem.png"
+                alt="Peace Buddy Logo"
+                width={76}
+                height={76}
+                className="w-16 h-16 sm:w-18 sm:h-18 rounded-full object-contain"
+              />
+            </div>
           </div>
         </div>
       </div>
