@@ -66,12 +66,18 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-5 lg:gap-7">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6">
             <Link
               href="/"
               className="text-[14px] font-medium text-ink hover:text-ringBlue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ringBlue rounded-md px-1 py-1"
             >
               {t.nav.home}
+            </Link>
+            <Link
+              href="/classes"
+              className="text-[14px] font-medium text-[#7E6C9E] hover:text-[#5E4C80] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E] rounded-md px-1 py-1"
+            >
+              {t.nav.classes}
             </Link>
             <Link
               href="/programs"
@@ -105,7 +111,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Action Buttons: Language Switcher + Pill CTA */}
+          {/* Action Buttons: Language Switcher + Sign In / CTA */}
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Language Toggle Button */}
             <button
@@ -118,12 +124,20 @@ export default function Navbar() {
               <span>{t.nav.langToggle}</span>
             </button>
 
+            {/* Login Link */}
+            <Link
+              href="/login"
+              className="hidden lg:inline-flex items-center gap-1 px-3 py-1.5 text-xs sm:text-sm font-medium text-[#2D2342] hover:text-[#7E6C9E] transition-colors"
+            >
+              <span>{t.nav.login}</span>
+            </Link>
+
             {/* Pill CTA Button (Soul Serenity Lilac) */}
             <Link
-              href="/#newsletter"
+              href="/classes"
               className="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-pill bg-[#725E96] hover:bg-[#5E4C80] text-white text-xs sm:text-sm font-medium shadow-xs hover:shadow transition-all min-h-[42px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7E6C9E]"
             >
-              <span>{t.nav.startCta}</span>
+              <span>{t.nav.classes}</span>
               <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
             </Link>
 
@@ -158,6 +172,13 @@ export default function Navbar() {
               className="px-3 py-2 text-base font-medium text-ink hover:text-ringBlue rounded-lg min-h-[48px] flex items-center"
             >
               {t.nav.home}
+            </Link>
+            <Link
+              href="/classes"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 text-base font-semibold text-[#7E6C9E] hover:text-[#5E4C80] rounded-lg min-h-[48px] flex items-center bg-[#F5EFF7]"
+            >
+              ✦ {t.nav.classes}
             </Link>
             <Link
               href="/programs"
@@ -203,9 +224,17 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/#newsletter"
+              href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="mt-2 w-full flex items-center justify-center gap-2 py-3 px-5 rounded-pill bg-navy hover:bg-ringBlue text-white text-base font-medium min-h-[48px] shadow-sm transition-colors"
+              className="px-3 py-2 text-sm text-[#7E6C9E] font-medium rounded-lg min-h-[44px] flex items-center"
+            >
+              ✦ {t.nav.login} (Sign In)
+            </Link>
+
+            <Link
+              href="/classes"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-2 w-full flex items-center justify-center gap-2 py-3 px-5 rounded-pill bg-[#725E96] hover:bg-[#5E4C80] text-white text-base font-medium min-h-[48px] shadow-sm transition-colors"
             >
               <span>{t.nav.startCta}</span>
               <ArrowRight className="w-4 h-4" aria-hidden="true" />

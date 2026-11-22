@@ -3,6 +3,7 @@ export type Language = 'ta' | 'en';
 export interface TranslationContent {
   nav: {
     home: string;
+    classes: string;
     programs: string;
     about: string;
     resources: string;
@@ -12,6 +13,7 @@ export interface TranslationContent {
     startCta: string;
     langToggle: string;
     skipToContent: string;
+    login: string;
   };
   hero: {
     tagline: string;
@@ -125,6 +127,7 @@ export const translations: Record<Language, TranslationContent> = {
   ta: {
     nav: {
       home: "முகப்பு",
+      classes: "வகுப்புகள்",
       programs: "பயிற்சிகள்",
       about: "எங்களைப் பற்றி",
       resources: "வளங்கள் & கட்டுரைகள்",
@@ -134,6 +137,7 @@ export const translations: Record<Language, TranslationContent> = {
       startCta: "அமைதிப் பயணம்",
       langToggle: "English",
       skipToContent: "முக்கிய உள்ளடக்கத்திற்குச் செல்லவும்",
+      login: "உள்நுழைக",
     },
     hero: {
       tagline: "மன அமைதிக்கான உங்களின் தமிழ் புகலிடம்",
@@ -284,6 +288,7 @@ export const translations: Record<Language, TranslationContent> = {
   en: {
     nav: {
       home: "Home",
+      classes: "Classes",
       programs: "Programs",
       about: "About",
       resources: "Resources",
@@ -293,6 +298,7 @@ export const translations: Record<Language, TranslationContent> = {
       startCta: "Start Journey",
       langToggle: "தமிழ்",
       skipToContent: "Skip to main content",
+      login: "Sign In",
     },
     hero: {
       tagline: "Your Tamil Sanctuary for Inner Peace",

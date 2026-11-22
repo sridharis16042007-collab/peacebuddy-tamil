@@ -166,14 +166,25 @@ export default function AdminPage() {
             </button>
           </form>
 
-          <div className="mt-6 pt-5 border-t border-mist/80">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 text-xs text-[#5A758E] hover:text-[#0B3D6B] transition-colors"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>முகப்புப் பக்கத்திற்குத் திரும்புக</span>
-            </Link>
+          <div className="mt-6 pt-5 border-t border-mist/80 space-y-2">
+            <div>
+              <Link
+                href="/admin/login"
+                className="inline-flex items-center gap-1.5 text-xs text-[#7E6C9E] font-medium hover:underline"
+              >
+                <Lock className="w-3.5 h-3.5" />
+                <span>நிர்வாகி மின்னஞ்சல் + கடவுச்சொல் உள்நுழைவு (/admin/login)</span>
+              </Link>
+            </div>
+            <div>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1.5 text-xs text-[#5A758E] hover:text-[#0B3D6B] transition-colors"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>முகப்புப் பக்கத்திற்குத் திரும்புக</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -209,6 +220,13 @@ export default function AdminPage() {
 
           <div className="flex items-center gap-3 flex-wrap">
             {/* Google Sheet Live Status Indicator */}
+            <Link
+              href="/admin/classes"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#7E6C9E] hover:bg-[#624F85] text-white text-xs font-semibold shadow-sm transition-all"
+            >
+              <span>📅 Class Scheduling Portal</span>
+            </Link>
+
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Google Sheet Live Connected</span>
