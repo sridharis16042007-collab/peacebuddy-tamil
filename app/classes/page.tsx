@@ -183,11 +183,6 @@ export default function ClassesPage() {
 
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/70 backdrop-blur-md border border-white/80 text-[#0F2742] font-semibold text-[12px] uppercase tracking-[0.14em] mb-4 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#8B5E83]" />
-            <span>{lang === 'ta' ? 'நேரலை அமைதி வகுப்புகள்' : 'LIVE SANCTUARY TIMELINE'}</span>
-          </div>
-
           <h1 className="text-[36px] sm:text-[52px] lg:text-[60px] font-serif font-medium text-[#0F2742] leading-[1.08] tracking-tight mb-4">
             {lang === 'ta' ? (
               <span className="font-tamil-serif">
