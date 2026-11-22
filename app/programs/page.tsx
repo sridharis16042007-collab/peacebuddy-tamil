@@ -352,13 +352,13 @@ export default function ProgramsPage() {
                 {/* Weekend Session Visual Hero Image (Powerful Weekend Workshops) */}
                 <div className="relative w-full h-48 sm:h-52 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
-                    src="/assets/sunset-serenity.jpg"
+                    src="/assets/weekend-workshop-tree.jpg"
                     alt="Powerful Weekend Workshops"
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2612]/75 via-[#1C3D26]/20 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2612]/70 via-[#1C3D26]/15 to-transparent pointer-events-none" />
 
                   {/* Photo Title */}
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-center text-center text-white text-xs px-3.5 py-2 rounded-full bg-black/45 backdrop-blur-md border border-white/20">
@@ -436,8 +436,8 @@ export default function ProgramsPage() {
               </div>
 
               <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex items-center gap-2 text-xs text-[#2A5235] font-semibold">
-                <CheckCircle2 className="w-4 h-4 text-[#2A5235]" />
-                <span>{lang === 'ta' ? 'வாராந்திர முழுமையான வளர்ச்சி' : 'Transformational weekend growth'}</span>
+                <span className="w-2 h-2 rounded-full bg-[#2A5235] animate-pulse" />
+                <span>{lang === 'ta' ? 'விரைவில் தொடக்கம் (Upcoming)' : 'Upcoming'}</span>
               </div>
             </div>
 
