@@ -55,16 +55,16 @@ export default function ProgramsPage() {
               <span className="font-tamil-serif">
                 மாதாந்திர மாற்றப் பயிற்சி
                 <br />
-                <span className="italic font-serif text-[#8B5E83] text-[28px] sm:text-[44px]">
-                  (காலை & மாலை நேர அமர்வுகள்)
+                <span className="italic font-serif text-[#8B5E83] text-[26px] sm:text-[40px]">
+                  (காலை, மாலை & வார இறுதி பயிலரங்குகள்)
                 </span>
               </span>
             ) : (
               <>
                 Monthly Mindful Transformation
                 <br />
-                <span className="italic font-serif text-[#8B5E83] text-[28px] sm:text-[44px]">
-                  (Morning & Evening Sessions)
+                <span className="italic font-serif text-[#8B5E83] text-[26px] sm:text-[40px]">
+                  (Morning, Evening & Weekend Workshops)
                 </span>
               </>
             )}
@@ -96,16 +96,16 @@ export default function ProgramsPage() {
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-white/90 text-xs text-[#4A5A6A]">
               <Clock className="w-4 h-4 text-[#8B5E83]" />
               <span className="font-medium">
-                {lang === 'ta' ? 'தினசரி காலை & மாலை அமர்வுகள்' : 'Daily Morning & Evening Sessions'}
+                {lang === 'ta' ? 'தினசரி காலை, மாலை & வார இறுதி அமர்வுகள்' : 'Daily Morning, Evening & Weekend Sessions'}
               </span>
             </div>
           </div>
 
-          {/* SESSIONS GRID: Morning Session & Evening Session in Ordered Way */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 my-10">
+          {/* SESSIONS GRID: Morning, Evening & Weekend Workshops in Ordered Way */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 my-10">
 
             {/* 1. MORNING SESSION */}
-            <div className="rounded-[24px] p-6 sm:p-8 bg-gradient-to-b from-[#FFFDF8] via-[#FFF9EE] to-[#FFF5E6]/80 border border-[#FDE68A]/70 shadow-[0_20px_60px_rgba(217,119,6,0.06)] flex flex-col justify-between relative overflow-hidden">
+            <div className="rounded-[24px] p-6 sm:p-7 bg-gradient-to-b from-[#FFFDF8] via-[#FFF9EE] to-[#FFF5E6]/80 border border-[#FDE68A]/70 shadow-[0_20px_60px_rgba(217,119,6,0.06)] flex flex-col justify-between relative overflow-hidden">
               <div>
                 {/* Session Header */}
                 <div className="flex items-center gap-3 mb-6">
@@ -123,12 +123,12 @@ export default function ProgramsPage() {
                 </div>
 
                 {/* Morning Session Visual Hero Image (Brahma Muhurtham Meditation) */}
-                <div className="relative w-full h-52 sm:h-60 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
+                <div className="relative w-full h-48 sm:h-52 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
                     src="/assets/morning-garden-meditation.jpg"
                     alt="Morning Brahma Muhurtham Meditation and Gratitude"
                     fill
-                    sizes="(max-width: 768px) 100vw, 550px"
+                    sizes="(max-width: 768px) 100vw, 400px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                     priority
                   />
@@ -219,7 +219,7 @@ export default function ProgramsPage() {
             </div>
 
             {/* 2. EVENING SESSION */}
-            <div className="rounded-[24px] p-6 sm:p-8 bg-gradient-to-b from-[#FAF7FD] via-[#F3EDF9] to-[#EBE2F5]/80 border border-[#E0D0EB]/90 shadow-[0_20px_60px_rgba(139,94,131,0.06)] flex flex-col justify-between relative overflow-hidden">
+            <div className="rounded-[24px] p-6 sm:p-7 bg-gradient-to-b from-[#FAF7FD] via-[#F3EDF9] to-[#EBE2F5]/80 border border-[#E0D0EB]/90 shadow-[0_20px_60px_rgba(139,94,131,0.06)] flex flex-col justify-between relative overflow-hidden">
               <div>
                 {/* Session Header */}
                 <div className="flex items-center gap-3 mb-6">
@@ -237,12 +237,12 @@ export default function ProgramsPage() {
                 </div>
 
                 {/* Evening Session Visual Hero Image (Night Gratitude Meditation) */}
-                <div className="relative w-full h-52 sm:h-60 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
+                <div className="relative w-full h-48 sm:h-52 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
                   <Image
                     src="/assets/evening-moonlight-journal.jpg"
                     alt="Night Gratitude Meditation and Reflection"
                     fill
-                    sizes="(max-width: 768px) 100vw, 550px"
+                    sizes="(max-width: 768px) 100vw, 400px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                     priority
                   />
@@ -261,8 +261,8 @@ export default function ProgramsPage() {
 
                 <p className="text-xs sm:text-sm text-[#4A5A6A] mb-6 leading-relaxed">
                   {lang === 'ta'
-                    ? 'அன்றாட சோர்வு மற்றும் சிந்தனைகளை இறக்கி வைத்து, நிம்மதியான உறக்கத்திற்குத் தயாராகும் 2 படிநிலைகள்:'
-                    : 'Decompress from the day’s stress and ease into deep, tranquil rest with these 2 ordered evening steps:'}
+                    ? 'அன்றாட சோர்வு மற்றும் சிந்தனைகளை இறக்கி வைத்து, நிம்மதியான உறக்கத்திற்குத் தயாராகும் 3 படிநிலைகள்:'
+                    : 'Decompress from the day’s stress and ease into deep, tranquil rest with these 3 ordered evening steps:'}
                 </p>
 
                 {/* Ordered Steps List */}
@@ -304,12 +304,144 @@ export default function ProgramsPage() {
                       </p>
                     </div>
                   </div>
+
+                  {/* Step 3: Somatic Wind-down & Restful Sleep Sanctuary */}
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                    <span className="w-7 h-7 rounded-full bg-[#8B5E83] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
+                      3
+                    </span>
+                    <div>
+                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                        {lang === 'ta'
+                          ? 'ஆழ்ந்த உறக்க தளர்வு & மன அமைதி'
+                          : 'Somatic Wind-down & Sleep Sanctuary'}
+                      </h4>
+                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                        {lang === 'ta'
+                          ? 'அமைதியான சூழலை உருவாக்கி, நரம்பு மண்டலத்தை முழுமையாக சாந்தப்படுத்தி மறுநாள் புத்துணர்ச்சியோடு விழிக்க உதவும் எளிய தளர்வு.'
+                          : 'Gentle nervous system down-regulation to quiet racing thoughts and ease into deep, restorative sleep effortlessly.'}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex items-center gap-2 text-xs text-[#8B5E83] font-medium">
                 <CheckCircle2 className="w-4 h-4 text-[#8B5E83]" />
                 <span>{lang === 'ta' ? 'ஆழ்ந்த அமைதியான உறக்கம்' : 'Restorative, peaceful sleep'}</span>
+              </div>
+            </div>
+
+            {/* 3. WEEKEND WORKSHOPS */}
+            <div className="rounded-[24px] p-6 sm:p-7 bg-gradient-to-b from-[#F3F8F5] via-[#EBF4EF] to-[#E3EFE8]/80 border border-[#C5DDD0]/80 shadow-[0_20px_60px_rgba(42,82,53,0.06)] flex flex-col justify-between relative overflow-hidden md:col-span-2 lg:col-span-1">
+              <div>
+                {/* Session Header */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-full bg-[#DDE6DC] text-[#2A5235] flex-shrink-0">
+                    <Sparkles className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#2A5235]">
+                      {lang === 'ta' ? 'அமர்வு 3' : 'Session 3'}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-serif font-medium text-[#0F2742]">
+                      {lang === 'ta' ? 'வார இறுதி பயிலரங்குகள்' : 'Weekend Workshops'}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Weekend Session Visual Hero Image (Live Masterclasses & Healing) */}
+                <div className="relative w-full h-48 sm:h-52 rounded-[22px] overflow-hidden mb-6 shadow-sm border border-white/85 group">
+                  <Image
+                    src="/assets/sunset-serenity.jpg"
+                    alt="Weekend Workshops, Live Q&A and Somatic Breathwork"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2612]/75 via-[#1C3D26]/20 to-transparent pointer-events-none" />
+
+                  {/* Photo Title */}
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
+                    <span className="font-serif font-medium text-[13px]">
+                      ✦ {lang === 'ta' ? 'வார இறுதி சிறப்பு பயிலரங்கு' : 'Weekend Healing Masterclass'}
+                    </span>
+                    <span className="text-[11px] text-[#DDE6DC] font-sans">
+                      {lang === 'ta' ? 'நேரலை பயிலரங்கு' : 'Weekly Live Immersion'}
+                    </span>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-sm text-[#4A5A6A] mb-6 leading-relaxed">
+                  {lang === 'ta'
+                    ? 'வாரந்தோறும் நேரலை வழிகாட்டல், வினா-விடை மற்றும் ஆழ்ந்த மன அமைதிக்கான 3 சிறப்பு அம்சங்கள்:'
+                    : 'Deepen your transformation with interactive weekend intensives and mentor guidance:'}
+                </p>
+
+                {/* Ordered Steps List */}
+                <div className="space-y-4">
+                  {/* Step 1: Live Interactive Q&A */}
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                    <span className="w-7 h-7 rounded-full bg-[#2A5235] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
+                      1
+                    </span>
+                    <div>
+                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                        {lang === 'ta'
+                          ? 'நேரலை வினா-விடை & வழிகாட்டல்'
+                          : 'Live Interactive Q&A & Mentoring'}
+                      </h4>
+                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                        {lang === 'ta'
+                          ? 'வாழ்க்கைப் பிரச்சனைகள் மற்றும் தியான சந்தேகங்களைத் தீர்த்து தனிப்பயனாக்கப்பட்ட நேரலை வழிகாட்டல் பெறும் சத்ஸங்கம்.'
+                          : 'Open group Satsang to resolve personal life dilemmas, deepen meditation, and receive direct 1-on-1 guidance.'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 2: Somatic Breathwork & Sound Healing */}
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                    <span className="w-7 h-7 rounded-full bg-[#2A5235] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
+                      2
+                    </span>
+                    <div>
+                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                        {lang === 'ta'
+                          ? 'ஆழ்ந்த மூச்சுப்பயிற்சி & ஒலி தியானம்'
+                          : 'Somatic Breathwork & Sound Bath'}
+                      </h4>
+                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                        {lang === 'ta'
+                          ? 'உடலிலும் நரம்புகளிலும் தேங்கியுள்ள ஆழமான அழுத்தங்களை விடுவிக்க வழிகாட்டப்பட்ட பிராணாயாமம் மற்றும் ஒலி தியானம்.'
+                          : 'Therapeutic pranayama and resonance sound frequencies to release stored stress and emotional blocks.'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 3: Weekly Habit Review & Accountability */}
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                    <span className="w-7 h-7 rounded-full bg-[#2A5235] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
+                      3
+                    </span>
+                    <div>
+                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                        {lang === 'ta'
+                          ? 'வாராந்திர முன்னேற்ற ஆய்வு'
+                          : 'Weekly Habit Review & Accountability'}
+                      </h4>
+                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                        {lang === 'ta'
+                          ? 'வாராந்திர பழக்கவழக்க முன்னேற்றங்களை ஆய்வு செய்து, அடுத்த வாரத்திற்கான நேர்மறை அமைதியுடன் தொடங்குதல்.'
+                          : 'Milestone check-ins, mindful group reflection, and setting conscious intentions for the coming week.'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex items-center gap-2 text-xs text-[#2A5235] font-medium">
+                <CheckCircle2 className="w-4 h-4 text-[#2A5235]" />
+                <span>{lang === 'ta' ? 'வாராந்திர முழுமையான வளர்ச்சி' : 'Transformational weekend growth'}</span>
               </div>
             </div>
 
@@ -326,7 +458,7 @@ export default function ProgramsPage() {
             <div className="flex flex-col">
               <span className="text-[11px] uppercase tracking-wider text-[#8B5E83]">{lang === 'ta' ? 'வடிவம்' : 'Format'}</span>
               <strong className="text-sm text-[#0F2742] font-serif font-medium mt-0.5">
-                {lang === 'ta' ? 'காலை & மாலை அமர்வுகள்' : 'Morning & Evening'}
+                {lang === 'ta' ? 'காலை, மாலை & வார இறுதி' : 'Morning, Evening & Weekends'}
               </strong>
             </div>
             <div className="flex flex-col">
