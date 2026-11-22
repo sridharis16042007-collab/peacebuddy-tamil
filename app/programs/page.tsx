@@ -116,7 +116,7 @@ export default function ProgramsPage() {
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-[#8B5E83]">
                       {lang === 'ta' ? 'அமர்வு 1' : 'Session 1'}
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-serif font-medium text-[#0F2742]">
+                    <h3 className="text-xl sm:text-2xl font-serif font-semibold text-[#0F2742]">
                       {lang === 'ta' ? 'காலை அமர்வு' : 'Morning Session'}
                     </h3>
                   </div>
@@ -145,7 +145,7 @@ export default function ProgramsPage() {
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#4A5A6A] mb-6 leading-relaxed">
+                <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-6 leading-relaxed">
                   {lang === 'ta'
                     ? 'விடியற்காலை புத்துணர்ச்சியுடன் எழுந்து, அமைதியான மனநிலையுடன் அன்றைய நாளைத் தொடங்குவதற்கான 3 படிநிலைகள்:'
                     : 'Awaken with serene clarity and ground your day with these 3 ordered morning steps:'}
@@ -154,17 +154,17 @@ export default function ProgramsPage() {
                 {/* Ordered Steps List */}
                 <div className="space-y-4">
                   {/* Step 1: Brahma Muhurtham Meditation */}
-                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#0F2742] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       1
                     </span>
                     <div>
-                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                      <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'தினசரி பிரம்ம முகூர்த்த தியானம்'
                           : 'Daily Brahma Muhurtham Meditation'}
                       </h4>
-                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                      <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'விடியற்காலை பிரம்ம முகூர்த்தத்தின் அமைதியில் ஆழ்ந்து, மனதை ஒருமுகப்படுத்தி நரம்பு மண்டலத்தை அமைதிப்படுத்தும் ஆழ்ந்த தமிழ் தியானம்.'
                           : 'Early morning meditation in the stillness of Brahma Muhurtham to quiet mental noise and center your nervous system.'}
@@ -173,17 +173,17 @@ export default function ProgramsPage() {
                   </div>
 
                   {/* Step 2: Gratitude Writing */}
-                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#0F2742] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       2
                     </span>
                     <div>
-                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                      <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'நன்றியுணர்வு எழுத்துப் பயிற்சி'
                           : 'Gratitude Writing'}
                       </h4>
-                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                      <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'அன்றைய நாளை நேர்மறை எண்ணங்கள், அமைதி மற்றும் வாழ்வின் நன்மைகளை உணர்ந்து போற்றும் வழிகாட்டப்பட்ட நன்றியுணர்வு பதிவு.'
                           : 'Structured gratitude prompts to cultivate positive emotional resonance and ground your heart before the day begins.'}
@@ -192,17 +192,17 @@ export default function ProgramsPage() {
                   </div>
 
                   {/* Step 3: Day Follow-up */}
-                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#0F2742] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       3
                     </span>
                     <div>
-                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                      <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'அன்றைய நாள் வழிகாட்டல் & விழிப்புணர்வு'
                           : 'Day Follow-up & Mindful Intentions'}
                       </h4>
-                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                      <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'நாள் முழுவதும் அவசரமின்றி, பதற்றமின்றி விழிப்புணர்வுடன் செயல்படுவதற்கான கவனமுள்ள தொடர் வழிகாட்டல்.'
                           : 'Setting conscious daily intentions and gentle reminders to prevent overthinking throughout work and daily tasks.'}
@@ -212,25 +212,30 @@ export default function ProgramsPage() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex items-center gap-2 text-xs text-[#2A5235] font-medium">
+              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex items-center gap-2 text-xs text-[#2A5235] font-semibold">
                 <CheckCircle2 className="w-4 h-4 text-[#2A5235]" />
                 <span>{lang === 'ta' ? 'புத்துணர்ச்சியான தொடக்கம்' : 'Energizing, mindful start'}</span>
               </div>
             </div>
 
-            {/* 2. EVENING SESSION */}
-            <div className="rounded-[24px] p-6 sm:p-7 bg-gradient-to-b from-[#FAF7FD] via-[#F3EDF9] to-[#EBE2F5]/80 border border-[#E0D0EB]/90 shadow-[0_20px_60px_rgba(139,94,131,0.06)] flex flex-col justify-between relative overflow-hidden">
+            {/* 2. EVENING SESSION (Matching user's soft purple gradient & bold text) */}
+            <div
+              className="rounded-[24px] p-6 sm:p-7 border border-[#BFA7FF]/85 shadow-[0_20px_60px_rgba(180,150,250,0.20)] flex flex-col justify-between relative overflow-hidden"
+              style={{
+                background: 'radial-gradient(125% 105% at 50% 50%, #FFFFFF 28%, #F2EBFE 65%, #CBB3FE 100%)',
+              }}
+            >
               <div>
                 {/* Session Header */}
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-full bg-[#E8D7F1] text-[#8B5E83] flex-shrink-0">
+                  <div className="p-3 rounded-full bg-[#E8D7F1] text-[#8B5E83] flex-shrink-0 shadow-xs">
                     <Moon className="w-6 h-6" />
                   </div>
                   <div>
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-[#8B5E83]">
                       {lang === 'ta' ? 'அமர்வு 2' : 'Session 2'}
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-serif font-medium text-[#0F2742]">
+                    <h3 className="text-xl sm:text-2xl font-serif font-semibold text-[#0F2742]">
                       {lang === 'ta' ? 'மாலை அமர்வு' : 'Evening Session'}
                     </h3>
                   </div>
@@ -259,7 +264,7 @@ export default function ProgramsPage() {
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#4A5A6A] mb-6 leading-relaxed">
+                <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-6 leading-relaxed">
                   {lang === 'ta'
                     ? 'அன்றாட சோர்வு மற்றும் சிந்தனைகளை இறக்கி வைத்து, நிம்மதியான உறக்கத்திற்குத் தயாராகும் 3 படிநிலைகள்:'
                     : 'Decompress from the day’s stress and ease into deep, tranquil rest with these 3 ordered evening steps:'}
@@ -268,17 +273,17 @@ export default function ProgramsPage() {
                 {/* Ordered Steps List */}
                 <div className="space-y-4">
                   {/* Step 1: Journal Writing */}
-                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#8B5E83] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       1
                     </span>
                     <div>
-                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                      <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'சுயபரிசீலனை ஜர்னல் எழுத்து'
                           : 'Journal Writing'}
                       </h4>
-                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                      <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'அன்றைய நிகழ்வுகள், உணர்வுகள் மற்றும் மன அழுத்தங்களை அமைதியாக எழுதி மனதை இலகுவாக்கும் எளிய ஜர்னல் பயிற்சி.'
                           : 'Quiet reflection on the day to untangle emotional tension, release lingering thoughts, and achieve mental clarity.'}
@@ -287,17 +292,17 @@ export default function ProgramsPage() {
                   </div>
 
                   {/* Step 2: Night Guided Meditation */}
-                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#8B5E83] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       2
                     </span>
                     <div>
-                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                      <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'இரவு நேர வழிகாட்டப்பட்ட தியானம்'
                           : 'Night Guided Meditation'}
                       </h4>
-                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                      <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'அலைபாயும் எண்ணங்களை முழுமையாக சாந்தப்படுத்தி, உடலையும் மனதையும் தளர்த்தி ஆழ்ந்த, நிம்மதியான உறக்கத்திற்கு அழைத்துச் செல்லும் இரவு தியானம்.'
                           : 'Somatic calming meditation to halt racing thoughts, relax muscle tension, and welcome deep restorative sleep.'}
@@ -306,17 +311,17 @@ export default function ProgramsPage() {
                   </div>
 
                   {/* Step 3: Somatic Wind-down & Restful Sleep Sanctuary */}
-                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#8B5E83] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       3
                     </span>
                     <div>
-                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                      <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'ஆழ்ந்த உறக்க தளர்வு & மன அமைதி'
                           : 'Somatic Wind-down & Sleep Sanctuary'}
                       </h4>
-                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                      <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'அமைதியான சூழலை உருவாக்கி, நரம்பு மண்டலத்தை முழுமையாக சாந்தப்படுத்தி மறுநாள் புத்துணர்ச்சியோடு விழிக்க உதவும் எளிய தளர்வு.'
                           : 'Gentle nervous system down-regulation to quiet racing thoughts and ease into deep, restorative sleep effortlessly.'}
@@ -326,7 +331,7 @@ export default function ProgramsPage() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex items-center gap-2 text-xs text-[#8B5E83] font-medium">
+              <div className="mt-6 pt-4 border-t border-[#8B5E83]/20 flex items-center gap-2 text-xs text-[#6B3E63] font-semibold">
                 <CheckCircle2 className="w-4 h-4 text-[#8B5E83]" />
                 <span>{lang === 'ta' ? 'ஆழ்ந்த அமைதியான உறக்கம்' : 'Restorative, peaceful sleep'}</span>
               </div>
@@ -344,7 +349,7 @@ export default function ProgramsPage() {
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-[#2A5235]">
                       {lang === 'ta' ? 'அமர்வு 3' : 'Session 3'}
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-serif font-medium text-[#0F2742]">
+                    <h3 className="text-xl sm:text-2xl font-serif font-semibold text-[#0F2742]">
                       {lang === 'ta' ? 'வார இறுதி பயிலரங்குகள்' : 'Weekend Workshops'}
                     </h3>
                   </div>
@@ -372,7 +377,7 @@ export default function ProgramsPage() {
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#4A5A6A] mb-6 leading-relaxed">
+                <p className="text-xs sm:text-sm font-medium text-[#1E293B] mb-6 leading-relaxed">
                   {lang === 'ta'
                     ? 'வாரந்தோறும் நேரலை வழிகாட்டல், வினா-விடை மற்றும் ஆழ்ந்த மன அமைதிக்கான 3 சிறப்பு அம்சங்கள்:'
                     : 'Deepen your transformation with interactive weekend intensives and mentor guidance:'}
@@ -381,17 +386,17 @@ export default function ProgramsPage() {
                 {/* Ordered Steps List */}
                 <div className="space-y-4">
                   {/* Step 1: Live Interactive Q&A */}
-                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#2A5235] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       1
                     </span>
                     <div>
-                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                      <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'நேரலை வினா-விடை & வழிகாட்டல்'
                           : 'Live Interactive Q&A & Mentoring'}
                       </h4>
-                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                      <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'வாழ்க்கைப் பிரச்சனைகள் மற்றும் தியான சந்தேகங்களைத் தீர்த்து தனிப்பயனாக்கப்பட்ட நேரலை வழிகாட்டல் பெறும் சத்ஸங்கம்.'
                           : 'Open group Satsang to resolve personal life dilemmas, deepen meditation, and receive direct 1-on-1 guidance.'}
@@ -400,17 +405,17 @@ export default function ProgramsPage() {
                   </div>
 
                   {/* Step 2: Somatic Breathwork & Sound Healing */}
-                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#2A5235] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       2
                     </span>
                     <div>
-                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                      <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'ஆழ்ந்த மூச்சுப்பயிற்சி & ஒலி தியானம்'
                           : 'Somatic Breathwork & Sound Bath'}
                       </h4>
-                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                      <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'உடலிலும் நரம்புகளிலும் தேங்கியுள்ள ஆழமான அழுத்தங்களை விடுவிக்க வழிகாட்டப்பட்ட பிராணாயாமம் மற்றும் ஒலி தியானம்.'
                           : 'Therapeutic pranayama and resonance sound frequencies to release stored stress and emotional blocks.'}
@@ -419,17 +424,17 @@ export default function ProgramsPage() {
                   </div>
 
                   {/* Step 3: Weekly Habit Review & Accountability */}
-                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/80 border border-white/90 shadow-xs">
+                  <div className="flex items-start gap-3.5 p-4 rounded-[18px] bg-white/90 backdrop-blur-sm border border-white shadow-xs">
                     <span className="w-7 h-7 rounded-full bg-[#2A5235] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
                       3
                     </span>
                     <div>
-                      <h4 className="text-[15px] font-serif font-medium text-[#0F2742]">
+                      <h4 className="text-[16px] font-serif font-semibold text-[#0F2742]">
                         {lang === 'ta'
                           ? 'வாராந்திர முன்னேற்ற ஆய்வு'
                           : 'Weekly Habit Review & Accountability'}
                       </h4>
-                      <p className="text-xs text-[#4A5A6A] mt-1 leading-relaxed">
+                      <p className="text-[13px] text-[#2D3F50] font-medium mt-1 leading-relaxed">
                         {lang === 'ta'
                           ? 'வாராந்திர பழக்கவழக்க முன்னேற்றங்களை ஆய்வு செய்து, அடுத்த வாரத்திற்கான நேர்மறை அமைதியுடன் தொடங்குதல்.'
                           : 'Milestone check-ins, mindful group reflection, and setting conscious intentions for the coming week.'}
@@ -439,7 +444,7 @@ export default function ProgramsPage() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex items-center gap-2 text-xs text-[#2A5235] font-medium">
+              <div className="mt-6 pt-4 border-t border-[#0F2742]/10 flex items-center gap-2 text-xs text-[#2A5235] font-semibold">
                 <CheckCircle2 className="w-4 h-4 text-[#2A5235]" />
                 <span>{lang === 'ta' ? 'வாராந்திர முழுமையான வளர்ச்சி' : 'Transformational weekend growth'}</span>
               </div>
